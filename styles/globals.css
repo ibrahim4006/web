@@ -1,9 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* START: General styles */
+.center {
+  @apply flex justify-center items-center;
+}
+/* End: General styles */
 
 
 *{
@@ -17,6 +22,13 @@
 *::-webkit-scrollbar {
   display: none;
 }
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 247, 246, 241;
+  --background-rgb: 247, 246, 241;
+}
+
 
 /* START: Hero styles */
 .hero {
@@ -40,17 +52,500 @@
 .circle-inner {
   @apply h-6 w-6 rounded-full bg-[#0D0D0D]  text-[#F7F6F1] flex justify-center items-center;
 }
-.active{
-  @apply  bg-[#0D0D0D] text-[#F7F6F1];
+.active {
+  @apply bg-[#0D0D0D] text-[#F7F6F1];
+}
+.square-btn-line {
+  @apply w-8 rounded-[8px] border-2 border-black font-bold bg-[#0D0D0D];
 }
 /* END: Hero styles */
 
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: 247, 246, 241;
-  --background-rgb: 247, 246, 241;
+/* START: Login Sections */
+.logincard {
+  height: 37vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 25em;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  transition: transform 0.4s ease-in-out;
+  position: relative;
+  cursor: pointer;
 }
+.logbackground {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 1px;
+  background-color: #0d0d0d;
+  transition: transform 0.4s ease-in-out;
+}
+.logframe-top {
+  position: absolute;
+  z-index: -1;
+  top: -20px;
+  left: 0;
+  right: -10px;
+  bottom: 0;
+  background-color: transparent;
+  transition: transform 0.4s ease-in-out;
+}
+.logframe-top::before {
+  margin: 5px;
+  content: "";
+  position: absolute;
+  width: 1px;
+  top: 0;
+  right: 0;
+  bottom: 96%;
+  height: 4%;
+  border-right: 1px solid #0d0d0d;
+}
+.logframe-top::after {
+  margin: 5px;
+  content: "";
+  position: absolute;
+  height: 1px;
+  left: 92%;
+  right: -5px;
+  top: 5px;
+  width: 6%;
+  border-top: 1px solid #0d0d0d;
+}
+.logframe-bottom {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: -15px;
+  right: 0;
+  bottom: -25px;
+  background-color: transparent;
+  transition: transform 0.4s ease-in-out;
+}
+.logframe-bottom::before {
+  margin: 5px;
+  content: "";
+  position: absolute;
+  width: 1px;
+  bottom: 0;
+  left: 0;
+  top: 88%;
+  height: 10%;
+  border-left: 1px solid #0d0d0d;
+}
+.logframe-bottom::after {
+  margin: 5px;
+  content: "";
+  position: absolute;
+  height: 1px;
+  right: 99%;
+  left: -10px;
+  bottom: 5px;
+  width: 10%;
+  border-top: 1px solid #0d0d0d;
+}
+.logtop-part {
+  flex: 4;
+  border-top: 2px solid #f7f6f1;
+  margin: 5%;
+  margin-bottom: 0;
+}
+
+.logbottom-part {
+  flex: 8;
+  margin: 5%;
+  margin-top: -10%;
+  border-bottom: 2px solid #f7f6f1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 5px;
+  overflow: scroll;
+}
+
+.logtop-part::before {
+  content: "";
+  margin: 5%;
+  position: absolute;
+  width: 1px;
+  top: 0;
+  right: 0;
+  bottom: 98%;
+  height: 2%;
+  border-right: 1px solid #f7f6f1;
+}
+
+.logtop-part::after {
+  content: "";
+  margin: 5%;
+  position: absolute;
+  width: 1px;
+  top: 0;
+  left: 0;
+  bottom: 98%;
+  height: 2%;
+  border-left: 1px solid #f7f6f1;
+}
+
+.logbottom-part::before {
+  content: "";
+  margin: 10%;
+  position: absolute;
+  width: 1px;
+  bottom: 0;
+  right: -5%;
+  top: 87.2%;
+  height: 2%;
+  border-right: 1px solid #f7f6f1;
+}
+.logbottom-part::after {
+  content: "";
+  margin: 10%;
+  position: absolute;
+  width: 1px;
+  bottom: 0;
+  left: -5%;
+  top: 87.2%;
+  height: 2%;
+  border-left: 1px solid #f7f6f1;
+}
+
+.login {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+input {
+  display: block;
+  width: 350px;
+  margin: 30px auto;
+  padding: 10px;
+  border-radius: 3px;
+  border-bottom: 4px solid #f7f6f1;
+}
+
+/* End of the Login */
+
+
+.panelcard{
+  position: relative;
+}
+.frame-right{
+  position: absolute;
+  right:0;
+  height: 72px;
+  border-right: 1px solid black;
+}
+.frame-right::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  right:0;
+  height: 12px;
+  border-radius: 4px 0 0 4px;
+  border-right: 2px solid black;
+}
+.frame-right::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right:0;
+  height: 12px;
+  border-radius: 4px 0 0 4px;
+  border-right: 2px solid black;
+}
+.frame-left{
+  position: absolute;
+  left:0;
+  height: 72px;
+  border-left: 1px solid black;
+}
+.frame-left::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left:0;
+  height: 12px;
+  border-radius: 4px 0 0 4px;
+  border-left: 2px solid black;
+}
+.frame-left::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left:0;
+  height: 12px;
+  border-radius: 4px 0 0 4px;
+  border-left: 2px solid black;
+}
+.frame-top-panel{
+  position: absolute;
+  top:0;
+  width: 15em;
+  border-top: 1px solid black;
+}
+.frame-top-panel::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  right:0;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  border-right: 18px solid black;
+}
+.frame-top-panel::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left:0;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  border-left: 18px solid black;
+}
+.frame-bottom-panel{
+  position: absolute;
+  bottom:0;
+  width: 15em;
+  border-bottom: 1px solid black;
+}
+.frame-bottom-panel::before{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right:0;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  border-right: 18px solid black;
+}
+.frame-bottom-panel::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left:0;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  border-left: 18px solid black;
+}
+
+/* START: Entrance Card styles */
+.entrancecard {
+  height: 31vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 19em;
+  margin-top: 18%;
+  transition: transform 0.4s ease-in-out;
+  position: relative;
+  cursor: pointer;
+}
+.background{
+  position: absolute;
+  top:0;
+  height: 31vw;
+  width: 19em;
+  transition: transform 0.4s ease-in-out;
+  cursor: pointer;
+}
+.background:hover {
+  transform: scale(1.11);
+  background-color: #0d0d0d;
+  border-top: double 4px #F7F6F1;
+  border-bottom: double 4px #F7F6F1;
+}
+.entrancecard:hover {
+  transform: scale(1.1);
+  background-color: #0d0d0d;
+  color: #F7F6F1;
+}
+.frame-top{
+  position: absolute;
+  top:0;
+  width: 19em;
+  border-top: 1px solid black;
+}
+.frame-top::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  right:0;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  border-right: 30px solid black;
+}
+.frame-top::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left:0;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  border-left: 30px solid black;
+}
+.entrancecard:hover .frame-top {
+  background-color: #0d0d0d;
+  border-top: 1px solid #F7F6F1;
+  border-bottom: 1px solid #F7F6F1;
+}
+.entrancecard:hover .frame-top::after {
+  border-left: 30px solid #F7F6F1;
+}
+.entrancecard:hover .frame-top::before {
+  border-right: 30px solid #F7F6F1;
+}
+
+.frame-bottom{
+  position: absolute;
+  bottom:0;
+  width: 19em;
+  border-bottom: 1px solid black;
+}
+.frame-bottom::before{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right:0;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  border-right: 30px solid black;
+}
+.frame-bottom::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left:0;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  border-left: 30px solid black;
+}
+.entrancecard:hover .frame-bottom {
+  background-color: #0d0d0d;
+  border-top: 1px solid #F7F6F1;
+  border-bottom: 1px solid #F7F6F1;
+}
+.entrancecard:hover .frame-bottom::after {
+  border-left: 30px solid #F7F6F1;
+}
+.entrancecard:hover .frame-bottom::before {
+  border-right: 30px solid #F7F6F1;
+}
+/* End: Entrance Card  styles */
+
+
+
+.animate_content_opening{
+  animation: opening 2s ease;
+}
+.animate_content_closing{
+  animation: closing 2s ease;
+}
+.animate_content_closing_hor{
+  animation: closing-hor 2s ease;
+}
+.animate_content_opening_hor{
+  animation: opening-hor 2s ease;
+}
+
+@keyframes closing {
+  /* 0% {
+    transform: scale(1, 1);
+  }
+  15% {
+    transform: scale(1, 0.002);
+    opacity: 1;
+  } */
+  0% {
+    transform: scale(0.2, 0.002);
+    opacity: 0;
+  }
+  35% {
+    transform: scale(0.2, 0.002);
+    opacity: 1;
+  }
+  65% {
+    transform: scale(1, 0.002);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+@keyframes closing-hor {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0;
+  }
+  35% {
+    transform: scale(0.002, 1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.002, 1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes opening {
+  0% {
+    transform: scale(1, 1);
+  }
+  15% {
+    transform: scale(1, 0.002);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.2, 0.002);
+    opacity: 0;
+  }
+  65% {
+    transform: scale(0.2, 0.002);
+    opacity: 1;
+  }
+  90% {
+    transform: scale(1, 0.002);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+@keyframes opening-hor {
+  0% {
+    transform: scale(1, 1);
+  }
+  10% {
+    transform: scale(1, 0.002);
+    opacity: 0;
+  }
+  35% {
+    transform: scale(0.2, 0.002);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.2, 0.002);
+    opacity: 0;
+  }
+  75% {
+    transform: scale(1, 0.002);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}
+
+
 
 
 @media (prefers-color-scheme: dark) {
@@ -66,4 +561,3 @@ body {
   background:
       rgb(var(--background-rgb))
 }
-

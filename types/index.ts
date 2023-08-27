@@ -1,4 +1,4 @@
-import { MouseEventHandler } from "react";
+import {MouseEventHandler, RefObject} from "react"
 
 export interface SquareButtonProps {
   title: string;
@@ -93,3 +93,61 @@ export interface AnswerBoxesProps {
 }
 
 /* End: Liman Sections */
+
+/* Start: Game Sections */ 
+
+export interface SnakeArenaProps {
+  canvasRef: RefObject<HTMLCanvasElement>;
+  gameOver?: string;
+  correctnumber?: number ;
+  combo?: number ;
+  startGamePopup?: MouseEventHandler<HTMLButtonElement>;
+}
+
+/* End: Game Sections */ 
+
+/* Start: Deneme Sections */ 
+
+export interface EntranceCardProps {
+  type: string;
+  description?: string;
+  hak?: number ;
+  pointFactor?: number ;
+  maxPoint?: number;
+  time?: number;
+  lesson?: string;
+  difficulty?: string;
+  subject?: string
+}
+
+export interface LessonPartProps {
+  setActiveLesson: (activeLesson: string) => void;
+  studentAnswer: { [key: string]: any[] };
+  activeLesson?: string;
+  data: { [key: string]: any[] };
+  setStudentAnswer?: (studentAnswer: string) => void;
+}
+export interface ClassLessonProps {
+  setActiveLesson: (activeLesson: string) => void;
+  studentAnswer: { [key: string]: any[] };
+  activeLesson?: string;
+  lesson: string;
+  data: { [key: string]: any[] };
+  setStudentAnswer?: (studentAnswer: string) => void;
+}
+export interface LessonProgressCardProps {
+  title: string;
+  relatedNumber?: number;
+}
+export interface TestPartGenelDenemeProps {
+  studentAnswer: { [key: string]: any[] };
+  minutes: string;
+  second: string;
+  activeLesson?: string;
+  data: { [key: string]: any[] };
+  setData: (data: { [key: string]: any[] }) => void;
+  setStudentAnswer?: (studentAnswer: string) => void;
+}
+
+/* End: Deneme Sections */ 
+

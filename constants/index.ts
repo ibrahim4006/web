@@ -2,12 +2,38 @@ export const lessons = [
   "matematik",
   "fizik",
   "kimya",
-  "biyoloji",
+  "biyoloji"
+];
+export const gameTypes = [
+  "Yılan",
+  "Adam Asmaca",
+  "İskambil",
+  "Labirent",
+  "İstila"
+];
+export const competitionTypes = [
+  "Bomba",
+  "İstila",
+  "Maraton",
+  "Labirent",
+  "Fetih"
+];
+export const choiceType = [
+  "Rastgele",
+  "Özel"
+];
+export const comType = [
+  "Video",
+  "Message"
+];
+export const orderType = [
+  "Başlat",
+  "Geri Dön"
 ];
 export const difficulty = [
   "Kolay",
   "Orta",
-  "Zor",
+  "Zor"
 ];
 export const choices = [
   "A",
@@ -33,7 +59,7 @@ export const months = [
   "Mart",
   "Nisan",
   "Mayıs",
-  "Haziran",
+  "Haziran"
 ];
 export const profilSections = [
   "İstatistikler",
@@ -41,15 +67,15 @@ export const profilSections = [
   "Ders",
   "Yarışma",
   "Deneme",
-  "Mini Deneme",
+  "Mini Deneme"
 ];
 
-export const CANVAS_SIZE = [770, 620];
+export const CANVAS_SIZE = [730, 640];
 export const SNAKE_START = [
   [8, 6.5],
   [8, 7],
   [8, 7.5],
-  [8, 8],
+  [8, 8]
 ];
 export const APPLE_START = [8, 3];
 export const SCALE = 40;

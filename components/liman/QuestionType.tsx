@@ -10,8 +10,8 @@ import {
   classes,
 } from "@/constants";
 import { QuestionTypeProps } from "@/types";
-import SquareButton from "./SquareButton";
 import Image from "next/image";
+import SquareButton from "../SquareButton";
 
 type QuestionTypeObject = {
   [key: string]: {

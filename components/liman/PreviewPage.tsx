@@ -1,7 +1,7 @@
 import { PreviewPageProps } from "@/types";
 import React from "react";
-import SquareButton from "./SquareButton";
 import Image from "next/image";
+import SquareButton from "../SquareButton";
 
 interface Point {
   x: number;
