@@ -1,12 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  scroll-behavior: smooth;
+  border-color: black;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* START: Hero styles */
+.hero {
+  @apply flex-col justify-start border-b-2 border-black relative z-0;
+}
+.square-btn {
+  @apply p-2 hover:bg-[#0D0D0D] hover:p-2 hover:text-[#F7F6F1] cursor-pointer text-sm active:bg-[#0D0D0D];
+}
+.square-btn-s {
+  @apply p-2 w-28 rounded-[20px] border-2 border-black font-bold hover:bg-[#0D0D0D] hover:p-2 hover:text-[#F7F6F1] cursor-pointer text-[12px] active:bg-[#0D0D0D];
+}
+.square-btn-m {
+  @apply p-2 w-32 rounded-[20px] border-2 border-black  font-bold hover:bg-[#0D0D0D] hover:p-2 hover:text-[#F7F6F1] cursor-pointer text-[10px] active:bg-[#0D0D0D];
+}
+.square-btn-l {
+  @apply p-2 w-44 rounded-[20px] border-2 border-black  font-bold hover:bg-[#0D0D0D] hover:p-2 hover:text-[#F7F6F1] cursor-pointer text-[10px] active:bg-[#0D0D0D];
+}
+.circle-outer {
+  @apply h-10 w-10 rounded-full bg-[#F7F6F1] border flex justify-center items-center;
+}
+.circle-inner {
+  @apply h-6 w-6 rounded-full bg-[#0D0D0D]  text-[#F7F6F1] flex justify-center items-center;
+}
+.active{
+  @apply  bg-[#0D0D0D] text-[#F7F6F1];
+}
+/* END: Hero styles */
+
+
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-rgb: 247, 246, 241;
+  --background-rgb: 247, 246, 241;
 }
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -18,10 +63,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background:
+      rgb(var(--background-rgb))
 }
+
