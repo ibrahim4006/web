@@ -84,6 +84,7 @@ const SetQuestionChoices = ({ preview, correctAnswer,setCorrectAnswer,points,set
         {choices.map((choice, index) => (
           <AnswerBoxes
             choice={choice}
+            key={index}
             containerStyles={
               correctAnswer === choice
                 ? "circle-outer relative cursor-pointer active scale-125"

@@ -2,6 +2,7 @@ import React from "react";
 import { CANVAS_SIZE } from "@/constants";
 import Image from "next/image";
 import { SnakeArenaProps } from "@/types";
+import MainCard from "@/components/common/MainCard";
 
 const SnakeArena = ({
   canvasRef,
@@ -18,6 +19,12 @@ const SnakeArena = ({
         width={`${CANVAS_SIZE[0]}px`}
         height={`${CANVAS_SIZE[1]}px`}
       />
+      {gameOver && (
+        <div className="absolute top-0 left-0">
+          <MainCard />
+          <h1 className="text-white">Black</h1>
+        </div>
+      )}
       <Image
         src="/gamescore.svg"
         alt="Boomerang Ok"

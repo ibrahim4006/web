@@ -1,12 +1,20 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
+import { useRouter } from "next/router";
+
 import {
   SNAKE_START,
   APPLE_START,
   CANVAS_SIZE,
   SCALE,
   DIRECTIONS,
+  classes,
+  difficulty,
+  matematik,
+  fizik,
+  kimya,
+  biyoloji,
 } from "@/constants";
 import useInterval from "@/components/games/snake/useInterval";
 import SnakeArena from "@/components/games/snake/SnakeArena";
@@ -15,11 +23,29 @@ import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import Image from "next/image";
 import dotenv from "dotenv";
+import ImageHover from "@/components/games/snake/ImageHover";
+import getRandomTopic from "@/utils/getRandomTopic";
+import getRandomNumber from "@/utils/getRandomNumber";
+import getSolvedArray from "@/utils/getSolvedArray";
+import getSubjectsLevel from "@/utils/getSubjectsLevel";
+import getTotalQuestion from "@/utils/getTotalQuestion";
+import getQuestionNames from "@/utils/getQuestionNames";
+
+// import ImageHover from "@/components/games/snake/ImageHover";
+
+interface Point {
+  x: number;
+  y: number;
+}
 
 interface DataType {
-  // Define the structure of your data object here
   buckimg: string;
 }
+type QuestionTypeObject = {
+  [key: string]: {
+    [key: string]: string[];
+  };
+};
 
 dotenv.config();
 
@@ -35,11 +61,18 @@ const s3Client = new S3Client({
   },
 });
 
+
+
+
+
 const Snake = () => {
   const [newGame, setNewGame] = useState(false);
   const [isGameStopped, setisGameStopped] = useState(true);
   const [isAppleTaken, setisAppleTaken] = useState(false);
   const [isSnakeTrue, setisSnakeTrue] = useState(true);
+  const [studentAnswer, setStudentAnswer] = useState<string>("");
+  const [correctAnswer, setCorrectAnswer] = useState<string>("");
+  const [imageNames, setImageNames] = useState<string[]>([]);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -49,11 +82,57 @@ const Snake = () => {
   const [delay, setDelay] = useState<number | null>(null);
   const [gameOver, setGameOver] = useState(false);
   const [currentDirection, setCurrentDirection] = useState("up");
+  const [coordinates, setCoordinates] = useState<Point[]>([]);
+  const [props, setProps] = useState<string[]>([]);
 
+  const router = useRouter();
   const [imageUrl, setImageUrl] = useState("");
+  const [totalQuestion, setTotalQuestion] = useState("");
+
+  // const getSubjectData = (subject: string): QuestionTypeObject => {
+  //   switch (subject) {
+  //     case "matematik":
+  //       return matematik;
+  //     case "fizik":
+  //       return fizik;
+  //     case "kimya":
+  //       return kimya;
+  //     case "biyoloji":
+  //       return biyoloji;
+  //     default:
+  //       return {};
+  //   }
+  // };
+
+  useEffect(() => {
+    if (router.isReady) {
+      const activeLesson = router.query.activeLesson as string;
+      const activeChapter = router.query.activeChapter as string;
+
+      setProps([activeLesson,activeChapter])
+      
+    }
+  }, [router.isReady]);
+  
+  useEffect(()=>{
+    if(props.length > 0){
+    const subjects = getRandomTopic({ props });
+    console.log(subjects);
+    const levels = getSubjectsLevel({subjects},{props})
+    console.log(levels);
+    const solved = getSolvedArray({subjects},{props},{levels})
+    console.log(solved);
+    const total = getTotalQuestion({subjects},{props},{levels})
+    console.log(total);
+    const randomArray = getRandomNumber({solved},{total})
+    console.log(randomArray);
+    const imageNames = getQuestionNames({props},{levels},{randomArray},{subjects})
+    setImageNames(imageNames)
+    }
+  },[props])
+  
 
   const takeImageS3 = async (data: DataType) => {
-    console.log(data.buckimg.split("#")[1]);
     const commandGet = new GetObjectCommand({
       Key: data.buckimg.split("#")[1] /* should be unique */,
       Bucket: data.buckimg.split("#")[0],
@@ -61,17 +140,58 @@ const Snake = () => {
 
     const url = await getSignedUrl(s3Client, commandGet);
     setImageUrl(url);
+    
+    
   };
+  // const updateSolvedArray = () => {
+  //   const url =
+  //     "https://urdiva01g0.execute-api.us-east-1.amazonaws.com/totalquestiontake";
+  //   const requestData = {
+  //     type: "solved",
+  //     lesson: "biyoloji",
+  //     class: "10",
+  //     chapter: "2",
+  //     subject: "1",
+  //     difficulty: "2",
+  //   };
 
-  const takeQuestion = async () => {
+  //   const options = {
+  //     method: "POST", // Changed to POST method
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json;charset=UTF-8",
+  //     },
+  //     body: JSON.stringify(requestData),
+  //   };
+  //   try {
+  //     const response = await fetch(url, options);
+
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       return takeQuestion("photo")
+  //     } else {
+  //       const responseData = await response.json();
+  //       alert(`Error: ${responseData.message}`);
+  //     }
+  //   } catch (error) {
+  //     if (error instanceof Error) {
+  //       alert(`An error occurred: ${error.message}`);
+  //     } else {
+  //       alert("An unknown error occurred.");
+  //     }
+  //   }
+  // }
+
+  const takeQuestion = async (type: string) => {
     const url =
       "https://urdiva01g0.execute-api.us-east-1.amazonaws.com/questiontake";
     const requestData = {
-      lesson: "kimya",
-      class: "12",
-      chapter: "organikbileşikler",
-      subject: "alkoller",
-      difficulty: "zor",
+      lesson: "biyoloji",
+      class: "10",
+      chapter: "2",
+      subject: "1",
+      difficulty: "2",
+      questionnumber: "1"
     };
 
     const options = {
@@ -82,14 +202,14 @@ const Snake = () => {
       },
       body: JSON.stringify(requestData),
     };
-
     try {
       const response = await fetch(url, options);
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
-        return takeImageS3(data);
+        setCoordinates(data.coordinates)
+        if(type === "question") return setCorrectAnswer(data.answer)
+        else return takeImageS3(data)
       } else {
         const responseData = await response.json();
         alert(`Error: ${responseData.message}`);
@@ -101,6 +221,23 @@ const Snake = () => {
         alert("An unknown error occurred.");
       }
     }
+  };
+
+  useEffect(() => {
+    // Check if a correct answer has been provided
+    if (correctAnswer.length > 0) {
+      // Compare the correct answer with the student's answer
+      if (correctAnswer === studentAnswer) {
+        console.log("Answer is correct");
+      } else {
+        console.log("Answer is wrong");
+      }
+    }
+  }, [correctAnswer]);
+
+  const checkAnswer = async () => {
+    // Assume "takeQuestion" is an asynchronous function that retrieves a question
+    await takeQuestion("question");
   };
 
   const startGame = () => {
@@ -221,22 +358,25 @@ const Snake = () => {
         </div>
         <div className="flex-1 flex-col justify-start ">
           <div className="h-[90%] w-full flex flex-col justify-center items-center border-b-2 border-black">
-            {/* <Image
-              src={imageUrl}
-              alt="Preview image"
-              className="object-cover ml-auto mr-auto"
-              width={450}
-              height={450}
-            /> */}
             <h1 className="font-bold text-lg">1</h1>
-            <img src={imageUrl} />
+            {imageUrl && (
+              <ImageHover
+                imagelink={imageUrl}
+                coordinates={coordinates}
+                setStudentAnswer={setStudentAnswer}
+              />
+            )}
           </div>
           <div className="h-[10%] w-full flex justify-start space-x-4 items-center border-b pl-5">
-            <SquareButton title="Sonraki Soru" containerStyles="square-btn-m" />
+            <SquareButton
+              title="Sonraki Soru"
+              containerStyles="square-btn-m"
+              handleClick={() => checkAnswer()}
+            />
             <SquareButton
               title="Testi Bitir"
               containerStyles="square-btn-s"
-              handleClick={() => takeQuestion()}
+              handleClick={()=> takeQuestion("fetch")}
             />
             <SquareButton
               title="Mücadeleden Çekil"

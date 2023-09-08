@@ -1,53 +1,45 @@
-export const lessons = [
-  "matematik",
-  "fizik",
-  "kimya",
-  "biyoloji"
-];
+// type QuestionTypeObject = {
+//   [key: string]: {
+//     [key: string]: string[];
+//   };
+// };
+
+// const getSubjectData = (subject: string): QuestionTypeObject => {
+//   switch (subject) {
+//     case "matematik":
+//       return matematik;
+//     case "fizik":
+//       return fizik;
+//     case "kimya":
+//       return kimya;
+//     case "biyoloji":
+//       return biyoloji;
+//     default:
+//       return {};
+//   }
+// };
+
+export const lessons = ["matematik", "fizik", "kimya", "biyoloji"];
 export const gameTypes = [
   "Yılan",
   "Adam Asmaca",
   "İskambil",
   "Labirent",
-  "İstila"
+  "İstila",
 ];
 export const competitionTypes = [
   "Bomba",
   "İstila",
   "Maraton",
   "Labirent",
-  "Fetih"
+  "Fetih",
 ];
-export const choiceType = [
-  "Rastgele",
-  "Özel"
-];
-export const comType = [
-  "Video",
-  "Message"
-];
-export const orderType = [
-  "Başlat",
-  "Geri Dön"
-];
-export const difficulty = [
-  "Kolay",
-  "Orta",
-  "Zor"
-];
-export const choices = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E"
-];
-export const classes = [
-  "9",
-  "10",
-  "11",
-  "12"
-];
+export const choiceType = ["Rastgele", "Özel"];
+export const comType = ["Video", "Message"];
+export const orderType = ["Başlat", "Geri Dön"];
+export const difficulty = ["1-Kolay", "2-Orta", "3-Zor"];
+export const choices = ["A", "B", "C", "D", "E"];
+export const classes = ["9", "10", "11", "12"];
 export const sayisal = ["Matematik", "Fizik", "Kimya", "Biyoloji"];
 export const months = [
   "Eylül",
@@ -59,7 +51,7 @@ export const months = [
   "Mart",
   "Nisan",
   "Mayıs",
-  "Haziran"
+  "Haziran",
 ];
 export const profilSections = [
   "İstatistikler",
@@ -67,7 +59,7 @@ export const profilSections = [
   "Ders",
   "Yarışma",
   "Deneme",
-  "Mini Deneme"
+  "Mini Deneme",
 ];
 
 export const CANVAS_SIZE = [730, 640];
@@ -75,7 +67,7 @@ export const SNAKE_START = [
   [8, 6.5],
   [8, 7],
   [8, 7.5],
-  [8, 8]
+  [8, 8],
 ];
 export const APPLE_START = [8, 3];
 export const SCALE = 40;
@@ -86,380 +78,464 @@ export const DIRECTIONS = {
   ArrowLeft: [-0.5, 0],
   ArrowRight: [0.5, 0],
 };
+
+export const matematikSubjects: string[] = [
+  "9-1-Sayılar ve Cebir",
+  "9-2-Denklemler ve Eşitsizlikler",
+  "9-3-Üçgenler",
+  "9-4-Veri",
+  "10-1-Sayma ve Olasılık",
+  "10-2-Fonksiyonlar",
+  "10-3-Polinomlar",
+  "10-4-2.Dereceden Denklemler",
+  "10-5-Dörtgen ve Çokgenler",
+  "10-6-Uzay Geometri",
+  "11-1-Trigonometri",
+  "11-2-Analitik Geometri",
+  "11-3-Fonksiyonlarda Uygulamalar",
+  "11-4-Denklem ve Eşitsizlik Sistemleri",
+  "11-5-Çember ve Daire",
+  "11-6-Uzay Geometri",
+  "11-7-Olasılık",
+  "12-1-Üstel ve Logaritmik Fonksiyonlar",
+  "12-2-Diziler",
+  "12-3-Trigonometri",
+  "12-4-Dönüşümler",
+  "12-5-Türev",
+  "12-6-İntegral",
+  "12-7-Analitik Geometri",
+];
+
+export const fizikSubjects: string[] = [
+  "9-1-Fizik Bilimine Giriş",
+  "9-2-Madde ve Özellikleri",
+  "9-3-Hareket Ve Kuvvet",
+  "9-4-Enerji",
+  "9-5-Isı ve Sıcaklık",
+  "9-6-Elektrostatik",
+  "10-1-Elektrik ve Manyetizma",
+  "10-2-Basınç ve Kaldırma Kuvveti",
+  "10-3-Dalgalar",
+  "10-4-Optik",
+  "11-1-Kuvvet ve Hareket",
+  "11-2-Elektrik ve Manyetizma",
+  "12-1-Çembersel Hareket",
+  "12-2-Basit Harmonik Hareket",
+  "12-3-Dalga Mekaniği",
+  "12-4-Atom Fiziğine Giriş ve Radyoaktivite",
+  "12-5-Modern Fizik",
+  "12-6-Modern Fiziğin Teknolojideki Uygulamaları",
+];
+export const kimyaSubjects: string[] = [
+  "9-1-Kimya Bilimi",
+  "9-2-Atom ve Periyodik Sistem",
+  "9-3-Kimyasal Türler Arası Etkileşimler",
+  "9-4-Maddenin Halleri",
+  "9-5-Doğa ve Kimya",
+  "10-1-Kimyanın Temel Kanunları ve Kimyasal Hesaplamalar",
+  "10-2-Karışımlar",
+  "10-3-Asitler Bazlar ve Tuzlar",
+  "10-4-Kimya Her Yerde",
+  "11-1-Modern Atom Teorisi",
+  "11-2-Gazlar",
+  "11-3-Sıvı Çözeltiler ve Çözünürlük",
+  "11-4-Kimyasal Tepkimlerde Enerji",
+  "11-5-Kimyasal Tepkimlerde Hız",
+  "11-6-Kimyasal Tepkimlerde Denge",
+  "12-1-Kimya ve Elektrik",
+  "12-2-Karbon Kimyasına Giriş",
+  "12-3-Organik Bileşikler",
+  "12-4-Enerji Kaynakları ve Bilimsel Gelişmeler",
+];
+export const biyolojiSubjects: string[] = [
+  "9-1-Yaşam Bilimi Biyoloji",
+  "9-2-Hücre",
+  "9-3-Canlılar Dünyası",
+  "10-1-Hücre Bölünmeleri",
+  "10-2-Kalıtımın Genel İlkeleri",
+  "10-3-Ekosistem Ekolojisi ve Güncel Çevre Sorunları",
+  "11-1-İnsan Fizyolojisi",
+  "11-2-Komünite ve Popülasyon Ekolojisi",
+  "12-1-Genden Proteine",
+  "12-2-Canlılarda Enerji Dönüşümleri",
+  "12-3-Bitki Biyolojisi",
+  "12-4-Canlılar ve Çevre",
+];
+
 export const matematik = {
   "9": {
-    "Sayılar ve Cebir": ["Mantık", "Kümeler"],
-    "Denklemler ve Eşitsizlikler": [
-      "Sayı Kümeleri",
-      "Bölünebilme Kuralları",
-      "Birinci Dereceden Denklem ve Eşitsizlikler",
-      "Üslü İfadeler ve Denklemler",
-      "Denklemler ve Eşitsizlikler ilgili Uygulamalar",
+    "1-Sayılar ve Cebir": ["1-Mantık", "2-Kümeler"],
+    "2-Denklemler ve Eşitsizlikler": [
+      "1-Sayı Kümeleri",
+      "2-Bölünebilme Kuralları",
+      "3-Birinci Dereceden Denklem ve Eşitsizlikler",
+      "4-Üslü İfadeler ve Denklemler",
+      "5-Denklemler ve Eşitsizlikler ilgili Uygulamalar",
     ],
-    "Üçgenler": [
-      "Üçgenlerde Temel Kavramlar",
-      "Üçgenlerde Eşlik ve Benzerlik",
-      "Üçgenin Yardımcı Elemanları",
-      "Dik üçgen ve Trigonometri",
-      "Üçgenin Alanı",
+    "3-Üçgenler": [
+      "1-Üçgenlerde Temel Kavramlar",
+      "2-Üçgenlerde Eşlik ve Benzerlik",
+      "3-Üçgenin Yardımcı Elemanları",
+      "4-Dik üçgen ve Trigonometri",
+      "5-Üçgenin Alanı",
     ],
-    "Veri": [
-      "Merkezi Eğilim ve Yayılım Ölçüleri",
-      "Verilerin Grafikle Gösterilmesi",
+    "4-Veri": [
+      "1-Merkezi Eğilim ve Yayılım Ölçüleri",
+      "2-Verilerin Grafikle Gösterilmesi",
     ],
   },
   "10": {
-    "Sayma ve Olasılık": ["Sıralama ve Seçme", "Basit Olayların Olasılıkları"],
-    "Fonksiyonlar": [
-      "Fonksiyon Kavramı ve Gösterimi",
-      "İki Fonksiyonun Bileşkesi ve Bir Fonksiyonun Tersi",
+    "1-Sayma ve Olasılık": ["1-Sıralama ve Seçme", "2-Basit Olayların Olasılıkları"],
+    "2-Fonksiyonlar": [
+      "1-Fonksiyon Kavramı ve Gösterimi",
+      "2-İki Fonksiyonun Bileşkesi ve Bir Fonksiyonun Tersi",
     ],
-    "Polinomlar": [
-      "Polinom Kavramı ve Polinomlarla İşlemler",
-      "Polinomların Çarpanlara Ayrılması",
+    "3-Polinomlar": [
+      "1-Polinom Kavramı ve Polinomlarla İşlemler",
+      "2-Polinomların Çarpanlara Ayrılması",
     ],
-    "2.Dereceden Denklemler": ["2.Dereceden Bir Bilinmeyenli Denklemler"],
-    "Dörtgen ve Çokgenler": [
-      "Çokgenler",
-      "Dörtgen ve Özellikleri",
-      "Özel Dörtgenler",
+    "4-2.Dereceden Denklemler": ["1-2.Dereceden Bir Bilinmeyenli Denklemler"],
+    "5-Dörtgen ve Çokgenler": [
+      "1-Çokgenler",
+      "2-Dörtgen ve Özellikleri",
+      "3-Özel Dörtgenler",
     ],
-    "Uzay Geometri": ["Katı Cisimler"],
+    "6-Uzay Geometri": ["1-Katı Cisimler"],
   },
   "11": {
-    "Trigonometri": ["Yönlü Açılar", "Trigonotmerik Fonksiyonlar"],
-    "Analitik Geometri": ["Doğrunun Analitik İncelenmesi"],
-    "Fonksiyonlarda Uygulamalar": [
-      "Fonksiyonlarla İlgili Uygulamalar",
-      "İkinci Dereceden Fonksiyonlar ve Grafikleri",
-      "Fonksiyonların Dönüşümleri",
+    "1-Trigonometri": ["1-Yönlü Açılar", "2-Trigonotmerik Fonksiyonlar"],
+    "2-Analitik Geometri": ["1-Doğrunun Analitik İncelenmesi"],
+    "3-Fonksiyonlarda Uygulamalar": [
+      "1-Fonksiyonlarla İlgili Uygulamalar",
+      "2-İkinci Dereceden Fonksiyonlar ve Grafikleri",
+      "3-Fonksiyonların Dönüşümleri",
     ],
-    "Denklem ve Eşitsizlik Sistemleri": [
-      "2.Dereceden İki Bilinmeyenli Denklem Sistemleri",
-      "2.Dereceden Bir Bilinmeyenli Eşitsizlikler ve Eşitsizlikler Sistemleri",
+    "4-Denklem ve Eşitsizlik Sistemleri": [
+      "1-2.Dereceden İki Bilinmeyenli Denklem Sistemleri",
+      "2-2.Dereceden Bir Bilinmeyenli Eşitsizlikler ve Eşitsizlikler Sistemleri",
     ],
-    "Çember ve Daire": [
-      "Çemberin Temel Elemanları",
-      "Çemberde Açılar",
-      "Çemberde Teğet",
-      "Dairenin Çevresi ve Alanı",
+    "5-Çember ve Daire": [
+      "1-Çemberin Temel Elemanları",
+      "2-Çemberde Açılar",
+      "3-Çemberde Teğet",
+      "4-Dairenin Çevresi ve Alanı",
     ],
-    "Uzay Geometri": ["Katı Cisimler"],
-    "Olasılık": ["Koşullu Olasılık", "Deneysel ve Teorik Olasılık"],
+    "6-Uzay Geometri": ["1-Katı Cisimler"],
+    "7-Olasılık": ["1-Koşullu Olasılık", "2-Deneysel ve Teorik Olasılık"],
   },
   "12": {
-    "Üstel ve Logaritmik Fonksiyonlar": [
-      "Üstel Fonksiyon",
-      "Logaritma Fonksiyonu",
-      "Üstel,Logaritmik Denklemler ve Eşitsizlikler",
+    "1-Üstel ve Logaritmik Fonksiyonlar": [
+      "1-Üstel Fonksiyon",
+      "2-Logaritma Fonksiyonu",
+      "3-Üstel,Logaritmik Denklemler ve Eşitsizlikler",
     ],
-    "Diziler": ["Gerçek Sayı Dizileri"],
-    "Trigonometri": [
-      "Toplam-Fark ve İki Kat Açı Formülleri",
-      "Trigonometrik Denklemler",
+    "2-Diziler": ["1-Gerçek Sayı Dizileri"],
+    "3-Trigonometri": [
+      "1-Toplam-Fark ve İki Kat Açı Formülleri",
+      "2-Trigonometrik Denklemler",
     ],
-    "Dönüşümler": ["Analitik Düzlemde Temel Dönüşümler"],
-    "Türev": [
-      "Limit ve Süreklilik",
-      "Anlık Değişim Oranı ve Türev",
-      "Türevin Uygulamaları",
-      "Dairenin Çevresi ve Alanı",
+    "4-Dönüşümler": ["1-Analitik Düzlemde Temel Dönüşümler"],
+    "5-Türev": [
+      "1-Limit ve Süreklilik",
+      "2-Anlık Değişim Oranı ve Türev",
+      "3-Türevin Uygulamaları",
+      "4-Dairenin Çevresi ve Alanı",
     ],
-    "İntegral": ["Belirsiz İntegral", "Belirli İntegral ve Uygulamaları"],
-    "Analitik Geometri": [
-      "Çemberin Analitik İncelenmesi",
-      "Deneysel ve Teorik Olasılık",
+    "6-İntegral": ["1-Belirsiz İntegral", "2-Belirli İntegral ve Uygulamaları"],
+    "7-Analitik Geometri": [
+      "1-Çemberin Analitik İncelenmesi",
+      "2-Deneysel ve Teorik Olasılık",
     ],
   },
 };
 export const fizik = {
   "9": {
-    "Fizik Bilimine Giriş": [
-      "Fizik Biliminin Önemi",
-      "Fiziğin Uygulama Alanları",
-      "Fiziksel Niceliklerin Sınıflandırılması",
-      "Bilim Araştırma Merkezleri",
+    "1-Fizik Bilimine Giriş": [
+      "1-Fizik Biliminin Önemi",
+      "2-Fiziğin Uygulama Alanları",
+      "3-Fiziksel Niceliklerin Sınıflandırılması",
+      "4-Bilim Araştırma Merkezleri",
     ],
-    "Madde ve Özellikleri": [
-      "Madde ve Özkütle",
-      "Dayanıklılık",
-      "Yapışma ve Birbirini Tutma",
+    "2-Madde ve Özellikleri": [
+      "1-Madde ve Özkütle",
+      "2-Dayanıklılık",
+      "3-Yapışma ve Birbirini Tutma",
     ],
-    "Hareket Ve Kuvvet": [
-      "Hareket",
-      "Kuvvet",
-      "Newtonun Hareket Yasaları",
-      "Sürtünme Kuvveti",
+    "3-Hareket Ve Kuvvet": [
+      "1-Hareket",
+      "2-Kuvvet",
+      "3-Newtonun Hareket Yasaları",
+      "4-Sürtünme Kuvveti",
     ],
-    "Enerji": [
-      "İş Enerji ve Güç",
-      "Mekanik Enerji",
-      "Enerjinin Korunumu ve Enerji Dönüşümleri",
-      "Verim",
-      "Enerji Kaynakları",
+    "4-Enerji": [
+      "1-İş Enerji ve Güç",
+      "2-Mekanik Enerji",
+      "3-Enerjinin Korunumu ve Enerji Dönüşümleri",
+      "4-Verim",
+      "5-Enerji Kaynakları",
     ],
-    "Isı ve Sıcaklık": [
-      "Isı ve Sıcaklık",
-      "Hal Değişimi",
-      "Isıl Denge",
-      "Enerji İletim Yolları ve Enerji İletim Hızı",
-      "Genleşme",
+    "5-Isı ve Sıcaklık": [
+      "1-Isı ve Sıcaklık",
+      "2-Hal Değişimi",
+      "3-Isıl Denge",
+      "4-Enerji İletim Yolları ve Enerji İletim Hızı",
+      "4-Genleşme",
     ],
-    "Elektrostatik": ["Elektrik Yükleri"],
+    "6-Elektrostatik": ["1-Elektrik Yükleri"],
   },
   "10": {
-    "Elektrik ve Manyetizma": [
-      "Elektrik Akımı,Potansiyel Farkı ve Direnç",
-      "Elektrik Devreleri",
-      "Mıknatıs ve Manyetik Alan",
-      "Akım ve Manyetik Alan",
+    "1-Elektrik ve Manyetizma": [
+      "1-Elektrik Akımı,Potansiyel Farkı ve Direnç",
+      "2-Elektrik Devreleri",
+      "3-Mıknatıs ve Manyetik Alan",
+      "4-Akım ve Manyetik Alan",
     ],
-    "Basınç ve Kaldırma Kuvveti": ["Basınç", "Kaldırma Kuvveti"],
-    "Dalgalar": [
-      "Dalgalar",
-      "Yay Dalgası",
-      "Su Dalgası",
-      "Ses Dalgası",
-      "Deprem Dalgası",
+    "2-Basınç ve Kaldırma Kuvveti": ["1-Basınç", "2-Kaldırma Kuvveti"],
+    "3-Dalgalar": [
+      "1-Dalgalar",
+      "2-Yay Dalgası",
+      "3-Su Dalgası",
+      "4-Ses Dalgası",
+      "5-Deprem Dalgası",
     ],
-    "Optik": [
-      "Aydınlanma",
-      "Gölge",
-      "Yansıma",
-      "Düzlem Ayna",
-      "Küresel Aynalar",
-      "Kırılma",
-      "Mercekler",
-      "Prizmalar",
-      "Renk",
+    "4-Optik": [
+      "1-Aydınlanma",
+      "2-Gölge",
+      "3-Yansıma",
+      "4-Düzlem Ayna",
+      "5-Küresel Aynalar",
+      "6-Kırılma",
+      "7-Mercekler",
+      "8-Prizmalar",
+      "9-Renk",
     ],
   },
   "11": {
-    "Kuvvet ve Hareket": [
-      "Vektörler",
-      "Bağıl Hareket",
-      "Newtonun Hareket Yasaları",
-      "Bir Boyutta Sabit İvmeli Hareket",
-      "İki Boyutta Hareket",
-      "Enerji ve Hareket",
-      "İtme ve Çizisel Momentum",
-      "Tork",
-      "Basit Makineler",
+    "1-Kuvvet ve Hareket": [
+      "1-Vektörler",
+      "2-Bağıl Hareket",
+      "3-Newtonun Hareket Yasaları",
+      "4-Bir Boyutta Sabit İvmeli Hareket",
+      "5-İki Boyutta Hareket",
+      "6-Enerji ve Hareket",
+      "7-İtme ve Çizisel Momentum",
+      "8-Tork",
+      "9-Basit Makineler",
     ],
-    "Elektrik ve Manyetizma": [
-      "Elektriksel Kuvvet ve Elektriksel Alan",
-      "Elektriksel Potansiyel",
-      "Düzgün Elektriksel Alan ve Sığa",
-      "Manyetizma ve Elektromanyetik İndüklenme",
-      "Alternatif Akım",
-      "Transformatörler",
+    "2-Elektrik ve Manyetizma": [
+      "1-Elektriksel Kuvvet ve Elektriksel Alan",
+      "2-Elektriksel Potansiyel",
+      "3-Düzgün Elektriksel Alan ve Sığa",
+      "4-Manyetizma ve Elektromanyetik İndüklenme",
+      "5-Alternatif Akım",
+      "6-Transformatörler",
     ],
   },
   "12": {
-    "Çembersel Hareket": [
-      "Düzgün Çembersel Hareket",
-      "Dönerek Öteleme Hareketi",
-      "Açısal Momentum",
-      "Kütle Çekim Kuvveti",
-      "Kepler Kanunları",
+    "1-Çembersel Hareket": [
+      "1-Düzgün Çembersel Hareket",
+      "2-Dönerek Öteleme Hareketi",
+      "3-Açısal Momentum",
+      "4-Kütle Çekim Kuvveti",
+      "5-Kepler Kanunları",
     ],
-    "Basit Harmonik Hareket": ["Basit Harmonik Hareket"],
-    "Dalga Mekaniği": [
-      "Dalgalarda Kırınım,Girişim ve Doppler Olayı",
-      "Elektromanyetik Dalgalar",
+    "2-Basit Harmonik Hareket": ["1-Basit Harmonik Hareket"],
+    "3-Dalga Mekaniği": [
+      "1-Dalgalarda Kırınım,Girişim ve Doppler Olayı",
+      "2-Elektromanyetik Dalgalar",
     ],
-    "Atom Fiziğine Giriş ve Radyoaktivite": [
-      "Atom Kavramının Tarihsel Gelişimi",
-      "Büyük Patlama ve Evrenin Oluşumu",
-      "Radyoaktivite",
+    "4-Atom Fiziğine Giriş ve Radyoaktivite": [
+      "1-Atom Kavramının Tarihsel Gelişimi",
+      "2-Büyük Patlama ve Evrenin Oluşumu",
+      "3-Radyoaktivite",
     ],
-    "Modern Fizik": [
-      "Özel Görelilik",
-      "Kuantum Fiziğine Giriş",
-      "FotoElektrik Olayı",
-      "Compton Saçılması ve De Broglie Dalga Boyu",
+    "5-Modern Fizik": [
+      "1-Özel Görelilik",
+      "2-Kuantum Fiziğine Giriş",
+      "3-FotoElektrik Olayı",
+      "4-Compton Saçılması ve De Broglie Dalga Boyu",
     ],
-    "Modern Fiziğin Teknolojideki Uygulamaları": [
-      "Görüntüleme Teknolojileri",
-      "Yarı İletken Teknolojisi",
-      "Süper İletkenler",
-      "Nanoteknolojiler",
-      "Laser Işınları",
+    "6-Modern Fiziğin Teknolojideki Uygulamaları": [
+      "1-Görüntüleme Teknolojileri",
+      "2-Yarı İletken Teknolojisi",
+      "3-Süper İletkenler",
+      "4-Nanoteknolojiler",
+      "5-Laser Işınları",
     ],
   },
 };
 export const kimya = {
   "9": {
-    "Kimya Bilimi": [
-      "Simyadan Kimyaya",
-      "Kimya Disiplinleri ve Kimyacıların Çalışma Alanları",
-      "Kimyanın Sembolük Dili",
-      "Kimya Uygulamasında İş Sağlığı ve Güvenliği",
+    "1-Kimya Bilimi": [
+      "1-Simyadan Kimyaya",
+      "2-Kimya Disiplinleri ve Kimyacıların Çalışma Alanları",
+      "3-Kimyanın Sembolük Dili",
+      "4-Kimya Uygulamasında İş Sağlığı ve Güvenliği",
     ],
-    "Atom ve Periyodik Sistem": [
-      "Atom Modelleri",
-      "Atomun Yapısı",
-      "Periyodik Sistem",
+    "2-Atom ve Periyodik Sistem": [
+      "1-Atom Modelleri",
+      "2-Atomun Yapısı",
+      "3-Periyodik Sistem",
     ],
-    "Kimyasal Türler Arası Etkileşimler": [
-      "Kimyasal Tür",
-      "Kimyasal Türler Arası Etkileşimlerin Sınıflandırılması",
-      "Güçlü Etkileşimler",
-      "Zayıf Etkileşimler",
-      "Fiziksel ve Kimyasal Değişimler",
+    "3-Kimyasal Türler Arası Etkileşimler": [
+      "1-Kimyasal Tür",
+      "2-Kimyasal Türler Arası Etkileşimlerin Sınıflandırılması",
+      "3-Güçlü Etkileşimler",
+      "4-Zayıf Etkileşimler",
+      "5-Fiziksel ve Kimyasal Değişimler",
     ],
-    "Maddenin Halleri": [
-      "Maddenin Fiziksel Halleri",
-      "Katılar",
-      "Sıvılar",
-      "Gazlar",
-      "Plazma",
+    "4-Maddenin Halleri": [
+      "1-Maddenin Fiziksel Halleri",
+      "2-Katılar",
+      "3-Sıvılar",
+      "4-Gazlar",
+      "5-Plazma",
     ],
-    "Doğa ve Kimya": ["Su ve Hayat", "Çevre Kimyası"],
+    "5-Doğa ve Kimya": ["1-Su ve Hayat", "2-Çevre Kimyası"],
   },
   "10": {
-    "Kimyanın Temel Kanunları ve Kimyasal Hesaplamalar": [
-      "Kimyanın Temel Kanunları",
-      "Mol Kavramı",
-      "Kimyasal Tepkimeler ve Denklemler ",
-      "Kimyasal Tepkimlerde Hesaplamalar",
+    "1-Kimyanın Temel Kanunları ve Kimyasal Hesaplamalar": [
+      "1-Kimyanın Temel Kanunları",
+      "2-Mol Kavramı",
+      "3-Kimyasal Tepkimeler ve Denklemler ",
+      "4-Kimyasal Tepkimlerde Hesaplamalar",
     ],
-    "Karışımlar": [
-      "Homojen ve Heterojen Karışımlar",
-      "Ayırma ve Saflaştırma Teknikleri",
+    "2-Karışımlar": [
+      "1-Homojen ve Heterojen Karışımlar",
+      "2-Ayırma ve Saflaştırma Teknikleri",
     ],
-    "Asitler Bazlar ve Tuzlar": [
-      "Asitler ve Bazlar",
-      "Asitlerin ve Bazların Tepkimeleri",
-      "Hayatımızda Asitler ve Bazlar",
-      "Tuzlar",
+    "3-Asitler Bazlar ve Tuzlar": [
+      "1-Asitler ve Bazlar",
+      "2-Asitlerin ve Bazların Tepkimeleri",
+      "3-Hayatımızda Asitler ve Bazlar",
+      "4-Tuzlar",
     ],
-    "Kimya Her Yerde": ["Yaygın Günlük Hayat Kimyasalları", "Gıdalar"],
+    "4-Kimya Her Yerde": ["1-Yaygın Günlük Hayat Kimyasalları", "2-Gıdalar"],
   },
   "11": {
-    "Modern Atom Teorisi": [
-      "Atomun Kuantum Modeli",
-      "Periyodik Sistem ve Elektron Dizilimleri",
-      "Periyodik Özellikler",
-      "Elementleri Tanıyalım",
-      "Yükseltgenme Basamakları",
+    "1-Modern Atom Teorisi": [
+      "1-Atomun Kuantum Modeli",
+      "2-Periyodik Sistem ve Elektron Dizilimleri",
+      "3-Periyodik Özellikler",
+      "4-Elementleri Tanıyalım",
+      "5-Yükseltgenme Basamakları",
     ],
-    "Gazlar": [
-      "Gazların Özellikleri ve Gaz Yasaları",
-      "İdeal Gaz Yasası",
-      "Gazlarda Kinetik Teori",
-      "Gaz Karışımları",
-      "Gerçek Gazlar",
+    "2-Gazlar": [
+      "1-Gazların Özellikleri ve Gaz Yasaları",
+      "2-İdeal Gaz Yasası",
+      "3-Gazlarda Kinetik Teori",
+      "4-Gaz Karışımları",
+      "5-Gerçek Gazlar",
     ],
-    "Sıvı Çözeltiler ve Çözünürlük": [
-      "Çözücü Çözünen Etkileşimleri",
-      "Derişim Birimleri",
-      "Koligaitf Özellikler",
-      "Çözünürlük",
-      "Çözünürlüğe Etki Eden Faktörler",
+    "3-Sıvı Çözeltiler ve Çözünürlük": [
+      "1-Çözücü Çözünen Etkileşimleri",
+      "2-Derişim Birimleri",
+      "3-Koligaitf Özellikler",
+      "4-Çözünürlük",
+      "5-Çözünürlüğe Etki Eden Faktörler",
     ],
-    "Kimyasal Tepkimlerde Enerji": [
-      "Tepkimlerde Isı Değişimi",
-      "Oluşum Entalpisi",
-      "Bağ Enerjileri",
-      "Tepkime Isılarının Toplanabilirliği",
+    "4-Kimyasal Tepkimlerde Enerji": [
+      "1-Tepkimlerde Isı Değişimi",
+      "2-Oluşum Entalpisi",
+      "3-Bağ Enerjileri",
+      "4-Tepkime Isılarının Toplanabilirliği",
     ],
-    "Kimyasal Tepkimlerde Hız": [
-      "Tepkime Hızları",
-      "Tepkime Hızını Etkileyen Faktörler",
+    "5-Kimyasal Tepkimlerde Hız": [
+      "1-Tepkime Hızları",
+      "2-Tepkime Hızını Etkileyen Faktörler",
     ],
-    "Kimyasal Tepkimlerde Denge": [
-      "Kimyasal Denge",
-      "Dengeyi Etkileyen Faktörler",
-      "Sulu Çözelti Dengeleri",
+    "6-Kimyasal Tepkimlerde Denge": [
+      "1-Kimyasal Denge",
+      "2-Dengeyi Etkileyen Faktörler",
+      "3-Sulu Çözelti Dengeleri",
     ],
   },
   "12": {
-    "Kimya ve Elektrik": [
-      "İndirgenme-Yükseltgenme Tepkimelerinde Elektrik Akımı ",
-      "Elektrotlar ve Elektrokimyasal Hücreler",
-      "Elektrot Potansiyelleri",
-      "Kimyasallardan Elektrik Üretimi",
-      "Elektroliz",
-      "Korozyon",
+    "1-Kimya ve Elektrik": [
+      "1-İndirgenme-Yükseltgenme Tepkimelerinde Elektrik Akımı ",
+      "2-Elektrotlar ve Elektrokimyasal Hücreler",
+      "3-Elektrot Potansiyelleri",
+      "4-Kimyasallardan Elektrik Üretimi",
+      "5-Elektroliz",
+      "6-Korozyon",
     ],
-    "Karbon Kimyasına Giriş": [
-      "Anorganik ve Organik Bileşikler",
-      "Basit Formül ve Molekül Formülü",
-      "Doğada Karbon",
-      "Lewis Formülleri",
-      "Hibritleşme-Molekül Geometrileri",
+    "2-Karbon Kimyasına Giriş": [
+      "1-Anorganik ve Organik Bileşikler",
+      "2-Basit Formül ve Molekül Formülü",
+      "3-Doğada Karbon",
+      "4-Lewis Formülleri",
+      "5-Hibritleşme-Molekül Geometrileri",
     ],
-    "Organik Bileşikler": [
-      "Hidrokarbonlar",
-      "Fonksiyonel Gruplar",
-      "Alkoller",
-      "Eterler",
-      "Karbonil Bileşikleri",
-      "Karboksilik Asitler",
-      "Esterler",
+    "3-Organik Bileşikler": [
+      "1-Hidrokarbonlar",
+      "2-Fonksiyonel Gruplar",
+      "3-Alkoller",
+      "4-Eterler",
+      "5-Karbonil Bileşikleri",
+      "6-Karboksilik Asitler",
+      "7-Esterler",
     ],
-    "Enerji Kaynakları ve Bilimsel Gelişmeler": [
-      "Fosil Yakıtlar",
-      "Alternatif Eenrji Kaynakları",
-      "Sürdürülebilirlik",
-      "NanoTeknoloji",
+    "4-Enerji Kaynakları ve Bilimsel Gelişmeler": [
+      "1-Fosil Yakıtlar",
+      "2-Alternatif Eenrji Kaynakları",
+      "3-Sürdürülebilirlik",
+      "4-NanoTeknoloji",
     ],
   },
 };
 
 export const biyoloji = {
   "9": {
-    "Yaşam Bilimi Biyoloji": [
-      "Biyoloji ve CAnlıların Ortak Özellikleri",
-      "Canlıların Yapısında Bulunan Temel Bileşikler",
+    "1-Yaşam Bilimi Biyoloji": [
+      "1-Biyoloji ve CAnlıların Ortak Özellikleri",
+      "2-Canlıların Yapısında Bulunan Temel Bileşikler",
     ],
-    "Hücre": ["Hücre"],
-    "Canlılar Dünyası": [
-      "Canlıların Çeşitliliği ve Sınıflandırılması",
-      "Canlı Alemler ve Özellikleri",
+    "2-Hücre": ["1-Hücre"],
+    "3-Canlılar Dünyası": [
+      "1-Canlıların Çeşitliliği ve Sınıflandırılması",
+      "2-Canlı Alemler ve Özellikleri",
     ],
   },
   "10": {
-    "Hücre Bölünmeleri": ["Mitoz ve Eşeysiz Üreme", "Mayoz ve Eşeyli Üreme"],
-    "Kalıtımın Genel İlkeleri": ["Kalıtım ve Biyolojik Çeşitlilik"],
-    "Ekosistem Ekolojisi ve Güncel Çevre Sorunları": [
-      "Ekosistem Ekolojisi",
-      "Güncel Çevre Sorunları ve İnsan",
-      "Doğal Kaynaklar ve Biyolojik Çeşitliliğin Korunması",
+    "1-Hücre Bölünmeleri": ["1-Mitoz ve Eşeysiz Üreme", "2-Mayoz ve Eşeyli Üreme"],
+    "2-Kalıtımın Genel İlkeleri": ["1-Kalıtım ve Biyolojik Çeşitlilik"],
+    "3-Ekosistem Ekolojisi ve Güncel Çevre Sorunları": [
+      "1-Ekosistem Ekolojisi",
+      "2-Güncel Çevre Sorunları ve İnsan",
+      "3-Doğal Kaynaklar ve Biyolojik Çeşitliliğin Korunması",
     ],
   },
   "11": {
-    "İnsan Fizyolojisi": [
-      "Denetleyici ve Düzenleyici Sistem, Duyu Organları",
-      "Destek ve Hareket Sistemi",
-      "Sindirim Sistemi",
-      "Dolaşım Sistemleri",
-      "Solunum Sistemi",
-      "Üriner Sistem",
-      "Üreme Sistemi ve Embriyonik Gelişim",
+    "1-İnsan Fizyolojisi": [
+      "1-Denetleyici ve Düzenleyici Sistem, Duyu Organları",
+      "2-Destek ve Hareket Sistemi",
+      "3-Sindirim Sistemi",
+      "4-Dolaşım Sistemleri",
+      "5-Solunum Sistemi",
+      "6-Üriner Sistem",
+      "7-Üreme Sistemi ve Embriyonik Gelişim",
     ],
-    "Komünite ve Popülasyon Ekolojisi": [
-      "Komunüite Ekolojisi",
-      "Popülasyon Ekolojisi",
+    "2-Komünite ve Popülasyon Ekolojisi": [
+      "1-Komunüite Ekolojisi",
+      "2-Popülasyon Ekolojisi",
     ],
   },
   "12": {
-    "Genden Proteine": [
-      "Nükleik Asitlerin Keşfi ve Önemi",
-      "Genetik Şifre ve Protein Sentezi",
+    "1-Genden Proteine": [
+      "1-Nükleik Asitlerin Keşfi ve Önemi",
+      "2-Genetik Şifre ve Protein Sentezi",
     ],
-    "Canlılarda Enerji Dönüşümleri": [
-      "Canlılık ve Enerji",
-      "Fotosentez",
-      "Kemosentez",
-      "Hücresel Solunum",
+    "2-Canlılarda Enerji Dönüşümleri": [
+      "1-Canlılık ve Enerji",
+      "2-Fotosentez",
+      "3-Kemosentez",
+      "4-Hücresel Solunum",
     ],
-    "Bitki Biyolojisi": [
-      "Bitkilerin Yapısı",
-      "Bitkilerde Madde Taşınması",
-      "Bitkilerde Eşeyli Üreme",
+    "3-Bitki Biyolojisi": [
+      "1-Bitkilerin Yapısı",
+      "2-Bitkilerde Madde Taşınması",
+      "3-Bitkilerde Eşeyli Üreme",
     ],
-    "Canlılar ve Çevre": ["Canlılar ve Çevre"],
+    "4-Canlılar ve Çevre": ["1-Canlılar ve Çevre"],
   },
 };

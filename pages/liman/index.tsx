@@ -11,7 +11,7 @@ import QuestionType from "@/components/liman/QuestionType";
 
 export async function getServerSideProps() {
   const imageName = crypto.randomUUID()
-  const bucketName = Bucket.BoomerangQuestionPool.bucketName
+  const bucketName = Bucket.BoomerangLimanPool.bucketName
 
   const commandPut = new PutObjectCommand({
     ACL: "public-read",
@@ -39,12 +39,14 @@ export default function page({ url, imageName, bucketName }: { url: string, imag
   const [ischoicePageOpen, setischoicePageOpen] = useState<boolean>(true);
   const [activeLesson, setActiveLesson] = useState<string>("matematik");
   const [activeClass, setActiveClass] = useState<string>("9");
-  const [activeSubjects, setActiveSubjects] = useState<string>("Mantık");
-  const [activeChapter, setActiveChapter] = useState<string>("Sayılar ve Cebir");
-  const [activedifficulty, setDifficulty] = useState<string>("Kolay");
+  const [activeSubjects, setActiveSubjects] = useState<string>("1-Mantık");
+  const [activeChapter, setActiveChapter] = useState<string>("1-Sayılar ve Cebir");
+  const [activedifficulty, setDifficulty] = useState<string>("1-Kolay");
   const [correctAnswer, setCorrectAnswer] = useState<string>("");
   const [preview, setPreview] = useState<File | null>(null);
   const [points, setPoints] = useState<Point[]>([]);
+  const [width, setWidth] = useState<number | undefined>();
+  const [height, setHeight ] = useState<number | undefined>();
   
 
 

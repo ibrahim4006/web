@@ -7,6 +7,14 @@ export interface SquareButtonProps {
   btnType?: "button" | "submit";
 }
 
+export interface ChoiceCardProps {
+  options: string[];
+  direction: string;
+  setActiveOption: (activeOption: string) => void;
+  activeOption: string;
+  queryData?: string[];
+}
+
 /* Start: Liman Sections */
 
 interface Rectangle {
@@ -28,6 +36,7 @@ export interface QuestionTypeProps {
   setActiveSubjects: (activeSubjects: string) => void;
   setActiveChapter: (activeChapter: string) => void;
   setDifficulty: (difficulty: string) => void;
+  
 }
 export interface AddQuestionProps {
   preview: File | null;
@@ -102,6 +111,11 @@ export interface SnakeArenaProps {
   correctnumber?: number ;
   combo?: number ;
   startGamePopup?: MouseEventHandler<HTMLButtonElement>;
+}
+export interface ImageHoverProps {
+  imagelink: string;
+  coordinates: Point[];
+  setStudentAnswer: ((studentAnswer: string) => void | undefined);
 }
 
 /* End: Game Sections */ 

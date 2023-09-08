@@ -235,6 +235,7 @@ input {
 
 .panelcard{
   position: relative;
+  font-size: 8px;
 }
 .frame-right{
   position: absolute;
@@ -310,7 +311,7 @@ input {
 }
 .frame-bottom-panel{
   position: absolute;
-  bottom:0;
+  top:100%;
   width: 15em;
   border-bottom: 1px solid black;
 }

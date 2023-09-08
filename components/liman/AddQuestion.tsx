@@ -56,6 +56,7 @@ const AddQuestion = ({
                 const fileInput = (e.target as HTMLFormElement).file;
                 const file = fileInput.files?.[0];
 
+
                 if (!file) {
                   alert("Please select a file.");
                   return;
