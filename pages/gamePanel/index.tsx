@@ -1,5 +1,7 @@
 "use client";
 import ChoiceCard from "@/components/common/ChoiceCard";
+import Hexagon from "@/components/common/Hexagon";
+import SquareButton from "@/components/common/SquareButton";
 import {
   choiceType,
   gameTypes,
@@ -10,20 +12,27 @@ import {
   kimyaSubjects,
   biyolojiSubjects,
 } from "@/constants";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
+import GenerateIskele from "@/components/common/Iskele";
+import handleFullScreenClick from "@/utils/Fullscreen";
 
 export default function page() {
   const [activeGame, setActiveGame] = useState<string>("");
-  const [activeChoiceType, setActiveChoiceType] = useState<string>("");
   const [activeLesson, setActiveLesson] = useState<string>("");
-  const [activeChapter, setActiveChapter] = useState<string>("");
-  const [activeChoice, setActiveChoice] = useState<string>("");
+  const [activeChoiceType, setActiveChoiceType] = useState<string>("");
   const [subjects, setSubjects] = useState<string[]>([""]);
+  const [activeSubject, setActiveSubject] = useState<string>("");
+  const [activeChoice, setActiveChoice] = useState<string>("");
+  const [chosenSubjects, setChosenSubjects] = useState<string[]>([""]);
 
   // Create a ref for the element you want to scroll to
   const subjectRef = useRef<HTMLDivElement>(null);
   const choiceRef = useRef<HTMLDivElement>(null);
+  const gameRef = useRef<HTMLDivElement>(null);
+  const lessonRef = useRef<HTMLDivElement>(null);
+  const finalRef = useRef<HTMLDivElement>(null);
 
   const getSubjectData = (subject: string): string[] => {
     switch (subject) {
@@ -40,36 +49,64 @@ export default function page() {
     }
   };
 
-
+  // Use useEffect to scroll to the element when activeSubject changes
   useEffect(() => {
-    if (activeChoiceType.length > 0 && subjectRef.current) {
-      subjectRef.current.scrollIntoView({ behavior: "smooth" });
+    if (activeGame.length > 0 && gameRef.current) {
+      window.scrollTo({
+        top: 229,
+        behavior: "smooth",
+      });
     }
-  }, [activeChoiceType]);
+  }, [activeGame]);
 
   useEffect(() => {
     const newSubjects = getSubjectData(activeLesson);
     setSubjects(newSubjects);
+    if (activeLesson.length > 0 && lessonRef.current) {
+      window.scrollTo({
+        top: 229 * 2,
+        behavior: "smooth",
+      });
+    }
   }, [activeLesson]);
 
   useEffect(() => {
-    if (activeChapter.length > 0 && choiceRef.current) {
-      choiceRef.current.scrollIntoView({ behavior: "smooth" });
+    if (activeChoiceType.length > 0 && choiceRef.current) {
+      window.scrollTo({
+        top: 1200,
+        behavior: "smooth",
+      });
     }
-  }, [activeChapter]);
+  }, [activeChoiceType]);
+
+  useEffect(() => {
+    if (activeSubject.length > 0 && subjectRef.current) {
+      setChosenSubjects([activeSubject]);
+      window.scrollTo({
+        top: 1900,
+        behavior: "smooth",
+      });
+    }
+  }, [activeSubject]);
+
+  const slideLeft = () => {
+    var slider = document.getElementById("slider");
+    slider.scrollLeft = slider.scrollLeft - 964;
+  };
+
+  const slideRight = () => {
+    var slider = document.getElementById("slider");
+    slider.scrollLeft = slider.scrollLeft + 964;
+  };
 
   return (
-    <>
-      <div className="w-1/6 flex justify-start items-center mt-4 font-light">
-        <div className="center w-[8%] mr-2">
-          <hr className="w-16 border-t-2 border-black" />
-          <div className="square-btn-line"></div>
-        </div>
-        <p className="font-light text-xl">Game Panel</p>
-      </div>
-      <div className="panelcard m-auto mt-10 center w-[45%] h-[72px] animate_content_closing_hor">
-        <div className="frame-right -z-10"></div>
-        <div className="frame-left -z-10"></div>
+    <div className=" h-[3000px]">
+      <div
+        className="panelcard m-auto my-24 mt-[470px] center w-[60%] sm:w-[50%] lg:w-[60%] h-[133px] "
+        ref={gameRef}
+      >
+        <div className="frame-right -z-10 animate_content_opening"></div>
+        <div className="frame-left -z-10 animate_content_opening"></div>
         <ChoiceCard
           options={gameTypes}
           direction="horizontal"
@@ -77,10 +114,14 @@ export default function page() {
           activeOption={activeGame}
         />
       </div>
-      {activeGame.length > 0 && (
-        <div className="panelcard m-auto mt-16 center w-[35%] h-[72px] animate_content_closing_hor">
-          <div className="frame-right -z-10"></div>
-          <div className="frame-left -z-10"></div>
+      {
+        <div
+          className="panelcard m-auto my-36 lg:my-24 center w-[60%] sm:w-[50%] lg:w-[44%] h-[133px] "
+          ref={lessonRef}
+          style={{ display: activeGame.length > 0 ? "" : "none" }}
+        >
+          <div className="frame-right -z-10 animate_content_opening"></div>
+          <div className="frame-left -z-10 animate_content_opening"></div>
           <ChoiceCard
             options={lessons}
             direction="horizontal"
@@ -88,11 +129,15 @@ export default function page() {
             activeOption={activeLesson}
           />
         </div>
-      )}
-      {activeLesson.length > 0 && (
-        <div className="panelcard m-auto mt-16 center w-[18%] h-[72px] animate_content_closing_hor ">
-          <div className="frame-right -z-10"></div>
-          <div className="frame-left -z-10"></div>
+      }
+      {
+        <div
+          className="panelcard m-auto my-36 lg:my-24 center w-[60%] sm:w-[50%] lg:w-[22%]  h-[133px] "
+          ref={choiceRef}
+          style={{ display: activeLesson.length > 0 ? "" : "none" }}
+        >
+          <div className="frame-right -z-10 animate_content_opening"></div>
+          <div className="frame-left -z-10 animate_content_opening"></div>
           <ChoiceCard
             options={choiceType}
             direction="horizontal"
@@ -100,10 +145,67 @@ export default function page() {
             activeOption={activeChoiceType}
           />
         </div>
-      )}
-      {activeChoiceType.length > 0 && (
+      }
+      <div
+        style={{ display: activeChoiceType.length > 0 ? "" : "none" }}
+        ref={subjectRef}
+      >
+        <div className="relative ">
+          <button
+            className="side-scroll inverse-hover absolute left-0 w-[5%] h-[900px] text-start z-10 opacity-0 cursor-pointer "
+            onClick={slideLeft}
+          ></button>
+          <button
+            className="side-scroll inverse-hover absolute right-0 w-[5%] h-[900px] text-end z-10 opacity-0 cursor-pointer "
+            onClick={slideRight}
+          ></button>
+        </div>
+        <GenerateIskele
+          subjects={subjects}
+          setActiveOption={setActiveSubject}
+          activeOption={activeSubject}
+        />
+      </div>
+      {
         <div
-          className="panelcard m-auto mt-16 center h-[65vw] animate_content_closing"
+          className=" my-12 flex flex-col center "
+          ref={subjectRef}
+          style={{ display: activeSubject.length > 0 ? "" : "none" }}
+        >
+          {chosenSubjects.map((subject, index) => (
+            <SquareButton
+              key={index}
+              title={subject}
+              containerStyles={`flex-grow square-btn inverse-hover text-base font-light active m-1`}
+            />
+          ))}
+        </div>
+      }
+
+      {activeSubject.length > 0 && (
+        <div
+          className="panelcard m-auto mb-24 center w-[20%] h-[133px]"
+          ref={finalRef}
+        >
+          <div className="frame-right -z-10 animate_content_opening"></div>
+          <div className="frame-left -z-10 animate_content_opening"></div>
+          <ChoiceCard
+            options={orderType}
+            direction="horizontal"
+            setActiveOption={setActiveChoice}
+            activeOption={activeChoice}
+            queryData={[activeLesson, activeSubject]}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
+{
+  /*activeChoiceType.length > 0 && (
+        <div
+          className="panelcard m-auto my-24 center h-[65vw] animate_content_closing"
           ref={subjectRef}
         >
           <div className="frame-top-panel -z-10"></div>
@@ -111,28 +213,9 @@ export default function page() {
           <ChoiceCard
             options={subjects}
             direction="vertical"
-            setActiveOption={setActiveChapter}
-            activeOption={activeChapter}
+            setActiveOption={setActiveSubject}
+            activeOption={activeSubject}
           />
         </div>
-      )}
-
-      {activeChapter.length > 0 && (
-        <div
-          className="panelcard m-auto mt-20 center w-[20%] h-[72px] animate_content_closing_hor"
-          ref={choiceRef}
-        >
-          <div className="frame-right -z-10"></div>
-          <div className="frame-left -z-10"></div>
-          <ChoiceCard
-            options={orderType}
-            direction="horizontal"
-            setActiveOption={setActiveChoice}
-            activeOption={activeChoice}
-            queryData={[activeLesson, activeChapter]}
-          />
-        </div>
-      )}
-    </>
-  );
+      )*/
 }

@@ -2,6 +2,7 @@ import { ChoiceCardProps } from "@/types";
 import React, {useEffect} from "react";
 import SquareButton from "./SquareButton";
 import { useRouter } from "next/router";
+import handleFullScreenClick from "@/utils/Fullscreen";
 
 
 export default function ChoiceCard({
@@ -22,18 +23,19 @@ export default function ChoiceCard({
         pathname: `/snake`,
         query: { activeLesson: queryData[0], activeChapter: queryData[1] }
       });
+      handleFullScreenClick()
     }
     if (activeOption === "Geri Dön") {
       router.push("/");
     }
-  }, [activeOption]);
+  }, [activeOption, queryData, router]);
   
 
   return (
     <div
       className={
         direction === "horizontal"
-          ? "center space-x-10"
+          ? "center flex flex-col whitespace-nowrap lg:flex-row lg:space-x-1 xl:space-x-6 2xl:space-x-12"
           : "flex flex-col justify-center items-center space-y-1"
       }
     >
@@ -43,8 +45,8 @@ export default function ChoiceCard({
           title={direction === "vertical" ? option.split("-")[2] : option }
           containerStyles={
             activeOption === option
-              ? `square-btn text-sm font-light active`
-              : `square-btn text-sm font-light`
+              ? `square-btn inverse-hover text-base font-light active`
+              : `square-btn inverse-hover text-base font-light `
           }
           handleClick={() => changeActiveOption(option)}
         />

@@ -8,7 +8,7 @@ import PanoCard from "./PanoCard";
 import Link from "next/link";
 
 
-const Navbar = () => {
+const Navbarnigga = () => {
   const [showPano, setShowPano] = useState(false);
 
   const handleClickPano = () => {
@@ -71,4 +71,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbarnigga;

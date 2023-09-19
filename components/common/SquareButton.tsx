@@ -1,7 +1,6 @@
 "use client";
 
 import { SquareButtonProps } from "@/types";
-import Image from "next/image";
 
 const SquareButton = ({
   title,
@@ -9,6 +8,7 @@ const SquareButton = ({
   handleClick,
   btnType
 }: SquareButtonProps) => {
+
   return (
     <button
       disabled={false}
