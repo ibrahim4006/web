@@ -34,7 +34,7 @@ const page = (props: Props) => {
           <InGameButtons />
           <ChatToggleButton setChatShow={setChatShow} chatShow={chatShow}/>
           <div
-            key={"istila score boxes"}
+            key={"score boxes"}
             className="relative top-20 left-28 w-16"
           >
             {[...Array(4)].map((_, boxIndex) => (

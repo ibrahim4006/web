@@ -12,7 +12,7 @@ const ChatToggleButton = ({setChatShow,chatShow}) => {
           >
             <Image
               src="/denemeboomerang.svg"
-              alt="chat toggle button"
+              alt="chat toggle button "
               width={30}
               height={30}
               className={chatShow ? "-rotate-90 z-10" : "rotate-90 z-10"}

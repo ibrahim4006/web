@@ -8,7 +8,7 @@ type Props = {};
 const ChatArea = (props: Props) => {
   return (
     <div
-      key={"entire chat region "}
+      key={"entire chat region"}
       className=" h-full w-[590px] absolute top-0 right-0 flex flex-col mr-14 " 
     >
       <div
