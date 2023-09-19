@@ -9,6 +9,7 @@ import InGameButtons from "@/components/common/InGameButtons";
 import ChatArea from "@/components/common/ChatArea";
 import { useState } from "react";
 import LoadingAnimation from "@/components/common/LoadingAnimation";
+import ChatToggleButton from "@/components/common/ChatToggleButton";
 
 type Props = {};
 
@@ -31,21 +32,7 @@ const page = (props: Props) => {
         >
           <GameScoreBoard />
           <InGameButtons />
-          <div
-            key={"chat toggle button"}
-            className="inverse-hover right-0 top-[47%] mr-4 absolute z-10 object-contain transition-transform duration-500"
-            onClick={() => setChatShow(!chatShow)}
-          >
-            <Image
-              src="/denemeboomerang.svg"
-              alt="chat toggle button"
-              width={30}
-              height={30}
-              className={chatShow ? "-rotate-90 z-10" : "rotate-90 z-10"}
-              //64% previously
-              onClick={() => setChatShow(!chatShow)}
-            />
-          </div>
+          <ChatToggleButton setChatShow={setChatShow} chatShow={chatShow}/>
           <div
             key={"istila score boxes"}
             className="relative top-20 left-28 w-16"
@@ -75,12 +62,11 @@ const page = (props: Props) => {
                 }}
               />
             ))}
-            
           </div>
           <div
             key={"loading"}
             className={
-             questionexist
+              questionexist
                 ? "hidden absolute"
                 : "absolute top-[50%] left-[30%]"
             }
@@ -88,7 +74,7 @@ const page = (props: Props) => {
             <LoadingAnimation />
           </div>
         </div>
-        <div
+        <div key="chat section"
           className={
             chatShow
               ? " h-full w-[590px] right-0 absolute -z-1 transition-right duration-500 ease-in-out"

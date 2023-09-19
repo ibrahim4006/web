@@ -8,7 +8,7 @@ type Props = {};
 const ChatArea = (props: Props) => {
   return (
     <div
-      key={"right region "}
+      key={"entire chat region "}
       className=" h-full w-[590px] absolute top-0 right-0 flex flex-col mr-14 " 
     >
       <div
@@ -45,7 +45,7 @@ const ChatArea = (props: Props) => {
         </div>
       </div>
       <div
-        key={"chat section"}
+        key={"chat message section"}
         className="h-[798px] max-h-[798px]  relative top-0 flex flex-col "
       >
         <div
