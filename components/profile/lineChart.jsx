@@ -38,8 +38,8 @@ const LineChart = ({ chartData, dataindex, index, setDataindex }) => {
             {
               label: "MATEMATİK",
               data: [12, 19, 3, 5, 6, 3, 5, 8, 3, 8, 10, 2],
-              backgroundColor: dataindex == "matematik" ? "red" : "#F7F6F110",
-              borderColor: dataindex == "matematik" ? "red" : "#F7F6F110",
+              backgroundColor: dataindex == "matematik" ? "#F7F6F1" : "#F7F6F110",
+              borderColor: dataindex == "matematik" ? "#F7F6F1" : "#F7F6F110",
               tension: 0.2,
               pointRadius: 3,
               pointHoverRadius: 6,
@@ -47,8 +47,8 @@ const LineChart = ({ chartData, dataindex, index, setDataindex }) => {
             {
               label: "FİZİK",
               data: [7, 11, 5, 8, 3, 7, 11, 5, 13, 3, 8, 10],
-              backgroundColor: dataindex == "fizik" ? "red" : "#F7F6F110",
-              borderColor: dataindex == "fizik" ? "red" : "#F7F6F110",
+              backgroundColor: dataindex == "fizik" ? "#F7F6F1" : "#F7F6F110",
+              borderColor: dataindex == "fizik" ? "#F7F6F1" : "#F7F6F110",
               tension: 0.2,
               pointRadius: 3,
               pointHoverRadius: 6,
@@ -56,8 +56,8 @@ const LineChart = ({ chartData, dataindex, index, setDataindex }) => {
             {
               label: "KİMYA",
               data: [9, 10, 12, 10, 14, 11, 13, 16, 17, 11, 13, 16],
-              backgroundColor: dataindex == "kimya" ? "red" : "#F7F6F110",
-              borderColor: dataindex == "kimya" ? "red" : "#F7F6F110",
+              backgroundColor: dataindex == "kimya" ? "#F7F6F1" : "#F7F6F110",
+              borderColor: dataindex == "kimya" ? "#F7F6F1" : "#F7F6F110",
               tension: 0.2,
               pointRadius: 3,
               pointHoverRadius: 6,
@@ -67,6 +67,7 @@ const LineChart = ({ chartData, dataindex, index, setDataindex }) => {
         options={{
           responsive: true,
           maintainAspectRatio: false,
+          events: [""],
           scales: {
             y: {
               border: {

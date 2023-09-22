@@ -9,6 +9,7 @@ const Hexagon = ({
   text,
   handleClick,
   tick,
+  textsize
 }) => {
   return (
     <div
@@ -52,7 +53,8 @@ const Hexagon = ({
           }}
           className= {tick ? "inverse-hover uppercase whitespace-break-spaces text-center text-base font-bold duration-300" : "inverse-hover uppercase whitespace-break-spaces text-center text-base font-bold duration-300"}
         >
-          {text}
+          <span style={{fontSize: `${textsize}px`, display: "flex",  justifyContent: "center", alignItems: "center"}}>{text}</span>
+          
         </div>
       </div>
       <Image

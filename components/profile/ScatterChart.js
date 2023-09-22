@@ -17,6 +17,7 @@ const ScatterChart = ({ chartData }) => {
     <Scatter
       data={chartData}
       options={{
+        events: [""],
         scales: {
           y: {
             beginAtZero: true,

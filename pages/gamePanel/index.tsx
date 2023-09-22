@@ -17,6 +17,9 @@ import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 import GenerateIskele from "@/components/common/Iskele";
 import handleFullScreenClick from "@/utils/Fullscreen";
+import HoverXSlider from "@/components/common/HoverXSlider";
+import Card from "@/components/common/Card";
+import Card2 from "@/components/common/Card2";
 
 export default function page() {
   const [activeGame, setActiveGame] = useState<string>("");
@@ -83,24 +86,52 @@ export default function page() {
     if (activeSubject.length > 0 && subjectRef.current) {
       setChosenSubjects([activeSubject]);
       window.scrollTo({
-        top: 1900,
+        //top: 1900,
         behavior: "smooth",
       });
     }
   }, [activeSubject]);
 
-  const slideLeft = () => {
-    var slider = document.getElementById("slider");
-    slider.scrollLeft = slider.scrollLeft - 964;
-  };
+  // const slideLeft = () => {
+  //   var slider = document.getElementById("slider");
+  //   slider.scrollLeft = slider.scrollLeft - 964;
+  // };
 
-  const slideRight = () => {
-    var slider = document.getElementById("slider");
-    slider.scrollLeft = slider.scrollLeft + 964;
-  };
+  // const slideRight = () => {
+  //   var slider = document.getElementById("slider");
+  //   slider.scrollLeft = slider.scrollLeft + 964;
+  // };
+
+  const [sliderhover, setSliderHover] = useState(false);
+  const [sliderhover2, setSliderHover2] = useState(false);
+
+  useEffect(() => {
+    function handleMouseMove(event) {
+      const mouseY = event.clientY + window.scrollY;
+      if (mouseY > 1300 && mouseY < 2100) {
+        setSliderHover(true);
+        setSliderHover2(false);
+      } else if (mouseY > 2400 && mouseY < 3200) {
+        setSliderHover2(true);
+        setSliderHover(false);
+      } else {
+        setSliderHover(false);
+        setSliderHover2(false);
+      }
+    }
+
+    document.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   return (
     <div className=" h-[3000px]">
+      <Card/> <Card2/>
+      {sliderhover && <HoverXSlider id={1} percentage={.07}/>}
+      {sliderhover2 && <HoverXSlider id={2} percentage={.07}/>}
       <div
         className="panelcard m-auto my-24 mt-[470px] center w-[60%] sm:w-[50%] lg:w-[60%] h-[133px] "
         ref={gameRef}
@@ -116,9 +147,13 @@ export default function page() {
       </div>
       {
         <div
-          className="panelcard m-auto my-36 lg:my-24 center w-[60%] sm:w-[50%] lg:w-[44%] h-[133px] "
+          className={
+            activeGame.length > 0
+              ? "panelcard m-auto my-36 lg:my-24 center w-[60%] sm:w-[50%] lg:w-[44%] h-[133px]"
+              : "  hidden"
+          }
           ref={lessonRef}
-          style={{ display: activeGame.length > 0 ? "" : "none" }}
+          style={{ display: activeGame.length > 0 ? "" : "hidden" }}
         >
           <div className="frame-right -z-10 animate_content_opening"></div>
           <div className="frame-left -z-10 animate_content_opening"></div>
@@ -132,9 +167,13 @@ export default function page() {
       }
       {
         <div
-          className="panelcard m-auto my-36 lg:my-24 center w-[60%] sm:w-[50%] lg:w-[22%]  h-[133px] "
+          className={
+            activeLesson.length > 0
+              ? "panelcard m-auto my-36 lg:my-24 center w-[60%] sm:w-[50%] lg:w-[22%]  h-[133px]"
+              : "  hidden"
+          }
           ref={choiceRef}
-          style={{ display: activeLesson.length > 0 ? "" : "none" }}
+          style={{ display: activeLesson.length > 0 ? "" : "hidden" }}
         >
           <div className="frame-right -z-10 animate_content_opening"></div>
           <div className="frame-left -z-10 animate_content_opening"></div>
@@ -147,10 +186,11 @@ export default function page() {
         </div>
       }
       <div
-        style={{ display: activeChoiceType.length > 0 ? "" : "none" }}
+        className={activeChoiceType.length > 0 ? "" : "  hidden"}
         ref={subjectRef}
+        id="sliderholder"
       >
-        <div className="relative ">
+        {/* <div className="relative ">
           <button
             className="side-scroll inverse-hover absolute left-0 w-[5%] h-[900px] text-start z-10 opacity-0 cursor-pointer "
             onClick={slideLeft}
@@ -159,18 +199,44 @@ export default function page() {
             className="side-scroll inverse-hover absolute right-0 w-[5%] h-[900px] text-end z-10 opacity-0 cursor-pointer "
             onClick={slideRight}
           ></button>
-        </div>
+        </div> */}
         <GenerateIskele
           subjects={subjects}
           setActiveOption={setActiveSubject}
           activeOption={activeSubject}
+          id={1}
+        />
+      </div>
+      <div
+        className={activeChoiceType.length > 0 ? "" : "  hidden"}
+        ref={subjectRef}
+        id="sliderholder"
+      >
+        {/* <div className="relative ">
+          <button
+            className="side-scroll inverse-hover absolute left-0 w-[5%] h-[900px] text-start z-10 opacity-0 cursor-pointer "
+            onClick={slideLeft}
+          ></button>
+          <button
+            className="side-scroll inverse-hover absolute right-0 w-[5%] h-[900px] text-end z-10 opacity-0 cursor-pointer "
+            onClick={slideRight}
+          ></button>
+        </div> */}
+        <GenerateIskele
+          subjects={subjects}
+          setActiveOption={setActiveSubject}
+          activeOption={activeSubject}
+          id={2}
         />
       </div>
       {
         <div
-          className=" my-12 flex flex-col center "
+          className={
+            activeSubject.length > 0
+              ? " my-12 flex flex-col center "
+              : " hidden"
+          }
           ref={subjectRef}
-          style={{ display: activeSubject.length > 0 ? "" : "none" }}
         >
           {chosenSubjects.map((subject, index) => (
             <SquareButton

@@ -7,36 +7,57 @@ import Image from "next/image";
 import GameScoreBoard from "@/components/common/GameScoreBoard";
 import InGameButtons from "@/components/common/InGameButtons";
 import ChatArea from "@/components/common/ChatArea";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LoadingAnimation from "@/components/common/LoadingAnimation";
 import ChatToggleButton from "@/components/common/ChatToggleButton";
+import ChoiceBox from "@/components/common/ChoiceBox";
+import Canvas from "@/components/common/Canvas";
 
 type Props = {};
 
 const page = (props: Props) => {
   const [chatShow, setChatShow] = useState(false);
   const [questionexist, setQuestionExist] = useState(false);
+  const { canvasRef, onMouseDown, clear, setColor, undo } = Canvas();
+  const [canvasShow, setCanvasShow] = useState(false);
 
   return (
     <div>
       <PageTag tag="YARIŞMA / İSTİLA" />
       <TopNameTag nametag="İSTİLA" game={true} />
-      <div className="h-[938px] flex flex-row justify-between relative">
+      {/* <LoadingAnimation chatShow={chatShow} /> */}
+      <div className={`h-[938px] flex flex-row justify-between relative `}>
         <div
           key={"left region "}
           className={
             chatShow
-              ? "h-full w-[1233px] transition-width duration-300 ease-in-out"
-              : "h-full w-[1920px] transition-width duration-300 ease-in-out"
+              ? "h-full w-full xl:w-1/2 2xl:w-[1233px] transition-width duration-300 ease-in-out slider-target"
+              : "h-full w-full transition-width duration-300 ease-in-out slider-target"
           }
         >
           <GameScoreBoard />
-          <InGameButtons />
-          <ChatToggleButton setChatShow={setChatShow} chatShow={chatShow}/>
-          <div
-            key={"score boxes"}
-            className="relative top-20 left-28 w-16"
-          >
+          <InGameButtons
+            clear={clear}
+            canvasShow={canvasShow}
+            setCanvasShow={setCanvasShow}
+            setColor={setColor}
+            undo={undo}
+          />
+          <ChatToggleButton setChatShow={setChatShow} chatShow={chatShow} />
+
+          <canvas
+            ref={canvasRef}
+            onMouseDown={onMouseDown}
+            width={1920}
+            height={868}
+            className={
+              canvasShow
+                ? " canvas absolute top-0 z-40 h-[755px] sm:h-[868px]"
+                : "canvas pointer-events-none absolute top-0 -z-40 h-[820px] sm:h-[868px]"
+            }
+          />
+
+          <div key={"score boxes"} className="relative top-20 left-28 w-16 hidden">
             {[...Array(4)].map((_, boxIndex) => (
               <div
                 key={`${boxIndex} second`}
@@ -63,22 +84,13 @@ const page = (props: Props) => {
               />
             ))}
           </div>
-          <div
-            key={"loading"}
-            className={
-              questionexist
-                ? "hidden absolute"
-                : "absolute top-[50%] left-[30%]"
-            }
-          >
-            <LoadingAnimation />
-          </div>
         </div>
-        <div key="chat section"
+        <div
+          key="chat section"
           className={
             chatShow
-              ? " h-full w-[590px] right-0 absolute -z-1 transition-right duration-500 ease-in-out"
-              : " h-full w-[590px] -right-[700px] absolute -z-1 transition-right duration-500 ease-in-out"
+              ? " h-full w-full md:w-[590px] right-0 absolute z-30 xl:z-1 transition-right duration-500 ease-in-out bg-[#F7F6F1]   xl:bg-transparent"
+              : " h-full w-full md:w-[590px] -right-[1000px] absolute z-30 xl:z-1 transition-right duration-500 ease-in-out bg-[#F7F6F1]   xl:bg-transparent"
           }
         >
           <ChatArea />

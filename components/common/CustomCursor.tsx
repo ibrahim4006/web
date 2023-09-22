@@ -1,19 +1,23 @@
-"use client"
+"use client";
 import { useRef, useEffect, useState } from "react";
 
 const CustomCursor = () => {
   const cursorRef = useRef(null);
   const [mouse, setMouse] = useState({ x: 300, y: 300 });
   const [pos, setPos] = useState({ x: 0, y: 0 });
-  const poss = { x: -12, y: -12 };
-  const speed = 0.05; // between 0 and 1
-  const speeds = 0.2; // between 0 and 1
-  const cursorRefsmall = useRef(null);
   const [isPointer, setIsPointer] = useState(false);
   const [elements, setElements] = useState([]);
   const [niggas, setNiggas] = useState([]);
   const [pakis, setPakis] = useState([]);
+  const [yetis, setYetis] = useState([]);
   const [sides, setSides] = useState([]);
+  const [canvas, setCanvas] = useState([]);
+  const [speeds, setSpeeds] = useState<number>(0.2);
+  const [speed, setSpeed] = useState<number>(0.05);
+
+  const poss = { x: -12, y: -12 };
+
+  const cursorRefsmall = useRef(null);
 
   const updatePosition = () => {
     pos.x += (mouse.x - pos.x) * speed;
@@ -37,20 +41,40 @@ const CustomCursor = () => {
     //setIsPointer(cursorStyle === "pointer");
   };
 
-  const handleMouseOver = (event) => {
+  const handleMouseOver = () => {
     setIsPointer(true);
   };
 
   // Function to handle hover-out event
-  const handleMouseOut = (event) => {
+  const handleMouseOut = () => {
     setIsPointer(false);
+  };
+  // Function to handle hover-in event
+  const canvasMouseIn = () => {
+    setSpeeds(1); // between 0 and 1
+    setSpeed(1); // between 0 and 1
+  };
+  // Function to handle hover-out event
+  const canvasMouseOut = () => {
+    setSpeeds(0.2); // between 0 and 1
+    setSpeed(0.05); // between 0 and 1
   };
 
   useEffect(() => {
     setNiggas(document.getElementsByClassName("inverse-hover"));
+
     const elements = [...niggas];
 
     window.addEventListener("mousemove", updateCoordinates);
+
+    setYetis(document.getElementsByClassName("canvas"));
+
+    const canvas = [...yetis];
+
+    for (let i = 0; i < canvas.length; i++) {
+      canvas[i].addEventListener("mouseover", canvasMouseIn);
+      canvas[i].addEventListener("mouseout", canvasMouseOut);
+    }
 
     for (const element of elements) {
       element.addEventListener("mouseover", handleMouseOver);
@@ -70,8 +94,12 @@ const CustomCursor = () => {
         element.removeEventListener("mouseover", handleMouseOver);
         element.removeEventListener("mouseout", handleMouseOut);
       }
+      for (let i = 0; i < canvas.length; i++) {
+        canvas[i].removeEventListener("mouseenter", canvasMouseIn);
+        canvas[i].removeEventListener("mouseout", canvasMouseOut);
+      }
     };
-  }, [elements,niggas]);
+  }, [elements, niggas, yetis, speeds]);
 
   return (
     <>

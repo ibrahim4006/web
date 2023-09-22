@@ -32,7 +32,7 @@ const BarChart = ({ chartData, width, text1, text2 }) => {
           options={{
             responsive: true,
             maintainAspectRatio: false,
-            events: ["click"],
+            events: [""],
             scales: {
               y: {
                 display: false,

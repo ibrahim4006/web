@@ -65,6 +65,7 @@ export default function GenerateIskele({
   subjects,
   setActiveOption,
   activeOption,
+  id
 }) {
   // Accept subjects as a prop
   const iskeles = [];
@@ -85,7 +86,7 @@ export default function GenerateIskele({
   return (
     <div className="relative flex items-center iskele_animation my-48">
       <div
-        id="slider"
+        id={`slider-${id}`}
         className="w-full -z-1 h-full pr-24 overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide"
       >
         {iskeles}

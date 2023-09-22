@@ -37,9 +37,14 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY < 50) {
+      if(window.innerWidth > 768){
+        if (window.scrollY < 50) {
         setShowNavbar(window.scrollY < 50);
       }
+      }else {if (window.scrollY < 20) {
+        setShowNavbar(window.scrollY < 20);
+      }}
+      
     };
 
     // Attach the scroll event listener
@@ -55,8 +60,8 @@ const Header = () => {
     <header
       className={
         showNavbar
-          ? "w-[54%] md:w-[80%] lg:w-[68%] 2xl:w-[54%] m-auto relative z-10 border-b-[1px] border-black/30 frame-header visible bg-[#F7F6F1] z-100 "
-          : "w-[54%] md:w-[80%] lg:w-[68%] 2xl:w-[54%] m-auto relative z-10 border-b-[1px] border-black/30 frame-header navbar bg-[#F7F6F1] z-100 "
+          ? "w-[54%] md:w-[80%] lg:w-[68%] 2xl:w-[54%] m-auto relative z-50 border-b-[1px] border-black/30 frame-header visible bg-[#F7F6F1] "
+          : "w-[54%] md:w-[80%] lg:w-[68%] 2xl:w-[54%] m-auto relative z-50 border-b-[1px] border-black/30 frame-header navbar bg-[#F7F6F1] "
       }
       onClick={() => {
         if (window.innerWidth < 768) {
@@ -112,7 +117,7 @@ const Header = () => {
               />
             </Link>
           </div>
-          <Link href="/profile" className="cursor-none"> 
+          <Link href="/profile" className="cursor-none">
             <Image
               src="/headerpolygon.svg"
               alt="Polygon logo"

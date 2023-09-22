@@ -181,7 +181,7 @@ function App() {
       <PageTag tag="PROFİL" />
       <TopNameTag nametag="PROFİL"  game={false}/>
 
-      <div className="relative m-auto my-20 center w-[60%] sm:w-[50%] lg:w-[60%] ">
+      <div className="absolute top-0 my-32 flex mx-auto right-0 left-0 center w-[60%] sm:w-[50%] lg:w-[60%] ">
         {[
           "İSTATİSTİKLER",
           "GELİŞİM ANALİZİ",

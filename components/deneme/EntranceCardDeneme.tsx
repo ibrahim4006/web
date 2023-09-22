@@ -9,7 +9,7 @@ export default function EntranceCardDeneme() {
         <div className="background sm:h-[200px] lg:h-[540px]"></div>
         <div className="frame-top"></div>
         <div className="frame-bottom"></div>
-        <h1 className=" text-3xl lg:text-6xl lg:text-6xl font-bold mr-4 lg:-rotate-90 mb-8 lg:mb-36 lg:-mr-[75px]">
+        <h1 className=" text-3xl lg:text-6xl font-bold mr-4 lg:-rotate-90 mb-8 lg:mb-36 lg:-mr-[75px]">
           DENEME
         </h1>
       </div>

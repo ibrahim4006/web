@@ -118,7 +118,7 @@ const ImageHover: React.FC<ImageHoverProps> = ({ imagelink, coordinates, setStud
         }}
       >
         {imageDimensions.width !== 0 && (
-          <img
+          <Image
             src={imagelink}
             alt="Aga"
             width={imageDimensions.width}

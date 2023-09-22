@@ -6,7 +6,7 @@ const SquareButton = ({
   title,
   containerStyles,
   handleClick,
-  btnType
+  btnType, color
 }: SquareButtonProps) => {
 
   return (
@@ -15,6 +15,7 @@ const SquareButton = ({
       type={btnType || "button"}
       className={containerStyles}
       onClick={handleClick}
+      style={{backgroundColor: color}}
     >
       <span >{title}</span>
     </button>

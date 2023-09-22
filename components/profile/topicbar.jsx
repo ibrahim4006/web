@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 
 const Topicbar = () => {
-  const data = [45, 72, 68, 12, 75, 20, 69, 84, 36, 50, 95,45, 72, 68, 12, 75, 20, 69, 84, 36, 50, 95, 15];
+  const data = [
+    45, 72, 68, 12, 75, 20, 69, 84, 36, 50, 95, 45, 72, 68, 12, 75, 20, 69, 84,
+    36, 50, 95, 15,
+  ];
   const names = [
     "MANTIK",
-    "KÜMELER",
+    "KÜMELER",  
     "DENKLEMLER VE EŞİTSİZLİKLER",
     "ÜÇGENLER",
     "VERİ",
@@ -25,8 +28,23 @@ const Topicbar = () => {
     "ÜSTEL VE GEOMETRİK FONKSİYONLAR",
     "DİZİLER",
     "TÜREV",
-    "İNTEGRAL"
+    "İNTEGRAL",
   ];
+
+// Create an array of objects to store both data and names
+const combinedData = data.map((value, index) => ({ value, name: names[index] }));
+
+// Sort the combinedData array by the 'value' property in ascending order
+combinedData.sort((a, b) => a.value - b.value);
+
+// Update the 'data' and 'names' arrays with the sorted values
+for (let i = 0; i < data.length; i++) {
+  data[i] = combinedData[i].value;
+  names[i] = combinedData[i].name;
+}
+
+console.log(data);  // Sorted data array
+console.log(names); // Sorted names array
 
   //const maxData = Math.max(...data);
 
@@ -42,8 +60,8 @@ const Topicbar = () => {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "flex-end",
-        minWidth: `${data.length*60}px`,
-        maxWidth: `${data.length*80}px`,
+        minWidth: `${data.length * 60}px`,
+        maxWidth: `${data.length * 80}px`,
         height: "750px",
       }}
     >
@@ -61,7 +79,7 @@ const Topicbar = () => {
               alignItems: "flex-end",
               opacity: opacity,
               position: "relative",
-              transition: "opacity .3s"
+              transition: "opacity .3s",
             }}
             onMouseEnter={() => handleColumnHover(index)}
             onMouseLeave={() => handleColumnHover(null)}
@@ -96,7 +114,7 @@ const Topicbar = () => {
               <div
                 style={{
                   position: "absolute",
-                  top: value < 25 ? `${-(25-value)*6}px` : "0px",
+                  top: value < 25 ? `${-(25 - value) * 6}px` : "0px",
                   left: index < data.length / 2 ? "60px" : null,
                   right: index >= data.length / 2 ? "60px" : null,
                   backgroundColor: "transparent",
@@ -115,7 +133,7 @@ const Topicbar = () => {
                   style={{
                     fontSize: "32px",
                     display: "flex",
-                    whiteSpace:"nowrap",
+                    whiteSpace: "nowrap",
                     justifyContent: index < data.length / 2 ? "start" : "end",
                   }}
                 >
@@ -126,7 +144,7 @@ const Topicbar = () => {
                     fontSize: "64px",
                     display: "flex",
                     justifyContent: index > data.length / 2 ? "start" : "end",
-                    fontWeight: "700"
+                    fontWeight: "700",
                   }}
                 >
                   {`%${data[index]}`}

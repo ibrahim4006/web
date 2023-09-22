@@ -10,12 +10,12 @@ const RakipChatbox = (props: Props) => {
         <div className="w-4 h-[1px] bg-[#0D0D0D]" />
       </div>
       <div className="py-2 px-3 border-[1px] rounded-lg flex justify-center ">
-        <p className="font-light text-lg p-2">
+        <p className="font-light text-base p-2">
           Lorem Ipsum, dizgi ve baskı endüstrisinde kullanılan mıgır
           metinlerdir. Lorem Ipsum, adı bilinmeyen bir matbaacının bir hurufat
           numune kitabı oluşturmak üzere bir yazı galerisini alarak karıştırdığı
           1500'lerden beri endüstri standardı sahte metinler olarak
-          kullanılmıştır. Beşyüz yıl boyunca varl
+          kullanılmıştı
         </p>
       </div>
     </div>
