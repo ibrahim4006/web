@@ -46,7 +46,7 @@ const Card4 = (props: Props) => {
     };
   }, []);
   return (
-    <div className=" absolute w-1/2 right-0 h-full flex justify-start items-center z-50 just">
+    <div className=" absolute w-1/2 right-0 h-full flex justify-start items-center z-50 just floating-horizontal">
       <div className=" card4 bg-[#0D0D0D] rounded-sm relative overflow-visible flex justify-center items-center flex-col h-[370px] w-[650px] left-3  animate_content_card_4">
         <div className="card-frame-right z-50 animate_content_opening"></div>
         <div className="card-frame-left z-50 animate_content_opening"></div>
@@ -125,14 +125,14 @@ const Card4 = (props: Props) => {
               input={-1}
               alignment="left"
               border={null}
-              text="puan"
+              text="toplam puan"
               value="8237"
             />
             <Denemedrop
               input={-1}
               alignment="right"
               border={null}
-              text="toplam kupa"
+              text="toplam süre"
               value="14"
             />
           </div>

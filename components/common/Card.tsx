@@ -48,7 +48,7 @@ const Card = (props: Props) => {
   }, []);
 
   return (
-    <div className=" absolute w-1/2 left-0 h-full flex justify-end items-center z-50 just">
+    <div className=" absolute w-1/2 left-0 h-full flex justify-end items-center z-50 just floating-horizontal" style={{animationDelay:".4s"}}>
       <div className=" card1 bg-[#0D0D0D] rounded-sm relative overflow-visible flex justify-center items-center flex-col h-[370px] w-[650px] right-3 animate_content_card_1">
         <div className="card-frame-right z-50 animate_content_opening"></div>
         <div className="card-frame-left z-50 animate_content_opening"></div>
@@ -127,14 +127,14 @@ const Card = (props: Props) => {
               input={-1}
               alignment="left"
               border={null}
-              text="toplam kupa"
+              text="toplam süre"
               value="14"
             />
             <Denemedrop
               input={-1}
               alignment="right"
               border={null}
-              text="puan"
+              text="toplam puan"
               value="8237"
             />
           </div>

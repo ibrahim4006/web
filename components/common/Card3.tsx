@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import SquareButton from "./SquareButton";
 import Denemedrop from "../profile/denemedrop";
 import Hexagon from "./Hexagon";
+import WordShuffler from "./WordShuffler";
 
 type Props = {};
 const setProp = (el, prop, value) => el.style.setProperty(prop, value);
@@ -46,7 +47,7 @@ const Card3 = (props: Props) => {
     };
   }, []);
   return (
-    <div className=" absolute w-1/2 left-0 h-full flex justify-end items-center z-50 just">
+    <div className=" absolute w-1/2 left-0 h-full flex justify-end items-center z-50 just floating-horizontal" style={{animationDelay:".3s"}}>
       <div className=" card3 bg-[#0D0D0D] rounded-sm relative overflow-visible flex justify-center items-center flex-col h-[370px] w-[650px] right-3 animate_content_card_3">
         <div className="card-frame-right z-50 animate_content_opening"></div>
         <div className="card-frame-left z-50 animate_content_opening"></div>
@@ -100,7 +101,7 @@ const Card3 = (props: Props) => {
               x={0}
               y={0}
               key={`card`}
-              text={`18`}
+              text={WordShuffler(2)}
               textsize={50}
             />
           </div>
@@ -110,14 +111,14 @@ const Card3 = (props: Props) => {
               alignment="left"
               border={null}
               text="toplam soru"
-              value="4298"
+              value={WordShuffler(5)}
             />
             <Denemedrop
               input={1}
               alignment="right"
               border={null}
               text="sıralama"
-              value="7126"
+              value={WordShuffler(4)}
             />
           </div>
           <div className="flex flex-row justify-between items-end absolute h-1/2 w-full scale-x-[80%] scale-y-75 bottom-0 mr-6">
@@ -125,15 +126,15 @@ const Card3 = (props: Props) => {
               input={-1}
               alignment="left"
               border={null}
-              text="toplam kupa"
-              value="14"
+              text="toplam süre"
+              value={WordShuffler(4)}
             />
             <Denemedrop
               input={-1}
               alignment="right"
               border={null}
-              text="puan"
-              value="8237"
+              text="toplam puan"
+              value={WordShuffler(5)}
             />
           </div>
         </div>
