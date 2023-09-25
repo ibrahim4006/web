@@ -60,7 +60,7 @@ const Header = () => {
     <header
       className={
         showNavbar
-          ? "w-[54%] md:w-[80%] lg:w-[68%] 2xl:w-[54%] m-auto relative z-50 border-b-[1px] border-black/30 frame-header visible bg-[#F7F6F1] "
+          ? "w-[54%] md:w-[80%] lg:w-[68%] 2xl:w-[54%] m-auto relative z-50 border-b-[1px] border-black/30 frame-header visible bg-[#F7F6F1]"
           : "w-[54%] md:w-[80%] lg:w-[68%] 2xl:w-[54%] m-auto relative z-50 border-b-[1px] border-black/30 frame-header navbar bg-[#F7F6F1] "
       }
       onClick={() => {
@@ -95,7 +95,7 @@ const Header = () => {
                 handleClick={() => handleFullScreenClick()}
               />
             </Link>
-            <Link href="/arşiv" className="cursor-none">
+            <Link href="/arsiv" className="cursor-none">
               <SquareButton
                 title="arşiv"
                 containerStyles={`header-btn inverse-hover`}

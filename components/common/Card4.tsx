@@ -7,9 +7,9 @@ import Denemedrop from "../profile/denemedrop";
 type Props = {};
 const setProp = (el, prop, value) => el.style.setProperty(prop, value);
 
-const Card2 = (props: Props) => {
+const Card4 = (props: Props) => {
   useEffect(() => {
-    const card = document.querySelector(".card2");
+    const card = document.querySelector(".card4");
     const just = document.querySelector(".just");
 
     const onMouseUpdate = (e) => {
@@ -47,7 +47,7 @@ const Card2 = (props: Props) => {
   }, []);
   return (
     <div className=" absolute w-1/2 right-0 h-full flex justify-start items-center z-50 just">
-      <div className=" card2 bg-[#0D0D0D] rounded-sm relative overflow-visible flex justify-center items-center flex-col h-[370px] w-[650px] left-3  animate_content_card_2">
+      <div className=" card4 bg-[#0D0D0D] rounded-sm relative overflow-visible flex justify-center items-center flex-col h-[370px] w-[650px] left-3  animate_content_card_4">
         <div className="card-frame-right z-50 animate_content_opening"></div>
         <div className="card-frame-left z-50 animate_content_opening"></div>
         <div key={"black dot1"} className="black-dot-1"></div>
@@ -142,4 +142,4 @@ const Card2 = (props: Props) => {
   );
 };
 
-export default Card2;
+export default Card4;

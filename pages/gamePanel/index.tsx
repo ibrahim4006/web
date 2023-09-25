@@ -20,6 +20,8 @@ import handleFullScreenClick from "@/utils/Fullscreen";
 import HoverXSlider from "@/components/common/HoverXSlider";
 import Card from "@/components/common/Card";
 import Card2 from "@/components/common/Card2";
+import Card3 from "@/components/common/Card3";
+import Card4 from "@/components/common/Card4";
 
 export default function page() {
   const [activeGame, setActiveGame] = useState<string>("");
@@ -129,7 +131,8 @@ export default function page() {
 
   return (
     <div className=" h-[3000px]">
-      <Card/> <Card2/>
+      <div className="relative top-52"><Card3/> <Card4/></div>
+      <div className="relative top-[700px]"><Card/> <Card2/></div>
       {sliderhover && <HoverXSlider id={1} percentage={.07}/>}
       {sliderhover2 && <HoverXSlider id={2} percentage={.07}/>}
       <div

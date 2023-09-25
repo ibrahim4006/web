@@ -3,18 +3,12 @@ import React, { useState, useEffect } from "react";
 
 type Props = {};
 
-const HoverXSlider = ({id, percentage}) => {
+const HoverXSlider = ({ id, percentage,invert,setQuestionIndicator }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
   const [direction, setDirection] = useState(false);
   const [threshold, setThreshold] = useState(0);
   const [screenWidth, setScreenWidth] = useState(0);
-  const [niggas, setNiggas] = useState([]);
-  const [elements, setElements] = useState([]);
-  
-
-
-
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -22,7 +16,6 @@ const HoverXSlider = ({id, percentage}) => {
 
       setScreenWidth(window.innerWidth);
       setThreshold(screenWidth * percentage);
-
 
       setIsVisible(
         mousePosition.x < threshold || mousePosition.x > screenWidth - threshold
@@ -35,42 +28,42 @@ const HoverXSlider = ({id, percentage}) => {
       }
     };
 
-    
-
     window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [mousePosition,screenWidth,threshold]);
-  
+  }, [mousePosition, screenWidth, threshold]);
+
   const slide = () => {
-        if (mousePosition.x < threshold) {
-            slideLeft()
-          }
-          if (mousePosition.x > screenWidth - threshold) {
-            slideRight()
-          }
+    if (mousePosition.x < threshold) {
+      slideLeft();
     }
+    if (mousePosition.x > screenWidth - threshold) {
+      slideRight();
+    }
+  };
 
   const slideLeft = () => {
     var slider = document.getElementById(`slider-${id}`);
     slider.scrollLeft = slider.scrollLeft - 964;
-    console.log(`slider-${id} has been shifter to left`)
+    console.log(`slider-${id} has been shifter to left`);
+    //setQuestionIndicator ? setQuestionIndicator(Math.ceil(slider.scrollLeft / 964)) : null;
   };
 
   const slideRight = () => {
     var slider = document.getElementById(`slider-${id}`);
     slider.scrollLeft = slider.scrollLeft + 964;
-    console.log(`slider-${id} has been shifter to right`)
+    console.log(`slider-${id} has been shifter to right`);
+    //setQuestionIndicator ? setQuestionIndicator(Math.ceil(slider.scrollLeft / 964)) : null;
   };
 
   return (
     <>
       {isVisible && (
         <div
-          key={"chat toggle button"}
-          className="inverse-hover absolute flex justify-center items-center toggle-holder z-[999]"
+          key={"hover slider"}
+          className={ `inverse-hover absolute flex justify-center items-center toggle-holder z-[999] first-letter ${invert ? "invert" : ""}`}
           style={{
             top: `${mousePosition.y - 8}px`, //
             left: `${mousePosition.x - 29}px`, //
@@ -78,7 +71,7 @@ const HoverXSlider = ({id, percentage}) => {
         >
           <Image
             src="/bumerang_parça/bumerangtek.svg"
-            alt="chat toggle button "
+            alt="hover slider big"
             width={20}
             height={20}
             className={
@@ -91,7 +84,7 @@ const HoverXSlider = ({id, percentage}) => {
           />
           <Image
             src="/bumerang_parça/bumerangtek.svg"
-            alt="chat toggle button "
+            alt="hover slider small"
             width={30}
             height={30}
             className={

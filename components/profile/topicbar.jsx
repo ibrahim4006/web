@@ -2,12 +2,13 @@ import React, { useState } from "react";
 
 const Topicbar = () => {
   const data = [
-    45, 72, 68, 12, 75, 20, 69, 84, 36, 50, 95, 45, 72, 68, 12, 75, 20, 69, 84,
-    36, 50, 95, 15,
+    76, 22, 56, 11, 89, 67, 53, 31, 4, 94, 35, 27, 86, 41, 66, 78, 16, 58, 33,
+    20, 5, 99, 73,
   ];
+
   const names = [
     "MANTIK",
-    "KÜMELER",  
+    "KÜMELER",
     "DENKLEMLER VE EŞİTSİZLİKLER",
     "ÜÇGENLER",
     "VERİ",
@@ -31,22 +32,35 @@ const Topicbar = () => {
     "İNTEGRAL",
   ];
 
-// Create an array of objects to store both data and names
-const combinedData = data.map((value, index) => ({ value, name: names[index] }));
+  // Split data and names arrays into two halves
+  const halfLength = data.length / 2;
+  const firstHalfData = data.slice(0, halfLength);
+  const secondHalfData = data.slice(halfLength);
+  const firstHalfNames = names.slice(0, halfLength);
+  const secondHalfNames = names.slice(halfLength);
 
-// Sort the combinedData array by the 'value' property in ascending order
-combinedData.sort((a, b) => a.value - b.value);
+  // Sort the first half of data in increasing order
+  firstHalfData.sort((a, b) => a - b);
 
-// Update the 'data' and 'names' arrays with the sorted values
-for (let i = 0; i < data.length; i++) {
-  data[i] = combinedData[i].value;
-  names[i] = combinedData[i].name;
-}
+  // Sort the second half of data in decreasing order
+  secondHalfData.sort((a, b) => b - a);
 
-console.log(data);  // Sorted data array
-console.log(names); // Sorted names array
+  // Sort the names array based on the sorting order of the first half of data
+  const sortedNames = firstHalfNames.concat(secondHalfNames).sort((a, b) => {
+    const indexA = names.indexOf(a);
+    const indexB = names.indexOf(b);
+    return firstHalfData[indexA] - firstHalfData[indexB];
+  });
 
-  //const maxData = Math.max(...data);
+  // Push the sorted values and names back into their respective arrays
+  const sortedData = firstHalfData.concat(secondHalfData);
+  data.length = 0;
+  data.push(...sortedData);
+  names.length = 0;
+  names.push(...sortedNames);
+
+  console.log(data);
+  console.log(names);
 
   const [hoveredColumn, setHoveredColumn] = useState(null);
 

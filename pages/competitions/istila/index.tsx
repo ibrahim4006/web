@@ -25,7 +25,7 @@ const page = (props: Props) => {
     <div>
       <PageTag tag="YARIŞMA / İSTİLA" />
       <TopNameTag nametag="İSTİLA" game={true} />
-      {/* <LoadingAnimation chatShow={chatShow} /> */}
+       <LoadingAnimation chatShow={chatShow} /> 
       <div className={`h-[938px] flex flex-row justify-between relative `}>
         <div
           key={"left region "}
@@ -57,7 +57,7 @@ const page = (props: Props) => {
             }
           />
 
-          <div key={"score boxes"} className="relative top-20 left-28 w-16 hidden">
+          <div key={"score boxes"} className="relative top-20 left-28 w-16">
             {[...Array(4)].map((_, boxIndex) => (
               <div
                 key={`${boxIndex} second`}

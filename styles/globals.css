@@ -33,10 +33,31 @@
   @apply flex-col justify-start border-b-2 border-black relative z-0;
 }
 
-.game-head::after {
+.arsiv-slider::after{
+  content: "";
+  position: absolute;
+  width: 300%;
+  height: 1px;
+  bottom: 35px;
+  background-color: #0d0d0d;
+}
+
+.week-head::before {
   content: "";
   position: absolute;
   width: 215px;
+  height: 4px;
+  bottom: 0px;
+  right: 110px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #0d0d0d;
+}
+
+.game-head::after {
+  content: "";
+  position: absolute;
+  width: 100%;
   height: 4px;
   bottom: 0px;
   border-top-left-radius: 5px;
@@ -48,13 +69,14 @@
 .profile-head::after {
   content: "";
   position: absolute;
-  width: 215px;
+  width: 100%;
   height: 4px;
   bottom: -5px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   background-color: #0d0d0d;
   transform: translateX(-100%); /* Move the element 100% to the left */
+  z-index: 10;
 }
 
 .header-btn {
@@ -176,10 +198,12 @@
 }
 
 .card1 {
-  /* transform: rotateX(-5deg) rotateY(10deg) rotateZ(3deg);  */
-  /* transform: rotateX(3deg) rotateY(30deg) rotateZ(-3deg) ;  */
-  transform: rotateX(3deg) rotateY(30deg) rotateZ(-3deg);
-  transform-style: preserve-3d;
+  transform: rotateX(3deg) rotateY(30deg) rotateZ(-3deg); /* Initial values */
+  transition: transform 250ms ease-in-out .1s;
+}
+
+.card1:hover {
+  transform: rotateX(var(--dx)) rotateY(var(--dy));
 }
 
 .card2 {
@@ -187,6 +211,35 @@
   /* transform: rotateX(3deg) rotateY(30deg) rotateZ(-3deg) ;  */
   transform: rotateX(3deg) rotateY(-30deg) rotateZ(3deg);
   transform-style: preserve-3d;
+  transition: transform 250ms ease-in-out .1s;
+}
+
+.card2:hover {
+  transform: rotateX(var(--dx)) rotateY(var(--dy));
+}
+
+.card3 {
+  /* transform: rotateX(-5deg) rotateY(10deg) rotateZ(3deg);  */
+  /* transform: rotateX(3deg) rotateY(30deg) rotateZ(-3deg) ;  */
+  transform: rotateX(3deg) rotateY(30deg) rotateZ(3deg);
+  transform-style: preserve-3d;
+  transition: transform 250ms ease-in-out .1s;
+}
+
+.card3:hover {
+  transform: rotateX(var(--dx)) rotateY(var(--dy));
+}
+
+.card4 {
+  /* transform: rotateX(-5deg) rotateY(10deg) rotateZ(3deg);  */
+  /* transform: rotateX(3deg) rotateY(30deg) rotateZ(-3deg) ;  */
+  transform: rotateX(3deg) rotateY(-30deg) rotateZ(-3deg);
+  transform-style: preserve-3d;
+  transition: transform 250ms ease-in-out .1s;
+}
+
+.card4:hover {
+  transform: rotateX(var(--dx)) rotateY(var(--dy));
 }
 
 .animate_content_card_1 {
@@ -237,6 +290,58 @@
   }
   100% {
     transform: scale(1, 1) rotateX(3deg) rotateY(-30deg) rotateZ(3deg);
+    transform-style: preserve-3d;
+  }
+}
+
+.animate_content_card_3 {
+  animation: animate-card-3 2s ease;
+}
+
+@keyframes animate-card-3 {
+  0% {
+    opacity: 0;
+    transform: scale(0.2, 0.002) rotateX(3deg) rotateY(30deg) rotateZ(3deg);
+    transform-style: preserve-3d;
+  }
+  35% {
+    opacity: 1;
+    transform: scale(0.2, 0.002) rotateX(3deg) rotateY(30deg) rotateZ(3deg);
+    transform-style: preserve-3d;
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1, 0.002) rotateX(3deg) rotateY(30deg) rotateZ(3deg);
+    transform-style: preserve-3d;
+  }
+  100% {
+    transform: scale(1, 1) rotateX(3deg) rotateY(30deg) rotateZ(3deg);
+    transform-style: preserve-3d;
+  }
+}
+
+.animate_content_card_4 {
+  animation: animate-card-4 2s ease;
+}
+
+@keyframes animate-card-4 {
+  0% {
+    opacity: 0;
+    transform: scale(0.2, 0.002) rotateX(3deg) rotateY(-30deg) rotateZ(-3deg);
+    transform-style: preserve-3d;
+  }
+  35% {
+    opacity: 1;
+    transform: scale(0.2, 0.002) rotateX(3deg) rotateY(-30deg) rotateZ(-3deg);
+    transform-style: preserve-3d;
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1, 0.002) rotateX(3deg) rotateY(-30deg) rotateZ(-3deg);
+    transform-style: preserve-3d;
+  }
+  100% {
+    transform: scale(1, 1) rotateX(3deg) rotateY(-30deg) rotateZ(-3deg);
     transform-style: preserve-3d;
   }
 }
@@ -1478,6 +1583,11 @@ body {
 
 .ingame-btn {
   @apply py-2 px-[12px] rounded-[32px] border-[1px] border-[#0D0D0D] text-sm font-bold hover:bg-[#0D0D0D]  hover:text-[#F7F6F1] cursor-none active:bg-[#0D0D0D] whitespace-nowrap lg:px-[22px] lg:text-base;
+}
+
+
+.ingame-btn-inverted {
+  @apply py-2 px-[12px] rounded-[32px] border-[1px] border-[#f7f6f1] text-sm font-bold hover:bg-[#f7f6f1]  hover:text-[#0D0D0D] cursor-none active:bg-[#f7f6f1] whitespace-nowrap lg:px-[22px] lg:text-base;
 }
 
 @keyframes custom-spin {
