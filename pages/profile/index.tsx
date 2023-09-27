@@ -29,6 +29,7 @@ import ReactCurvedText from "react-curved-text";
 import PageTag from "@/components/common/PageTag";
 import ChoiceCard from "@/components/common/ChoiceCard";
 import { TopNameTag } from "@/components/common/TopNameTag";
+import Completion from "@/components/common/Completion";
 
 function App() {
   const sectionRefs = {
@@ -179,7 +180,7 @@ function App() {
   return (
     <div className="App">
       <PageTag tag="PROFİL" />
-      <TopNameTag nametag="PROFİL"  game={false}/>
+      <TopNameTag nametag="PROFİL" game={false} />
 
       <div className="absolute top-0 my-32 flex mx-auto right-0 left-0 center w-[60%] sm:w-[50%] lg:w-[60%] ">
         {[
@@ -196,8 +197,9 @@ function App() {
           />
         ))}
       </div>
+      <Completion />
 
-      <div
+      {/* <div
         className="profile-top-section"
         style={{
           display: "flex",
@@ -319,7 +321,7 @@ function App() {
           text1={"çalışma"}
           text2={"geçmişi"}
         />
-      </div>
+      </div> */}
 
       <div
         style={{
@@ -515,7 +517,7 @@ function App() {
             )
           )}
         </div>
-        
+
         <Topicbar />
       </div>
       <div

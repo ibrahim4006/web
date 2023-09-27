@@ -21,11 +21,12 @@
 
 export const lessons = ["matematik", "fizik", "kimya", "biyoloji"];
 export const gameTypes = [
-  "Yılan",
-  "Adam Asmaca",
-  "İskambil",
-  "Labirent",
-  "İstila",
+  "1-1-1-YIlan",
+  "1-1-1-Adam Asmaca",
+  "1-1-1-İskambİl",
+  "1-1-1-Labİrent",
+  "1-1-1-İstİla",
+  "1-1-1-Kuyu",
 ];
 export const competitionTypes = [
   "Bomba",
@@ -34,9 +35,9 @@ export const competitionTypes = [
   "Labirent",
   "Fetih",
 ];
-export const choiceType = ["Rastgele", "Özel"];
+export const choiceType = ["rastgele", "özel"];
 export const comType = ["Video", "Message"];
-export const orderType = ["Başlat", "Geri Dön"];
+export const orderType = ["başlat"];
 export const difficulty = ["1-Kolay", "2-Orta", "3-Zor"];
 export const choices = ["A", "B", "C", "D", "E"];
 export const classes = ["9", "10", "11", "12"];

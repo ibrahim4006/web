@@ -1,5 +1,6 @@
 "use client";
 import HoverXSlider from "@/components/common/HoverXSlider";
+import LevelupCard from "@/components/common/LevelupCard";
 import PageTag from "@/components/common/PageTag";
 import SquareButton from "@/components/common/SquareButton";
 import Image from "next/image";
@@ -55,6 +56,7 @@ export default function page() {
 
   return (
     <div>
+      <LevelupCard/>
       {sliderhover && (
         <HoverXSlider id={sliderIndex} percentage={0.07} invert={false} />
       )}

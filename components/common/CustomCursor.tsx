@@ -13,7 +13,7 @@ const CustomCursor = () => {
   const [sides, setSides] = useState([]);
   const [canvas, setCanvas] = useState([]);
   const [speeds, setSpeeds] = useState<number>(0.2);
-  const [speed, setSpeed] = useState<number>(0.05);
+  const [speed, setSpeed] = useState<number>(0.03);
 
   const poss = { x: -12, y: -12 };
 
@@ -57,7 +57,7 @@ const CustomCursor = () => {
   // Function to handle hover-out event
   const canvasMouseOut = () => {
     setSpeeds(0.2); // between 0 and 1
-    setSpeed(0.05); // between 0 and 1
+    setSpeed(0.03); // between 0 and 1
   };
 
   useEffect(() => {

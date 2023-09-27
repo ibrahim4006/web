@@ -55,16 +55,6 @@ export default function page() {
     }
   };
 
-  // Use useEffect to scroll to the element when activeSubject changes
-  useEffect(() => {
-    if (activeGame.length > 0 && gameRef.current) {
-      window.scrollTo({
-        top: 229,
-        behavior: "smooth",
-      });
-    }
-  }, [activeGame]);
-
   useEffect(() => {
     const newSubjects = getSubjectData(activeLesson);
     setSubjects(newSubjects);
@@ -78,8 +68,9 @@ export default function page() {
 
   useEffect(() => {
     if (activeChoiceType.length > 0 && choiceRef.current) {
+      console.log(activeChoiceType);
       window.scrollTo({
-        top: 1200,
+        //top: 1200,
         behavior: "smooth",
       });
     }
@@ -94,6 +85,15 @@ export default function page() {
       });
     }
   }, [activeSubject]);
+
+  useEffect(() => {
+    if (activeGame.length > 0 && gameRef.current) {
+      window.scrollTo({
+        //top: 229,
+        behavior: "smooth",
+      });
+    }
+  }, [activeGame]);
 
   // const slideLeft = () => {
   //   var slider = document.getElementById("slider");
@@ -130,14 +130,26 @@ export default function page() {
     };
   }, []);
 
+  function rndmSubjectSelector(option) {
+    if (option === "özel") {
+      setActiveChoiceType(option);
+      setActiveSubject("")
+    }
+    if (option === "rastgele") {
+      setActiveChoiceType(option);
+      setActiveSubject(
+        subjects[Math.floor(Math.random() * subjects.length)]?.split("-")[3]
+      );
+    }
+  }
+
   return (
     <div className=" h-[3000px]">
-
-      <div className="relative top-52"><Card3/> <Card4/></div>
-      <div className="relative top-[700px]"><Card/> <Card2/></div>
-      {sliderhover && <HoverXSlider id={1} percentage={.07}/>}
-      {sliderhover2 && <HoverXSlider id={2} percentage={.07}/>}
-      <div
+      {/* <div className="relative top-52"><Card3/> <Card4/></div>
+      <div className="relative top-[700px]"><Card/> <Card2/></div> */}
+      {sliderhover && <HoverXSlider id={1} percentage={0.07} />}
+      {sliderhover2 && <HoverXSlider id={2} percentage={0.07} />}
+      {/* <div
         className="panelcard m-auto my-24 mt-[470px] center w-[60%] sm:w-[50%] lg:w-[60%] h-[133px] "
         ref={gameRef}
       >
@@ -149,16 +161,12 @@ export default function page() {
           setActiveOption={setActiveGame}
           activeOption={activeGame}
         />
-      </div>
+      </div> */}
+
       {
         <div
-          className={
-            activeGame.length > 0
-              ? "panelcard m-auto my-36 lg:my-24 center w-[60%] sm:w-[50%] lg:w-[44%] h-[133px]"
-              : "  hidden"
-          }
+          className="panelcard m-auto my-24 mt-[470px] center w-[60%] sm:w-[50%] lg:w-[44%] h-[133px]"
           ref={lessonRef}
-          style={{ display: activeGame.length > 0 ? "" : "hidden" }}
         >
           <div className="frame-right -z-10 animate_content_opening"></div>
           <div className="frame-left -z-10 animate_content_opening"></div>
@@ -185,26 +193,19 @@ export default function page() {
           <ChoiceCard
             options={choiceType}
             direction="horizontal"
-            setActiveOption={setActiveChoiceType}
+            setActiveOption={rndmSubjectSelector}
             activeOption={activeChoiceType}
           />
         </div>
       }
       <div
-        className={activeChoiceType.length > 0 ? "" : "  hidden"}
+        className={activeChoiceType == "rastgele" ? "" : "  hidden"}
         ref={subjectRef}
-        id="sliderholder"
+      ></div>
+      <div
+        className={activeChoiceType == "özel" ? "" : "  hidden"}
+        ref={subjectRef}
       >
-        {/* <div className="relative ">
-          <button
-            className="side-scroll inverse-hover absolute left-0 w-[5%] h-[900px] text-start z-10 opacity-0 cursor-pointer "
-            onClick={slideLeft}
-          ></button>
-          <button
-            className="side-scroll inverse-hover absolute right-0 w-[5%] h-[900px] text-end z-10 opacity-0 cursor-pointer "
-            onClick={slideRight}
-          ></button>
-        </div> */}
         <GenerateIskele
           subjects={subjects}
           setActiveOption={setActiveSubject}
@@ -212,63 +213,57 @@ export default function page() {
           id={1}
         />
       </div>
+
       <div
-        className={activeChoiceType.length > 0 ? "" : "  hidden"}
-        ref={subjectRef}
-        id="sliderholder"
+        className={
+          activeSubject.length > 0 ? " my-12 flex flex-col center " : " hidden"
+        }
+        ref={finalRef}
       >
-        {/* <div className="relative ">
-          <button
-            className="side-scroll inverse-hover absolute left-0 w-[5%] h-[900px] text-start z-10 opacity-0 cursor-pointer "
-            onClick={slideLeft}
-          ></button>
-          <button
-            className="side-scroll inverse-hover absolute right-0 w-[5%] h-[900px] text-end z-10 opacity-0 cursor-pointer "
-            onClick={slideRight}
-          ></button>
-        </div> */}
+        {chosenSubjects.map((subject, index) => (
+          <SquareButton
+            key={index}
+            title={subject}
+            containerStyles={`flex-grow square-btn inverse-hover text-base font-light active m-1`}
+            handleClick={() => setActiveSubject("")}
+          />
+        ))}
+      </div>
+
+      <div
+        className={
+          activeSubject.length > 0
+            ? "flex justify-center items-center my-2"
+            : "  hidden"
+        }
+        ref={gameRef}
+      >
         <GenerateIskele
-          subjects={subjects}
-          setActiveOption={setActiveSubject}
-          activeOption={activeSubject}
-          id={2}
+          subjects={gameTypes}
+          setActiveOption={setActiveGame}
+          activeOption={activeGame}
+          id={1}
         />
       </div>
-      {
-        <div
-          className={
-            activeSubject.length > 0
-              ? " my-12 flex flex-col center "
-              : " hidden"
-          }
-          ref={subjectRef}
-        >
-          {chosenSubjects.map((subject, index) => (
-            <SquareButton
-              key={index}
-              title={subject}
-              containerStyles={`flex-grow square-btn inverse-hover text-base font-light active m-1`}
-            />
-          ))}
-        </div>
-      }
 
-      {activeSubject.length > 0 && (
-        <div
-          className="panelcard m-auto mb-24 center w-[20%] h-[133px]"
-          ref={finalRef}
-        >
-          <div className="frame-right -z-10 animate_content_opening"></div>
-          <div className="frame-left -z-10 animate_content_opening"></div>
-          <ChoiceCard
-            options={orderType}
-            direction="horizontal"
-            setActiveOption={setActiveChoice}
-            activeOption={activeChoice}
-            queryData={[activeLesson, activeSubject]}
-          />
-        </div>
-      )}
+      <div
+        className={
+          activeGame.length > 0
+            ? "panelcard m-auto mb-24 center w-[20%] h-[133px]"
+            : " hidden"
+        }
+        ref={finalRef}
+      >
+        <div className="frame-right -z-10 animate_content_opening"></div>
+        <div className="frame-left -z-10 animate_content_opening"></div>
+        <ChoiceCard
+          options={orderType}
+          direction="horizontal"
+          setActiveOption={setActiveChoice}
+          activeOption={activeChoice}
+          queryData={[activeLesson, activeSubject]}
+        />
+      </div>
     </div>
   );
 }

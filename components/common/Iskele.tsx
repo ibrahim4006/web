@@ -18,15 +18,24 @@ function generateHexagons(iskele, subjects, setActiveOption, activeOption) {
         x={x[index]}
         y={y[index]}
         key={`${iskele}.iskele ${index + 1}.altıgen`}
-        text={subjects[(iskele - 1) * 6 + index]?.split("-")[3]}
-        handleClick={() =>
-          changeActiveOption(subjects[(iskele - 1) * 6 + index]?.split("-")[3])
+        text={
+          iskele > 0
+            ? subjects[(iskele - 1) * 6 + index]?.split("-")[3]
+            : subjects[index]?.split("-")[3]
         }
-          tick={
-            activeOption === subjects[(iskele - 1) * 6 + index]?.split("-")[3]
-              ? `tick`
-              : ``
-          }
+        handleClick={() =>
+          changeActiveOption(
+            iskele > 0
+              ? subjects[(iskele - 1) * 6 + index]?.split("-")[3]
+              : subjects[index]?.split("-")[3]
+          )
+        }
+        tick = {
+          activeOption === (iskele > 0 ? subjects[(iskele - 1) * 6 + index]?.split("-")[3] : subjects[index]?.split("-")[3])
+            ? 'tick'
+            : ''
+        }
+        
       />
     );
   }
@@ -54,10 +63,9 @@ function generateHexagons(iskele, subjects, setActiveOption, activeOption) {
       x={0}
       y={0}
       key={`${iskele}.iskele merkez altıgen`}
-      text={`${iskele}.iskele`}
+      text={iskele > 0 ? `${iskele}.iskele` : "OYUNLAR"}
     />
   );
-
   return hexagons;
 }
 
@@ -65,29 +73,42 @@ export default function GenerateIskele({
   subjects,
   setActiveOption,
   activeOption,
-  id
+  id,
 }) {
   // Accept subjects as a prop
   const iskeles = [];
 
-  // Generate up to 4 divs
-  for (let i = 0; i < 5; i++) {
+  const i_limit = Math.ceil(subjects.length / 6);
+
+  if (i_limit > 1) {
+    for (let i = 0; i < i_limit; i++) {
+      const iskele = (
+        <div
+          className="inline-block relative h-[900px] w-[900px] mx-[30px]"
+          key={i + 1}
+        >
+          {generateHexagons(i + 1, subjects, setActiveOption, activeOption)}
+        </div>
+      );
+      iskeles.push(iskele);
+    }
+  } else {
     const iskele = (
       <div
         className="inline-block relative h-[900px] w-[900px] mx-[30px]"
-        key={i + 1}
+        key={0}
       >
-        {generateHexagons(i + 1, subjects, setActiveOption, activeOption)}
+        {generateHexagons(0, subjects, setActiveOption, activeOption)}
       </div>
     );
     iskeles.push(iskele);
   }
 
   return (
-    <div className="relative flex items-center iskele_animation my-48">
+    <div className="relative flex items-center iskele_animation">
       <div
         id={`slider-${id}`}
-        className="w-full -z-1 h-full pr-24 overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide"
+        className="w-full -z-1 h-full overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide "
       >
         {iskeles}
       </div>
