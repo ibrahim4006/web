@@ -182,7 +182,7 @@ function App() {
       <PageTag tag="PROFİL" />
       <TopNameTag nametag="PROFİL" game={false} />
 
-      <div className="absolute top-0 my-32 flex mx-auto right-0 left-0 center w-[60%] sm:w-[50%] lg:w-[60%] ">
+      {/* <div className="absolute top-0 my-32 flex mx-auto right-0 left-0 center w-[60%] sm:w-[50%] lg:w-[60%] ">
         {[
           "İSTATİSTİKLER",
           "GELİŞİM ANALİZİ",
@@ -196,7 +196,7 @@ function App() {
             handleClick={() => scrollToSection(`section${index + 1}`)}
           />
         ))}
-      </div>
+      </div> */}
       <Completion />
 
       {/* <div
@@ -354,14 +354,14 @@ function App() {
             alignment="left"
             border={null}
             text="toplam soru"
-            value="4298"
+            value=" 4298"
           />
           <Denemedrop
             input={1}
             alignment="right"
             border={null}
             text="sıralama"
-            value="7126"
+            value=" 7126"
           />
         </div>
         <div
@@ -381,7 +381,7 @@ function App() {
             alignment="left"
             border={null}
             text="toplam kupa"
-            value="14"
+            value="   14"
           />
           <Denemedrop
             input={-1}
@@ -445,7 +445,7 @@ function App() {
         ref={sectionRefs.section2}
       >
         <Baslik
-          text="GELİŞİM ANALİZİ"
+          text="HAFTALIK GELİŞİM ANALİZİ"
           yPos="80px"
           textColor="rgb(247,246,241)"
         />
@@ -501,7 +501,7 @@ function App() {
         ref={sectionRefs.section3}
       >
         <Baslik
-          text="TAMAMLAMA ANALİZİ"
+          text="DOĞRU CEVAPLAMA ANALİZİ"
           yPos="90px"
           textColor="rgb(13,13,13)"
         />

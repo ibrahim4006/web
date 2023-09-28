@@ -88,13 +88,13 @@ const Header = () => {
                 : "flex flex-col md:flex-row justify-center items-center font-medium text-sm "
             }
           >
-            <Link href="/mesajlar" className="cursor-none">
+            {/* <Link href="/mesajlar" className="cursor-none">
               <SquareButton
                 title="mesajlar"
                 containerStyles={`header-btn inverse-hover`}
                 handleClick={() => handleFullScreenClick()}
               />
-            </Link>
+            </Link> */}
             <Link href="/arsiv" className="cursor-none">
               <SquareButton
                 title="arşiv"
@@ -102,20 +102,20 @@ const Header = () => {
                 handleClick={() => handleFullScreenClick()}
               />
             </Link>
-            <Link href="/kürsü" className="cursor-none">
+            {/* <Link href="/kürsü" className="cursor-none">
               <SquareButton
                 title="kürsü"
                 containerStyles={`header-btn inverse-hover`}
                 handleClick={() => handleFullScreenClick()}
               />
-            </Link>
-            <Link href="/takvim" className="cursor-none">
+            </Link> */}
+            {/* <Link href="/takvim" className="cursor-none">
               <SquareButton
                 title="takvim"
                 containerStyles={`header-btn inverse-hover`}
                 handleClick={() => handleFullScreenClick()}
               />
-            </Link>
+            </Link> */}
           </div>
           <Link href="/profile" className="cursor-none">
             <Image

@@ -51,7 +51,6 @@ export default function page() {
 
   return (
     <div>
-      <LevelupCard/>
       {sliderhover && (
         <HoverXSlider id={sliderIndex} percentage={0.07} invert={true} />
       )}
@@ -93,7 +92,7 @@ export default function page() {
                 </span>
 
                 <div
-                  className={`absolute w-[5px] h-[5px] rounded-full right-[642px] -bottom-[2.5px] bg-[#F7F6F1]`}
+                  className={`absolute w-[5px] h-[5px] rounded-full right-[642px] -bottom-[2.5px] bg-[#F7F6F1] invert`}
                 />
               </div>
             )
@@ -152,15 +151,15 @@ export default function page() {
                   >
                     <span className="font-bold text-4xl">{qindex + 1}</span>
                     <Image
-                      src="/example.png"
+                      src="/denemesoru.png"
                       alt="lolol"
                       width={400}
                       height={270}
-                      className="w-auto h-full inverse-hover invert"
+                      className="w-auto h-full inverse-hover"
                     />
                     <SquareButton
                       title="SORUNUN ÇÖZÜMÜ"
-                      containerStyles="ingame-btn-inverted inverse-hover "
+                      containerStyles="ingame-btn-inverted inverse-hover my-4"
                       handleClick={() => takeQuestion("fetch")}
                     />
                   </div>

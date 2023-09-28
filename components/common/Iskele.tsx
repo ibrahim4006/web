@@ -1,8 +1,15 @@
 import React from "react";
 import Image from "next/image";
 import Hexagon from "@/components/common/Hexagon";
+import HexagonEmpty from "./HexagonEmpty";
 
-function generateHexagons(iskele, subjects, setActiveOption, activeOption) {
+function generateHexagons(
+  iskele,
+  subjects,
+  setActiveOption,
+  activeOption,
+  chosenSubjects
+) {
   const changeActiveOption = (option: string) => {
     setActiveOption(option);
   };
@@ -11,33 +18,59 @@ function generateHexagons(iskele, subjects, setActiveOption, activeOption) {
   const x = [252.5, 0, -252.5, -252.5, 0, 252.5];
   const y = [145, 291, 145, -145, -291, -145];
   for (let index = 0; index < 6; index++) {
-    hexagons.push(
-      <Hexagon
-        iskele={iskele}
-        index={index}
-        x={x[index]}
-        y={y[index]}
-        key={`${iskele}.iskele ${index + 1}.altıgen`}
-        text={
-          iskele > 0
-            ? subjects[(iskele - 1) * 6 + index]?.split("-")[3]
-            : subjects[index]?.split("-")[3]
-        }
-        handleClick={() =>
-          changeActiveOption(
+    if (
+      chosenSubjects?.includes(
+        iskele > 0
+          ? subjects[(iskele - 1) * 6 + index]?.split("-")[3]
+          : subjects[index]?.split("-")[3]
+      )
+    ) {
+      hexagons.push(
+        <HexagonEmpty
+          iskele={iskele}
+          index={index}
+          x={x[index]}
+          y={y[index]}
+          key={`${iskele}.iskele ${index + 1}.altıgen`}
+          text={
             iskele > 0
               ? subjects[(iskele - 1) * 6 + index]?.split("-")[3]
               : subjects[index]?.split("-")[3]
-          )
-        }
-        tick = {
-          activeOption === (iskele > 0 ? subjects[(iskele - 1) * 6 + index]?.split("-")[3] : subjects[index]?.split("-")[3])
-            ? 'tick'
-            : ''
-        }
-        
-      />
-    );
+          }
+          handleClick={() =>
+            changeActiveOption(
+              iskele > 0
+                ? subjects[(iskele - 1) * 6 + index]?.split("-")[3]
+                : subjects[index]?.split("-")[3]
+            )
+          }
+          tick={"tick"}
+        />
+      );
+    } else {
+      hexagons.push(
+        <Hexagon
+          iskele={iskele}
+          index={index}
+          x={x[index]}
+          y={y[index]}
+          key={`${iskele}.iskele ${index + 1}.altıgen`}
+          text={
+            iskele > 0
+              ? subjects[(iskele - 1) * 6 + index]?.split("-")[3]
+              : subjects[index]?.split("-")[3]
+          }
+          handleClick={() =>
+            changeActiveOption(
+              iskele > 0
+                ? subjects[(iskele - 1) * 6 + index]?.split("-")[3]
+                : subjects[index]?.split("-")[3]
+            )
+          }
+          tick={""}
+        />
+      );
+    }
   }
   hexagons.push(
     <Image
@@ -57,7 +90,7 @@ function generateHexagons(iskele, subjects, setActiveOption, activeOption) {
   );
 
   hexagons.push(
-    <Hexagon
+    <HexagonEmpty
       iskele={iskele}
       index={-1}
       x={0}
@@ -74,6 +107,7 @@ export default function GenerateIskele({
   setActiveOption,
   activeOption,
   id,
+  chosenSubjects,
 }) {
   // Accept subjects as a prop
   const iskeles = [];
@@ -87,7 +121,13 @@ export default function GenerateIskele({
           className="inline-block relative h-[900px] w-[900px] mx-[30px]"
           key={i + 1}
         >
-          {generateHexagons(i + 1, subjects, setActiveOption, activeOption)}
+          {generateHexagons(
+            i + 1,
+            subjects,
+            setActiveOption,
+            activeOption,
+            chosenSubjects
+          )}
         </div>
       );
       iskeles.push(iskele);
@@ -98,7 +138,7 @@ export default function GenerateIskele({
         className="inline-block relative h-[900px] w-[900px] mx-[30px]"
         key={0}
       >
-        {generateHexagons(0, subjects, setActiveOption, activeOption)}
+        {generateHexagons(0, subjects, setActiveOption, activeOption,chosenSubjects)}
       </div>
     );
     iskeles.push(iskele);

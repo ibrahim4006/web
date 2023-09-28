@@ -31,7 +31,7 @@ export default function page() {
   const [subjects, setSubjects] = useState<string[]>([""]);
   const [activeSubject, setActiveSubject] = useState<string>("");
   const [activeChoice, setActiveChoice] = useState<string>("");
-  const [chosenSubjects, setChosenSubjects] = useState<string[]>([""]);
+  const [chosenSubjects, setChosenSubjects] = useState<string[]>([]);
 
   // Create a ref for the element you want to scroll to
   const subjectRef = useRef<HTMLDivElement>(null);
@@ -106,20 +106,19 @@ export default function page() {
   // };
 
   const [sliderhover, setSliderHover] = useState(false);
-  const [sliderhover2, setSliderHover2] = useState(false);
 
   useEffect(() => {
     function handleMouseMove(event) {
-      const mouseY = event.clientY + window.scrollY;
-      if (mouseY > 1300 && mouseY < 2100) {
-        setSliderHover(true);
-        setSliderHover2(false);
-      } else if (mouseY > 2400 && mouseY < 3200) {
-        setSliderHover2(true);
+      const mouseY = event.clientY + window.scrollY + 100;
+      if (activeChoiceType == "özel") {
+        if (mouseY > 1000 && mouseY < 1800) {
+          setSliderHover(true);
+        } else {
+          setSliderHover(false);
+        }
+      }
+      if (activeChoiceType == "rastgele") {
         setSliderHover(false);
-      } else {
-        setSliderHover(false);
-        setSliderHover2(false);
       }
     }
 
@@ -128,27 +127,49 @@ export default function page() {
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
     };
-  }, []);
+  }, [activeChoiceType]);
 
   function rndmSubjectSelector(option) {
     if (option === "özel") {
       setActiveChoiceType(option);
-      setActiveSubject("")
-    }
-    if (option === "rastgele") {
+      setChosenSubjects([]);
+    } else if (option === "rastgele") {
       setActiveChoiceType(option);
-      setActiveSubject(
-        subjects[Math.floor(Math.random() * subjects.length)]?.split("-")[3]
-      );
+      const newChosenSubjects = [];
+
+      while (newChosenSubjects.length < 1) {
+        const randomSubject =
+          subjects[Math.floor(Math.random() * subjects.length)]?.split("-")[3];
+        if (!newChosenSubjects.includes(randomSubject)) {
+          newChosenSubjects.push(randomSubject);
+        }
+      }
+      setChosenSubjects(newChosenSubjects);
+    } else {
+      if (chosenSubjects.length < 1) {
+        setActiveSubject(option);
+      }
+
+      if (!chosenSubjects.includes(option) && chosenSubjects.length < 1) {
+        const updatedSubjects = [...chosenSubjects, option];
+        setChosenSubjects(updatedSubjects);
+      } else if (chosenSubjects.includes(option) && chosenSubjects.length < 2) {
+        const updatedSubjects = chosenSubjects.filter(
+          (subject) => subject !== option
+        );
+        setChosenSubjects(updatedSubjects);
+      }
+    }
+    if (chosenSubjects.length == 0) {
+      setActiveGame("");
     }
   }
 
   return (
-    <div className=" h-[3000px]">
+    <div className=" -top-[100px] relative h-[3000px]">
       {/* <div className="relative top-52"><Card3/> <Card4/></div>
       <div className="relative top-[700px]"><Card/> <Card2/></div> */}
       {sliderhover && <HoverXSlider id={1} percentage={0.07} />}
-      {sliderhover2 && <HoverXSlider id={2} percentage={0.07} />}
       {/* <div
         className="panelcard m-auto my-24 mt-[470px] center w-[60%] sm:w-[50%] lg:w-[60%] h-[133px] "
         ref={gameRef}
@@ -165,7 +186,7 @@ export default function page() {
 
       {
         <div
-          className="panelcard m-auto my-24 mt-[470px] center w-[60%] sm:w-[50%] lg:w-[44%] h-[133px]"
+          className="panelcard m-auto my-24 pt-[470px] center w-[60%] sm:w-[50%] lg:w-[44%] h-[133px]"
           ref={lessonRef}
         >
           <div className="frame-right -z-10 animate_content_opening"></div>
@@ -208,15 +229,17 @@ export default function page() {
       >
         <GenerateIskele
           subjects={subjects}
-          setActiveOption={setActiveSubject}
+          setActiveOption={rndmSubjectSelector}
           activeOption={activeSubject}
           id={1}
+          chosenSubjects={chosenSubjects}
         />
       </div>
 
+      
       <div
         className={
-          activeSubject.length > 0 ? " my-12 flex flex-col center " : " hidden"
+          chosenSubjects.length > 0 ? " my-12 flex flex-col center " : " hidden"
         }
         ref={finalRef}
       >
@@ -225,14 +248,18 @@ export default function page() {
             key={index}
             title={subject}
             containerStyles={`flex-grow square-btn inverse-hover text-base font-light active m-1`}
-            handleClick={() => setActiveSubject("")}
+            handleClick={() => {
+              const newSubjects = [...chosenSubjects]; // Create a copy of the original array
+              newSubjects.splice(index, 1);
+              setChosenSubjects(newSubjects);
+            }}
           />
         ))}
       </div>
 
       <div
         className={
-          activeSubject.length > 0
+          chosenSubjects.length > 0
             ? "flex justify-center items-center my-2"
             : "  hidden"
         }
@@ -243,13 +270,14 @@ export default function page() {
           setActiveOption={setActiveGame}
           activeOption={activeGame}
           id={1}
+          chosenSubjects={activeGame}
         />
       </div>
 
       <div
         className={
           activeGame.length > 0
-            ? "panelcard m-auto mb-24 center w-[20%] h-[133px]"
+            ? "panelcard m-auto mb-24 center w-[10%] h-[133px]"
             : " hidden"
         }
         ref={finalRef}
@@ -261,7 +289,7 @@ export default function page() {
           direction="horizontal"
           setActiveOption={setActiveChoice}
           activeOption={activeChoice}
-          queryData={[activeLesson, activeSubject]}
+          queryData={[activeLesson, chosenSubjects]}
         />
       </div>
     </div>

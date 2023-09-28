@@ -104,20 +104,19 @@ export default function page() {
   // };
 
   const [sliderhover, setSliderHover] = useState(false);
-  const [sliderhover2, setSliderHover2] = useState(false);
 
   useEffect(() => {
     function handleMouseMove(event) {
-      const mouseY = event.clientY + window.scrollY;
-      if (mouseY > 1300 && mouseY < 2100) {
-        setSliderHover(true);
-        setSliderHover2(false);
-      } else if (mouseY > 2400 && mouseY < 3200) {
-        setSliderHover2(true);
+      const mouseY = event.clientY + window.scrollY + 100;
+      if (activeChoiceType == "özel") {
+        if (mouseY > 1000 && mouseY < 1800) {
+          setSliderHover(true);
+        } else {
+          setSliderHover(false);
+        }
+      }
+      if (activeChoiceType == "rastgele") {
         setSliderHover(false);
-      } else {
-        setSliderHover(false);
-        setSliderHover2(false);
       }
     }
 
@@ -126,7 +125,7 @@ export default function page() {
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
     };
-  }, []);
+  }, [activeChoiceType]);
 
   function rndmSubjectSelector(option) {
     if (option === "özel") {
@@ -135,7 +134,7 @@ export default function page() {
     } else if (option === "rastgele") {
       setActiveChoiceType(option);
       const newChosenSubjects = [];
-      
+
       while (newChosenSubjects.length < 3) {
         const randomSubject =
           subjects[Math.floor(Math.random() * subjects.length)]?.split("-")[3];
@@ -145,19 +144,30 @@ export default function page() {
       }
       setChosenSubjects(newChosenSubjects);
     } else {
-      setActiveSubject(option);
-      if (!chosenSubjects.includes(option) && chosenSubjects.length < 3) {
-        chosenSubjects.push(option);
+      if (chosenSubjects.length < 3) {
+        setActiveSubject(option);
       }
+
+      if (!chosenSubjects.includes(option) && chosenSubjects.length < 3) {
+        const updatedSubjects = [...chosenSubjects, option];
+        setChosenSubjects(updatedSubjects);
+      } else if (chosenSubjects.includes(option) && chosenSubjects.length < 4) {
+        const updatedSubjects = chosenSubjects.filter(
+          (subject) => subject !== option
+        );
+        setChosenSubjects(updatedSubjects);
+      }
+    }
+    if (chosenSubjects.length == 0) {
+      setActiveGame("");
     }
   }
 
   return (
-    <div className=" h-[3000px]">
+    <div className=" relative -top-[100px] h-[3000px]">
       {/* <div className="relative top-52"><Card3/> <Card4/></div>
       <div className="relative top-[700px]"><Card/> <Card2/></div> */}
       {sliderhover && <HoverXSlider id={1} percentage={0.07} />}
-      {sliderhover2 && <HoverXSlider id={2} percentage={0.07} />}
       {/* <div
         className="panelcard m-auto my-24 mt-[470px] center w-[60%] sm:w-[50%] lg:w-[60%] h-[133px] "
         ref={gameRef}
@@ -174,7 +184,7 @@ export default function page() {
 
       {
         <div
-          className="panelcard m-auto my-24 mt-[470px] center w-[60%] sm:w-[50%] lg:w-[44%] h-[133px]"
+          className="panelcard m-auto my-24 pt-[470px] center w-[60%] sm:w-[50%] lg:w-[44%] h-[133px]"
           ref={lessonRef}
         >
           <div className="frame-right -z-10 animate_content_opening"></div>
@@ -220,12 +230,13 @@ export default function page() {
           setActiveOption={rndmSubjectSelector}
           activeOption={activeSubject}
           id={1}
+          chosenSubjects={chosenSubjects}
         />
       </div>
 
       <div
         className={
-          chosenSubjects.length > 0 ? " my-12 flex flex-col center " : " hidden"
+          chosenSubjects.length > 0 ? " my-12 flex flex-col center" : " hidden"
         }
         ref={finalRef}
       >
@@ -241,11 +252,21 @@ export default function page() {
             }}
           />
         ))}
+
+        {Array(3 - chosenSubjects.length)
+          .fill(null)
+          .map((_, index) => (
+            <SquareButton
+              key={index}
+              title={"KONU SEÇ"}
+              containerStyles={`flex-grow square-btn inverse-hover text-base font-light active m-1 opacity-30`}
+            />
+          ))}
       </div>
 
       <div
         className={
-          chosenSubjects.length > 0
+          chosenSubjects.length == 3
             ? "flex justify-center items-center my-2"
             : "  hidden"
         }
@@ -256,13 +277,14 @@ export default function page() {
           setActiveOption={setActiveGame}
           activeOption={activeGame}
           id={1}
+          chosenSubjects={activeGame}
         />
       </div>
 
       <div
         className={
           activeGame.length > 0
-            ? "panelcard m-auto mb-24 center w-[20%] h-[133px]"
+            ? "panelcard m-auto my-24 center w-[10%] h-[133px]"
             : " hidden"
         }
         ref={finalRef}

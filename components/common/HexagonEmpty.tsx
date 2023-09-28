@@ -73,6 +73,7 @@ const HexagonEmpty = ({
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              color: "rgb(13,13,13)"
             }}
           >
             {text}

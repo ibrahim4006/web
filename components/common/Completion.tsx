@@ -29,7 +29,6 @@ function generateHexagons(subjects) {
               x={0}
               y={0}
               key={`${index + 1}.altıgen`}
-              text={subjects[index]}
             />
           </div>
         );
@@ -228,10 +227,10 @@ export default function Completion() {
             </div>
             <div className="flex center flex-row">
               <Image
-                src="/logo_deneme.png"
-                alt="logo_deneme"
-                width={20}
-                height={20}
+                src="/logo_zincir.svg"
+                alt="logo_zincir"
+                width={30}
+                height={30}
                 className="scale-125"
               />
               <span

@@ -33,7 +33,7 @@ const Denemedrop = ({ input, alignment, border, text, value, setDataindex }) => 
 
       }}
       className="group hover:bg-[#F7F6F1]"
-      onMouseEnter={() => changeActiveOption(text)}
+      onMouseEnter={() => setDataindex ? changeActiveOption(text) : ""}
       
     >
       <span
@@ -49,7 +49,7 @@ const Denemedrop = ({ input, alignment, border, text, value, setDataindex }) => 
           fontWeight: "500",
           fontFamily: "Montserrat",
         }}
-        className=" group-hover:text-black"
+        className=" group-hover:text-black items-center"
       >
         +
       </span>
