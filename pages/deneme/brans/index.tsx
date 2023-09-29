@@ -10,6 +10,7 @@ import CanvasButtons from "@/components/deneme/CanvasButtons";
 import ChoiceDrawer from "@/components/common/ChoiceDrawer";
 import ChoiceBox from "@/components/common/ChoiceBox";
 import RenderDivs from "@/components/deneme/RenderDivs";
+import BottomQButton from "@/components/deneme/BottomQButton";
 
 type Props = {};
 
@@ -31,12 +32,12 @@ const page = (props: Props) => {
   const [mappedArray, setMappedArray] = useState<string[]>([]);
 
   useEffect(() => {
-    const alphabetArray = ['A', 'B', 'C', 'D', 'E'];
-    const newMappedArray = clickedIndexes.map(index => alphabetArray[index]);
+    const alphabetArray = ["A", "B", "C", "D", "E"];
+    const newMappedArray = clickedIndexes.map((index) => alphabetArray[index]);
     setMappedArray(newMappedArray);
   }, [clickedIndexes]);
 
-  console.log(mappedArray)
+  console.log(mappedArray);
 
   const imageurls = [
     "/soru/soru_1.svg",
@@ -177,7 +178,7 @@ const page = (props: Props) => {
             MATEMATİK
           </span>
         </div>
-        <div className="w-full flex flex-row relative h-[30000px] justify-between top-0">
+        <div className="w-full flex flex-row relative h-[15000px] justify-between top-0">
           <canvas
             ref={canvasRef}
             onMouseDown={onMouseDown}
@@ -237,9 +238,10 @@ const page = (props: Props) => {
           </div>
           <div
             key={"orta ayraç"}
-            className=" absolute left-0 right-0 mx-auto flex w-[1px] bg-black h-full z-10 justify-center"
+            className=" absolute left-0 right-0 mx-auto flex w-[1px] bg-[#0D0D0D] h-full z-10 justify-center"
           >
             <div className="arrow arrow-down absolute top-0 flex flex-col items-center" />
+            <div className="arrow arrow-up absolute bottom-0 flex flex-col items-center" />
             {leftheights &&
               topPositionsLeft &&
               [...Array(leftheights.length)].map((subject, ind_left_index) => (
@@ -343,6 +345,32 @@ const page = (props: Props) => {
               </div>
             ))}
           </div>
+        </div>
+        <div className="flex flex-col w-[90%] h-96 right-0 left-0 mx-auto items- center">
+          <div className="flex flex-row w-full justify-between pb-6 z-1">
+            {[...Array(10)].map((subject, frindex) => (
+              <BottomQButton
+                key={frindex}
+                text={mappedArray[frindex + 1] ? mappedArray[frindex + 1] : ""}
+                onClick={() => scrollToSection(frindex + 1)}
+              />
+            ))}
+          </div>
+          <div className="absolute w-[95%] h-28 rounded-md border-[1px] -z-10 border-[#0D0D0D] opacity-30"></div>
+          <div className="flex flex-row w-full justify-between pt-6 z-1">
+            {[...Array(10)].map((subject, srindex) => (
+              <BottomQButton
+                key={srindex}
+                text={
+                  mappedArray[11 + srindex] ? mappedArray[11 + srindex] : ""
+                }
+                onClick={() => scrollToSection(11 + srindex)}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="right-0 left-0 mx-auto mt-12 mb-48 w-72 h-20 inverse-hover relative flex center font-bold text-3xl text-[#0D0D0D] hover:scale-[105%] duration-200">
+          <BottomQButton text={"TESTİ BİTİR"} />
         </div>
       </div>
     </div>

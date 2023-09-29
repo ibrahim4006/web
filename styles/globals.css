@@ -1576,6 +1576,11 @@ body {
   border-left: 4px solid transparent;
 }
 
+.arrow-up {
+  border-right: 4px solid transparent;
+  border-bottom: 8px solid black;
+  border-left: 4px solid transparent;
+}
 
 /* .ingame-btn {
   @apply py-3 px-[23px] rounded-[26px] border-[1px] border-[#0D0D0D] text-base font-bold hover:bg-[#0D0D0D]  hover:text-[#F7F6F1] cursor-none active:bg-[#0D0D0D] whitespace-nowrap;
