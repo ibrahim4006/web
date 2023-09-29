@@ -346,7 +346,7 @@ const page = (props: Props) => {
             ))}
           </div>
         </div>
-        <div className="flex flex-col w-[90%] h-96 right-0 left-0 mx-auto items- center">
+        <div className="flex flex-col w-[90%] h-80 right-0 left-0 mx-auto items- center">
           <div className="flex flex-row w-full justify-between pb-6 z-1">
             {[...Array(10)].map((subject, frindex) => (
               <BottomQButton
@@ -369,8 +369,11 @@ const page = (props: Props) => {
             ))}
           </div>
         </div>
-        <div className="right-0 left-0 mx-auto mt-12 mb-48 w-72 h-20 inverse-hover relative flex center font-bold text-3xl text-[#0D0D0D] hover:scale-[105%] duration-200">
-          <BottomQButton text={"TESTİ BİTİR"} />
+        <div className="bottom-0 right-0 left-0 mx-auto mt-0 w-[500px] h-72 inverse-hover relative flex center font-bold text-3xl text-[#0D0D0D]">
+          <div className="border-[1px] border-b-0 h-1/2 w-full absolute bottom-0 right-0 left-0 mx-auto rounded-md rounded-b-none" />
+          <BottomQButton text={"TESTİ BİTİR"} height={120} width={300} />
+          <div className="arrow arrow-up absolute bottom-0 -left-[3.5px] flex flex-col items-center" />
+          <div className="arrow arrow-up absolute bottom-0 -right-[3.5px] flex flex-col items-center" />
         </div>
       </div>
     </div>
