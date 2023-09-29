@@ -68,7 +68,17 @@ const SoruAyrac = ({
             />
           </div>
           <div className="border-[1px] h-10 w-10 rounded-full flex center relative inverse-hover">
-            <div className=" h-6 w-6 bg-[#0D0D0D] rounded-full" />
+            <div className=" h-6 w-6 bg-[#0D0D0D] rounded-full flex center group">
+              <span
+                className={
+                  isaretle
+                    ? "group-hover:flex hidden text-white font-bold text-xs"
+                    : "hidden"
+                }
+              >
+                {qnumber}
+              </span>
+            </div>
           </div>
           <div
             key={"time left min"}
@@ -170,7 +180,17 @@ const SoruAyrac = ({
             />
           </div>
           <div className="border-[1px] h-10 w-10 rounded-full flex center relative inverse-hover">
-            <div className=" h-6 w-6 bg-[#0D0D0D] rounded-full" />
+            <div className=" h-6 w-6 bg-[#0D0D0D] rounded-full flex center group">
+              <span
+                className={
+                  isaretle
+                    ? "group-hover:flex hidden text-white font-bold text-xs"
+                    : "hidden"
+                }
+              >
+                {qnumber}
+              </span>
+            </div>
           </div>
           <div
             key={"time left min"}

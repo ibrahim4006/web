@@ -7,6 +7,9 @@ import Canvas from "@/components/common/Canvas";
 import Denemedrop from "@/components/profile/denemedrop";
 import SoruAyrac from "@/components/deneme/SoruAyrac";
 import CanvasButtons from "@/components/deneme/CanvasButtons";
+import ChoiceDrawer from "@/components/common/ChoiceDrawer";
+import ChoiceBox from "@/components/common/ChoiceBox";
+import RenderDivs from "@/components/deneme/RenderDivs";
 
 type Props = {};
 
@@ -16,12 +19,24 @@ const page = (props: Props) => {
   const [canvasShow, setCanvasShow] = useState(false);
 
   const [openButtons, setOpenButtons] = useState<number>(0);
-  console.log(openButtons);
 
   const [flaggedQuestions, setFlaggedQuestions] = useState<number[]>([]);
 
   const [rightheights, setRightHeights] = useState<number[]>([]);
+  const [rightwidths, setRightWidths] = useState<number[]>([]);
   const [leftheights, setLeftHeights] = useState<number[]>([]);
+  const [leftwidths, setLeftWidths] = useState<number[]>([]);
+
+  const [clickedIndexes, setClickedIndexes] = useState<number[]>([0]);
+  const [mappedArray, setMappedArray] = useState<string[]>([]);
+
+  useEffect(() => {
+    const alphabetArray = ['A', 'B', 'C', 'D', 'E'];
+    const newMappedArray = clickedIndexes.map(index => alphabetArray[index]);
+    setMappedArray(newMappedArray);
+  }, [clickedIndexes]);
+
+  console.log(mappedArray)
 
   const imageurls = [
     "/soru/soru_1.svg",
@@ -38,12 +53,16 @@ const page = (props: Props) => {
 
   const handleImageLoadRight = (event: React.MouseEvent<HTMLImageElement>) => {
     const imageHeight = event.currentTarget.height ?? 0;
+    const imageWidth = event.currentTarget.width ?? 0;
     setRightHeights((heights) => [...heights, imageHeight]); // Add the new height to the array
+    setRightWidths((widths) => [...widths, imageWidth]); // Add the new height to the array
   };
 
   const handleImageLoadLeft = (event: React.MouseEvent<HTMLImageElement>) => {
     const imageHeight = event.currentTarget.height ?? 0;
+    const imageWidth = event.currentTarget.width ?? 0;
     setLeftHeights((heights) => [...heights, imageHeight]); // Add the new height to the array
+    setLeftWidths((widths) => [...widths, imageWidth]); // Add the new height to the array
   };
 
   //console.log(leftheights, "leftheights");
@@ -106,7 +125,12 @@ const page = (props: Props) => {
   const scrollToSection = (number) => {
     const element = document.getElementById(`section-${number}`);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const rect = element.getBoundingClientRect();
+      const topPosition = rect.top;
+      window.scrollTo({
+        top: window.scrollY + topPosition - 250,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -177,14 +201,32 @@ const page = (props: Props) => {
                 >
                   {2 * qindex + 1}
                 </span>
-                <Image
-                  src={imageurls[qindex]}
-                  alt="lolol"
-                  width={400}
-                  height={270}
-                  className="w-full h-auto max-h-[1200px] inverse-hover relative"
-                  onLoad={handleImageLoadLeft}
-                />
+                <div className="relative w-full">
+                  <Image
+                    src={imageurls[qindex]}
+                    alt="lolol"
+                    width={400}
+                    height={270}
+                    className="w-full h-auto max-h-[1200px] pointer-events-none relative"
+                    onLoad={handleImageLoadLeft}
+                  />
+                  <RenderDivs
+                    qindex={2 * qindex + 1}
+                    dir="left"
+                    leftwidths={leftwidths}
+                    rightwidths={rightwidths}
+                    leftheights={leftheights}
+                    rightheights={rightheights}
+                    setClickedIndexes={setClickedIndexes}
+                    clickedIndexes={clickedIndexes}
+                  />
+                </div>
+                {/* <ChoiceDrawer
+                  agaImage={imageurls[qindex]}
+                  width={leftwidths[qindex]}
+                  height={leftheights[qindex]}
+                  handleImageLoadLeft={handleImageLoadLeft}
+                /> */}
                 {/* <SquareButton
                   title="SORUNUN ÇÖZÜMÜ"
                   containerStyles="ingame-btn inverse-hover "
@@ -273,14 +315,26 @@ const page = (props: Props) => {
                 >
                   {2 * qindex + 2}
                 </span>
-                <Image
-                  src={imageurls[9 - qindex]}
-                  alt="lolol"
-                  width={400}
-                  height={270}
-                  className="w-full h-auto  max-h-[1200px]  inverse-hover relative"
-                  onLoad={handleImageLoadRight}
-                />
+                <div className="relative w-full">
+                  <Image
+                    src={imageurls[9 - qindex]}
+                    alt="lolol"
+                    width={400}
+                    height={270}
+                    className="w-full h-auto  max-h-[1200px]  pointer-events-none relative"
+                    onLoad={handleImageLoadRight}
+                  />
+                  <RenderDivs
+                    qindex={2 * qindex + 2}
+                    dir="right"
+                    leftwidths={leftwidths}
+                    rightwidths={rightwidths}
+                    leftheights={leftheights}
+                    rightheights={rightheights}
+                    setClickedIndexes={setClickedIndexes}
+                    clickedIndexes={clickedIndexes}
+                  />
+                </div>
                 {/* <SquareButton
                   title="SORUNUN ÇÖZÜMÜ"
                   containerStyles="ingame-btn inverse-hover "
