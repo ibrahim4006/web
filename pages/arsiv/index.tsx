@@ -16,22 +16,22 @@ export default function page() {
     function handleMouseMove(event) {
       const mouseY = event.clientY + window.scrollY;
 
-      setSliderIndex(Math.ceil((mouseY - 250) / 900));
-      if (mouseY < 250) {
+      setSliderIndex(Math.ceil((mouseY - 350) / 900));
+      if (mouseY < 350) {
         setSliderHover(true);
         setSliderHover2(false);
       } else if (
-        mouseY > 250 + (sliderIndex - 1) * 900 &&
-        mouseY < 1150 + (sliderIndex - 1) * 900
+        mouseY > 350 + (sliderIndex - 1) * 900 &&
+        mouseY < 1250 + (sliderIndex - 1) * 900
       ) {
         setSliderHover2(true);
         setSliderHover(false);
-        
+
         setTimeout(() => {
           var slider = document.getElementById(`slider-${sliderIndex}`);
-        setQuestionIndicator(Math.ceil(slider.scrollLeft / 964));
-        console.log(questionIndicator,"nigga");
-        }, 200)
+          setQuestionIndicator(Math.ceil(slider.scrollLeft / 964));
+          console.log(questionIndicator, "nigga");
+        }, 200);
       } else {
         setSliderHover(false);
         setSliderHover2(false);
@@ -85,7 +85,7 @@ export default function page() {
       </div>
       <div
         key={"lesson slider"}
-        className=" flex items-center relative top-0 pt-32 bg-[#F7F6F1] z-10"
+        className=" flex items-center relative top-0 pt-60 bg-[#F7F6F1] z-10"
       >
         <div
           id={`slider-${0}`}
@@ -94,15 +94,14 @@ export default function page() {
           {["türkçe", "matematik", "fizik", "kimya", "biyoloji"].map(
             (subject, index) => (
               <div
-                className="  relative  min-w-[964px] font-bold text-5xl uppercase flex  justify-end"
+                className="  relative  min-w-[964px] font-bold text-4xl uppercase flex  justify-end"
                 key={index}
               >
-                <span className=" relative profile-head pb-2 inverse-hover">
+                <span className=" relative profile-head inverse-hover">
                   {subject}
                 </span>
-
                 <div
-                  className={`absolute w-[5px] h-[5px] rounded-full right-[642px] -bottom-[2.5px] bg-[#0D0D0D]`}
+                  className={`absolute w-[5px] h-[5px] rounded-full right-[770px] -bottom-[4px] bg-[#0D0D0D]`}
                 />
               </div>
             )
@@ -112,7 +111,7 @@ export default function page() {
       <div className="w-full  relative flex justify-between flex-row">
         <div
           key={"left region"}
-          className="flex h-[2000px] relative justify-start w-1/6"
+          className="flex h-[2000px] relative justify-start w-[10%]"
         ></div>
         <div
           key={"region seperator"}
@@ -124,7 +123,7 @@ export default function page() {
 
         <div
           key={"right region"}
-          className="flex h-[9000px] justify-start w-5/6 relative flex-col items-start"
+          className="flex h-[9000px] justify-start w-[90%] relative flex-col items-start"
         >
           {[...Array(2)].map((_, windex) => (
             <div
@@ -156,20 +155,20 @@ export default function page() {
               >
                 {[...Array(7)].map((subject, qindex) => (
                   <div
-                    className="  relative h-[900px] min-w-[964px] object-contain font-bold text-5xl uppercase flex flex-col items-start justify-center p-32"
+                    className="  relative h-[900px] min-w-[964px] object-contain font-bold text-5xl uppercase flex flex-col items-start justify-center px-48"
                     key={`${qindex}.question`}
                   >
-                    <span className="font-bold text-4xl">{qindex + 1}</span>
+                    <span className="font-bold text-4xl pb-8">{qindex + 1}</span>
                     <Image
-                      src="/example.png"
+                      src="/soru/soru_1.svg"
                       alt="lolol"
                       width={400}
                       height={270}
-                      className="w-auto h-full inverse-hover "
+                      className="w-full h-auto inverse-hover"
                     />
                     <SquareButton
                       title="SORUNUN ÇÖZÜMÜ"
-                      containerStyles="ingame-btn inverse-hover "
+                      containerStyles="ingame-btn inverse-hover scale-90 -left-8 relative mt-8"
                       handleClick={() => takeQuestion("fetch")}
                     />
                   </div>

@@ -23,6 +23,7 @@ import Card2 from "@/components/common/Card2";
 import Card3 from "@/components/common/Card3";
 import Card4 from "@/components/common/Card4";
 import LevelupCard from "@/components/common/LevelupCard";
+import { useSubjectState } from "@/context/SubjectContext";
 
 export default function page() {
   const [activeGame, setActiveGame] = useState<string>("");
@@ -39,6 +40,17 @@ export default function page() {
   const gameRef = useRef<HTMLDivElement>(null);
   const lessonRef = useRef<HTMLDivElement>(null);
   const finalRef = useRef<HTMLDivElement>(null);
+
+  const { lesson, subject } = useSubjectState();
+  useEffect(() => {
+    lesson && setActiveLesson(lesson);
+    if (subject) {
+      setChosenSubjects([subject]);
+      setActiveChoiceType("özel");
+      setActiveSubject(subject);
+    }
+  }, [lesson, subject]);
+  console.log(chosenSubjects);
 
   const getSubjectData = (subject: string): string[] => {
     switch (subject) {
@@ -236,7 +248,6 @@ export default function page() {
         />
       </div>
 
-      
       <div
         className={
           chosenSubjects.length > 0 ? " my-12 flex flex-col center " : " hidden"

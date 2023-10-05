@@ -178,7 +178,7 @@ function App() {
 
   const [dataindex, setDataindex] = useState("matematik");
   return (
-    <div className="App">
+    <div className="App overflow-x-hidden">
       <PageTag tag="PROFİL" />
       <TopNameTag nametag="PROFİL" game={false} />
 

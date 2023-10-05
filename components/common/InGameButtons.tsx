@@ -10,6 +10,8 @@ const InGameButtons = ({
   setCanvasShow,
   setColor,
   undo,
+  isliked,
+  setIsliked,
 }) => {
   const [hex, setHex] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -56,8 +58,8 @@ const InGameButtons = ({
       key={"inGameButtons"}
       className={
         canvasShow
-          ? "h-fit pb-[2px] w-full relative top-[755px] sm:top-[868px] flex justify-center md:flex-row flex-col items-center border-t z-10"
-          : "h-fit pb-[2px] w-full relative top-[820px] sm:top-[868px] flex justify-center md:flex-row flex-col items-center border-t z-10"
+          ? "h-fit pb-[2px] w-full relative top-[755px] sm:top-[868px] flex justify-center md:flex-row flex-col items-center border-t z-10 border-t-[#adada9]"
+          : "h-fit pb-[2px] w-full relative top-[820px] sm:top-[868px] flex justify-center md:flex-row flex-col items-center border-t z-10 border-t-[#adada9]"
       }
     >
       <div
@@ -89,14 +91,19 @@ const InGameButtons = ({
             key={"bookmark"}
             type="button"
             className="ingame-btn inverse-hover group flex justify-center items-center"
+            style={{ backgroundColor: isliked ? "#0D0D0D" : "" }}
           >
             <Image
               src="/bookmark.svg"
               alt="kaydet"
               width={16}
               height={16}
-              className="object-contain h-5 lg:h-6 group-hover:invert"
-              onClick={() => showProfile()}
+              className={
+                isliked
+                  ? "object-contain h-5 lg:h-6 invert"
+                  : "object-contain h-5 lg:h-6 group-hover:invert"
+              }
+              onClick={() => setIsliked(!isliked)}
             />
           </button>
           {/* <SquareButton
@@ -119,28 +126,32 @@ const InGameButtons = ({
               }
             }}
             color={hex}
-          />
+          />  
         </div>
       </div>
 
       <div
         key={"secondary buttons"}
-        className={canvasShow ? "  space-x-[15px]  py-4 flex justify-center items-center" : "hidden"}
+        className={
+          canvasShow
+            ? "  space-x-[15px]  py-4 flex justify-center items-center"
+            : "hidden"
+        }
       >
         <button
-            key={"renk"}
-            type="button"
-            className="ingame-btn inverse-hover group flex justify-center items-center"
-          >
-            <Image
-              src="/palette.svg"
-              alt="renk"
-              width={23}
-              height={16}
-              className="object-contain h-5 lg:h-6 group-hover:invert"
-              onClick={() => setColor(getRandomHexColor())}
-            />
-          </button>
+          key={"renk"}
+          type="button"
+          className="ingame-btn inverse-hover group flex justify-center items-center"
+          onClick={() => setColor(getRandomHexColor())}
+        >
+          <Image
+            src="/palette.svg"
+            alt="renk"
+            width={23}
+            height={16}
+            className="object-contain h-5 lg:h-6 group-hover:invert"
+          />
+        </button>
         {/* <SquareButton
           title="R"
           containerStyles="ingame-btn inverse-hover"

@@ -33,12 +33,12 @@
   @apply flex-col justify-start border-b-2 border-black relative z-0;
 }
 
-.arsiv-slider::after{
+.arsiv-slider::after {
   content: "";
   position: absolute;
   width: 300%;
   height: 1px;
-  bottom: 35px;
+  bottom: 42px;
   background-color: #0d0d0d;
 }
 
@@ -199,7 +199,7 @@
 
 .card1 {
   transform: rotateX(3deg) rotateY(30deg) rotateZ(-3deg); /* Initial values */
-  transition: transform 250ms ease-in-out .1s;
+  transition: transform 250ms ease-in-out 0.1s;
 }
 
 .card1:hover {
@@ -211,7 +211,7 @@
   /* transform: rotateX(3deg) rotateY(30deg) rotateZ(-3deg) ;  */
   transform: rotateX(3deg) rotateY(-30deg) rotateZ(3deg);
   transform-style: preserve-3d;
-  transition: transform 250ms ease-in-out .1s;
+  transition: transform 250ms ease-in-out 0.1s;
 }
 
 .card2:hover {
@@ -223,7 +223,7 @@
   /* transform: rotateX(3deg) rotateY(30deg) rotateZ(-3deg) ;  */
   transform: rotateX(3deg) rotateY(30deg) rotateZ(3deg);
   transform-style: preserve-3d;
-  transition: transform 250ms ease-in-out .1s;
+  transition: transform 250ms ease-in-out 0.1s;
 }
 
 .card3:hover {
@@ -235,7 +235,7 @@
   /* transform: rotateX(3deg) rotateY(30deg) rotateZ(-3deg) ;  */
   transform: rotateX(3deg) rotateY(-30deg) rotateZ(-3deg);
   transform-style: preserve-3d;
-  transition: transform 250ms ease-in-out .1s;
+  transition: transform 250ms ease-in-out 0.1s;
 }
 
 .card4:hover {
@@ -346,6 +346,114 @@
   }
 }
 
+.card_deneme_left {
+  transform: rotateX(0deg) rotateY(30deg) rotateZ(-3deg); /* Initial values */
+  transition: transform 250ms ease-in-out 0.1s;
+  transform-style: preserve-3d;
+}
+
+.card_deneme_left:hover {
+  transform: rotateX(var(--dx)) rotateY(var(--dy));
+}
+
+.card_deneme_right {
+  transform: rotateX(0deg) rotateY(-30deg) rotateZ(3deg);
+  transition: transform 250ms ease-in-out 0.1s;
+  transform-style: preserve-3d;
+}
+
+.card_deneme_right:hover {
+  transform: rotateX(var(--dx)) rotateY(var(--dy));
+}
+
+.card_deneme {
+  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); /* Initial values */
+  transition: transform 250ms ease-in-out 0.1s;
+  transform-style: preserve-3d;
+}
+
+.card_deneme:hover {
+  transform: rotateX(var(--dx)) rotateY(var(--dy));
+}
+
+.animate_content_card_deneme_left {
+  animation: animate-card-deneme-left 2s ease;
+}
+
+@keyframes animate-card-deneme-left {
+  0% {
+    opacity: 0;
+    transform: scale(0.2, 0.002) rotateX(3deg) rotateY(-30deg) rotateZ(3deg);
+    transform-style: preserve-3d;
+  }
+  35% {
+    opacity: 1;
+    transform: scale(0.2, 0.002) rotateX(3deg) rotateY(-30deg) rotateZ(3deg);
+    transform-style: preserve-3d;
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1, 0.002) rotateX(3deg) rotateY(-30deg) rotateZ(3deg);
+    transform-style: preserve-3d;
+  }
+  100% {
+    transform: scale(1, 1) rotateX(3deg) rotateY(-30deg) rotateZ(3deg);
+    transform-style: preserve-3d;
+  }
+}
+
+.animate_content_card_deneme {
+  animation: animate-card-deneme 2s ease;
+}
+
+@keyframes animate-card-deneme {
+  0% {
+    opacity: 0;
+    transform: scale(0.2, 0.002) rotateX(3deg) rotateY(30deg) rotateZ(3deg);
+    transform-style: preserve-3d;
+  }
+  35% {
+    opacity: 1;
+    transform: scale(0.2, 0.002) rotateX(3deg) rotateY(30deg) rotateZ(3deg);
+    transform-style: preserve-3d;
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1, 0.002) rotateX(3deg) rotateY(30deg) rotateZ(3deg);
+    transform-style: preserve-3d;
+  }
+  100% {
+    transform: scale(1, 1) rotateX(3deg) rotateY(30deg) rotateZ(3deg);
+    transform-style: preserve-3d;
+  }
+}
+
+.animate_content_card_deneme_right {
+  animation: animate-card-deneme-right 2s ease;
+}
+
+@keyframes animate-card-deneme-right {
+  0% {
+    opacity: 0;
+    transform: scale(0.2, 0.002) rotateX(3deg) rotateY(-30deg) rotateZ(-3deg);
+    transform-style: preserve-3d;
+  }
+  35% {
+    opacity: 1;
+    transform: scale(0.2, 0.002) rotateX(3deg) rotateY(-30deg) rotateZ(-3deg);
+    transform-style: preserve-3d;
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1, 0.002) rotateX(3deg) rotateY(-30deg) rotateZ(-3deg);
+    transform-style: preserve-3d;
+  }
+  100% {
+    transform: scale(1, 1) rotateX(3deg) rotateY(-30deg) rotateZ(-3deg);
+    transform-style: preserve-3d;
+  }
+}
+
 .card-btn {
   @apply bg-[#0D0D0D] hover:bg-[#F7F6F1] hover:text-[#0D0D0D] text-[#F7F6F1] font-light px-12 lg:px-8 xl:px-8 2xl:px-12 py-2.5 rounded-sm;
 }
@@ -353,6 +461,7 @@
 .card-frame-right {
   position: absolute;
   right: 20px;
+  top:7.5%;
   height: 85%;
   border-right: 1px solid #f7f6f125;
   z-index: 50;
@@ -408,6 +517,7 @@
 .card-frame-left {
   position: absolute;
   left: 20px;
+  top:7.5%;
   height: 85%;
   border-left: 1px solid #f7f6f125;
   z-index: 50;
@@ -538,6 +648,60 @@
   }
 }
 
+.card-frame-top {
+  position: absolute;
+  top: 20px;
+  left: 7.5%;
+  width: 85%;
+  border-top: 1px solid #f7f6f125;
+  z-index: 50;
+}
+.card-frame-top::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 8%;
+  border-radius: 0 0 40px 40px;
+  border-bottom: 2px solid #f7f6f1;
+}
+
+.card-frame-top::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8%;
+  border-radius: 0 0 40px 40px;
+  border-bottom: 2px solid #f7f6f1;
+}
+.card-frame-bottom {
+  position: absolute;
+  bottom: 20px;
+  left: 7.5%;
+  width: 85%;
+  border-top: 1px solid #f7f6f125;
+  z-index: 50;
+}
+.card-frame-bottom::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8%;
+  border-radius: 40px 40px 0 0;
+  border-top: 2px solid #f7f6f1;
+}
+
+.card-frame-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 8%;
+  border-radius: 40px 40px 0 0;
+  border-top: 2px solid #f7f6f1;
+}
 .square-btn:hover {
   background-color: #0d0d0d;
   color: #f7f6f1;
@@ -981,6 +1145,7 @@ input {
     transform: scale(1, 1);
   }
 }
+
 @keyframes closing-hor {
   0% {
     transform: scale(0, 0);
@@ -1590,7 +1755,6 @@ body {
   @apply py-2 px-[12px] rounded-[32px] border-[1px] border-[#0D0D0D] text-sm font-bold hover:bg-[#0D0D0D]  hover:text-[#F7F6F1] cursor-none active:bg-[#0D0D0D] whitespace-nowrap lg:px-[22px] lg:text-base;
 }
 
-
 .ingame-btn-inverted {
   @apply py-2 px-[12px] rounded-[32px] border-[1px] border-[#f7f6f1] text-sm font-bold hover:bg-[#f7f6f1]  hover:text-[#0D0D0D] cursor-none active:bg-[#f7f6f1] whitespace-nowrap lg:px-[22px] lg:text-base;
 }
@@ -1776,7 +1940,7 @@ body {
   animation: slide2 600ms ease-in-out infinite;
 }
 
-.dotgenlarge{
+.dotgenlarge {
   animation: dotgenlarge 1500ms ease-in-out infinite;
 }
 
@@ -1789,40 +1953,51 @@ body {
     opacity: 1;
     scale: 1;
   }
-  100%{
+  100% {
     opacity: 0;
     scale: 0;
   }
 }
-.floating-vertical {  
+.floating-vertical {
   animation: floating-vertical 5s infinite ease-in-out;
 }
 
 @keyframes floating-vertical {
-  from { transform: translate(0,  0px) rotate(90deg); }
-  65%  { transform: translate(0, 10px) rotate(90deg); }
-  to   { transform: translate(0, -0px) rotate(90deg); }    
+  from {
+    transform: translate(0, 0px) rotate(90deg);
+  }
+  65% {
+    transform: translate(0, 10px) rotate(90deg);
+  }
+  to {
+    transform: translate(0, -0px) rotate(90deg);
+  }
 }
 
-.floating-horizontal {  
-  animation: floating-horizontal 5s infinite ease-in-out;
+.floating-horizontal {
+  animation: floating-horizontal 5s infinite ease-in-out , closing 2s ease-in-out;
 }
 
 @keyframes floating-horizontal {
-  from { transform: translate(0,  0px); }
-  65%  { transform: translate(0, 10px); }
-  to   { transform: translate(0, -0px); }    
+  from {
+    transform: translate(0, 0px);
+  }
+  65% {
+    transform: translate(0, 10px);
+  }
+  to {
+    transform: translate(0, -0px);
+  }
 }
 
 
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 300px;
-  perspective: 1000px; 
+.flip-hor-card {
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
 }
 
-.flip-card-inner {
+.flip-hor-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
@@ -1831,11 +2006,12 @@ body {
   transform-style: preserve-3d;
 }
 
-.flip-card:hover .flip-card-inner {
+.flip-hor-card:hover .flip-hor-card-inner {
   transform: rotateX(180deg);
 }
 
-.flip-card-front, .flip-card-back {
+.flip-hor-card-front,
+.flip-hor-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -1843,9 +2019,8 @@ body {
   backface-visibility: hidden;
 }
 
-.flip-card-back {
-  color: white;
-  transform: rotateX(180deg) rotate(-90deg);
+.flip-hor-card-back {
+  transform: rotateX(180deg);
 }
 
 @keyframes fadeIn {

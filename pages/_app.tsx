@@ -6,6 +6,7 @@ import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import CustomCursor from "@/components/common/CustomCursor";
 import Header from "@/components/common/Header";
+import { SubjectProvider } from "@/context/SubjectContext";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [ready, setReady] = useState(false);
@@ -17,15 +18,17 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [router.isReady]);
 
   useEffect(() => {
-    window.history.scrollRestoration = 'manual'
+    window.history.scrollRestoration = "manual";
   }, []);
-  
+
   return (
     ready && (
       <>
-        <Header/>
-        <CustomCursor />
-        <Component {...pageProps} />
+        <SubjectProvider>
+          <Header />
+          <CustomCursor />
+          <Component {...pageProps} />
+        </SubjectProvider>
       </>
     )
   );

@@ -11,6 +11,7 @@ import ChoiceDrawer from "@/components/common/ChoiceDrawer";
 import ChoiceBox from "@/components/common/ChoiceBox";
 import RenderDivs from "@/components/deneme/RenderDivs";
 import BottomQButton from "@/components/deneme/BottomQButton";
+import DenemeSonu from "@/components/deneme/DenemeSonu";
 
 type Props = {};
 
@@ -137,6 +138,7 @@ const page = (props: Props) => {
 
   return (
     <div>
+      <DenemeSonu />
       <PageTag tag="DENEME / BRANŞ" />
       <TopNameTag nametag="DENEME" game={true} />
       <div className={`w-full flex flex-col relative`}>
@@ -178,12 +180,12 @@ const page = (props: Props) => {
             MATEMATİK
           </span>
         </div>
-        <div className="w-full flex flex-row relative h-[15000px] justify-between top-0">
+        <div className="w-full flex flex-row relative h-[8000px] justify-between top-0">
           <canvas
             ref={canvasRef}
             onMouseDown={onMouseDown}
             width={1920}
-            height={15000}
+            height={8000}
             className={
               canvasShow
                 ? " canvas absolute top-0 z-40"
@@ -199,6 +201,7 @@ const page = (props: Props) => {
                 <span
                   id={`section-${2 * qindex + 1}`}
                   className="font-bold text-4xl  mb-16 text-[#0D0D0D] indicator_left"
+                  onClick={() => scrollToSection(21)}
                 >
                   {2 * qindex + 1}
                 </span>
@@ -314,6 +317,7 @@ const page = (props: Props) => {
                 <span
                   id={`section-${2 * qindex + 2}`}
                   className="font-bold text-4xl mb-16 text-[#0D0D0D] indicator_right"
+                  onClick={() => scrollToSection(21)}
                 >
                   {2 * qindex + 2}
                 </span>
@@ -346,7 +350,10 @@ const page = (props: Props) => {
             ))}
           </div>
         </div>
-        <div className="flex flex-col w-[90%] h-80 right-0 left-0 mx-auto items- center">
+        <div
+          id="section-21"
+          className="flex flex-col w-[90%] h-80 right-0 left-0 mx-auto items- center"
+        >
           <div className="flex flex-row w-full justify-between pb-6 z-1">
             {[...Array(10)].map((subject, frindex) => (
               <BottomQButton

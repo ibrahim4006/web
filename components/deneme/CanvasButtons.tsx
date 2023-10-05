@@ -56,9 +56,10 @@ const CanvasButtons = ({
       key={"inGameButtons"}
       className={
         canvasShow
-          ? "h-fit pb-[2px] w-full sticky top-[895px] flex justify-center md:flex-row flex-col items-center border-t z-50 bg-[#F7F6F1]"
-          : "h-fit pb-[2px] w-full sticky top-[895px] flex justify-center md:flex-row flex-col items-center border-t z-50 bg-[#F7F6F1] opacity-0 pointer-events-none"
+          ? "h-fit pb-[2px] w-full sticky flex justify-center md:flex-row flex-col items-center border-t z-50 bg-[#F7F6F1] border-t-[#adada9]"
+          : "h-fit pb-[2px] w-full sticky flex justify-center md:flex-row flex-col items-center border-t z-50 bg-[#F7F6F1] opacity-0 pointer-events-none border-t-[#adada9]"
       }
+      style={{ top: `${window.innerHeight - 75}px` }}
     >
       <div
         key={"primary buttons"}
@@ -94,6 +95,7 @@ const CanvasButtons = ({
           key={"renk"}
           type="button"
           className="ingame-btn inverse-hover group flex justify-center items-center bg-[#F7F6F1]"
+          onClick={() => setColor(getRandomHexColor())}
         >
           <Image
             src="/palette.svg"
@@ -101,7 +103,6 @@ const CanvasButtons = ({
             width={23}
             height={16}
             className="object-contain h-5 lg:h-6 group-hover:invert"
-            onClick={() => setColor(getRandomHexColor())}
           />
         </button>
         {/* <SquareButton

@@ -115,7 +115,7 @@ function generateHexagons(subjects) {
           left: "50%",
           transform: `translate(-50%, -50%) translate(${outershades_x[index]}px, ${outershades_y[index]}px) rotate(${outershades_d[index]}deg) scale(2)`,
           position: "absolute",
-          opacity: 0.2,
+          opacity: 0.1,
           zIndex: -1,
         }}
       />
@@ -149,7 +149,7 @@ export default function Completion() {
   return (
     <div className="relative flex justify-center items-center iskele_animation scale-90">
       <div
-        className="inline-block relative h-[1150px] w-[1500px] mx-[30px]"
+        className="inline-block relative h-[1150px] w-[1920px]"
         key={0}
       >
         {generateHexagons([

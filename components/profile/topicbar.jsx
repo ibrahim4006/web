@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import PopupHorText from "../common/PopupHorText";
+import { useSubjectDispatch } from "@/context/SubjectContext";
+import { useRouter } from "next/router";
 
 const Topicbar = () => {
   const data = [
@@ -59,14 +62,51 @@ const Topicbar = () => {
   names.length = 0;
   names.push(...sortedNames);
 
-  console.log(data);
-  console.log(names);
-
   const [hoveredColumn, setHoveredColumn] = useState(null);
+  const [clickedColumn, setClickedColumn] = useState(null);
 
   const handleColumnHover = (index) => {
     setHoveredColumn(index);
   };
+
+  const handleColumnClick = (index) => {
+    setClickedColumn(null);
+    setTimeout(() => {
+      setClickedColumn(index);
+    }, 100);
+  };
+
+  useEffect(() => {
+    const handleWindowClick = (event) => {
+      const clickedObject = event.target;
+      if (clickedObject.id !== "PopupHorText" && clickedObject.id !== "box") {
+        setClickedColumn(null);
+      }
+    };
+    window.addEventListener("click", handleWindowClick);
+    return () => {
+      window.removeEventListener("click", handleWindowClick);
+    };
+  }, [clickedColumn]);
+
+  const [selectedLesson, setSelectedLesson] = useState("matematik");
+  const [selectedSubject, setSelectedSubject] = useState("matematik");
+  const [action, setAction] = useState("");
+  const router = useRouter();
+  const dispatch = useSubjectDispatch();
+
+  useEffect(() => {
+    if (action == "oyun") {
+      dispatch({ type: "CHANGELESSON", payload: selectedLesson });
+      dispatch({
+        type: "CHANGESUBJECT",
+        payload: selectedSubject,
+      });
+      router.push({
+        pathname: `/gamePanel`,
+      });
+    }
+  }, [selectedSubject, selectedLesson, dispatch, action, router]);
 
   return (
     <div
@@ -79,6 +119,36 @@ const Topicbar = () => {
         height: "750px",
       }}
     >
+      {
+        <div
+          style={{
+            position: "absolute",
+            top: "0",
+            opacity: clickedColumn ? "" : "0",
+            zIndex: 30,
+          }}
+        >
+          <PopupHorText
+            topx={500}
+            topy={400}
+            iconsrc={"/logo_oyun.svg"}
+            num={3}
+            den={4}
+            buttonLeft={"oyun"}
+            buttonRight={"vazgeç"}
+            buttonRightAction={() => handleColumnClick(null)}
+            buttonLeftAction={() => setAction("oyun")}
+          >
+            <div className="text-center">
+              <span className="text-[#f7f6f1] items-center text-base font-extralight  whitespace-nowrap">
+                <span className="font-bold ">{names[clickedColumn]}</span>
+                <br />
+                KONUSUNA ÇALIŞMAK İSTER MİSİNİZ?
+              </span>
+            </div>
+          </PopupHorText>
+        </div>
+      }
       {data.map((value, index) => {
         const boxCount = Math.floor(value / 10);
         const isHovered = index === hoveredColumn;
@@ -97,11 +167,17 @@ const Topicbar = () => {
             }}
             onMouseEnter={() => handleColumnHover(index)}
             onMouseLeave={() => handleColumnHover(null)}
+            onMouseDown={() => {
+              handleColumnClick(index);
+              setSelectedSubject(names[index]);
+              setSelectedLesson("matematik");
+            }}
           >
             {[...Array(boxCount)].map((_, boxIndex) => (
               <>
                 {boxIndex === 0 && (
                   <div
+                    id={"box"}
                     key={`${index}-${boxIndex} top`}
                     style={{
                       width: "50px",
@@ -113,6 +189,7 @@ const Topicbar = () => {
                   />
                 )}
                 <div
+                  id={"box"}
                   key={`${index}-${boxIndex} second`}
                   style={{
                     width: "50px",
