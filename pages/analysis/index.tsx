@@ -107,7 +107,6 @@ export default function page() {
           key={"region seperator"}
           className="-top-36 h-[1200px] relative w-0 border-r z-20 border-r-[#F7F6F1]"
         >
-          {" "}
           <div className="w-[3px] h-[18px] relative z-20 rounded-lg rounded-bl-none rounded-br-2xl -top-7 right-[1px] bg-[#F7F6F1]" />
         </div>
 
