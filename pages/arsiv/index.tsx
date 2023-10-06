@@ -61,7 +61,7 @@ export default function page() {
       {sliderhover2 && (
         <HoverXSlider
           id={sliderIndex}
-          percentage={0.16}
+          percentage={0.10}
           invert={false}
           setQuestionIndicator={setQuestionIndicator}
         />

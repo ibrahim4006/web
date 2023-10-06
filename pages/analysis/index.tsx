@@ -4,7 +4,6 @@ import LevelupCard from "@/components/common/LevelupCard";
 import PageTag from "@/components/common/PageTag";
 import SquareButton from "@/components/common/SquareButton";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 
 export default function page() {
@@ -21,15 +20,11 @@ export default function page() {
       if (mouseY < 250) {
         setSliderHover(true);
         setSliderHover2(false);
-      } else if (
-        mouseY > 250 + (sliderIndex - 1) * 900 &&
-        mouseY < 1150 + (sliderIndex - 1) * 900
-        
-      ) {
+      } else if (mouseY > 250 && mouseY < 1150) {
         setSliderHover2(true);
         setSliderHover(false);
         var slider = document.getElementById(`slider-${sliderIndex}`);
-        setQuestionIndicator(Math.ceil(slider.scrollLeft / 964));
+        setQuestionIndicator(Math.ceil(slider?.scrollLeft / 964));
       } else {
         setSliderHover(false);
         setSliderHover2(false);
@@ -41,7 +36,7 @@ export default function page() {
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [sliderIndex,questionIndicator]);
+  }, [sliderIndex, questionIndicator]);
 
   const slide = (id, question) => {
     var slider = document.getElementById(`slider-${id}`);
@@ -55,7 +50,12 @@ export default function page() {
         <HoverXSlider id={sliderIndex} percentage={0.07} invert={true} />
       )}
       {sliderhover2 && (
-        <HoverXSlider id={sliderIndex} percentage={0.16} invert={true} setQuestionIndicator={setQuestionIndicator}/>
+        <HoverXSlider
+          id={sliderIndex}
+          percentage={0.1}
+          invert={true}
+          setQuestionIndicator={setQuestionIndicator}
+        />
       )}
       <div
         key={"design line 1"}
@@ -79,34 +79,33 @@ export default function page() {
       >
         <div
           id={`slider-${0}`}
-          className="w-[full] h-32 overflow-x-scroll scroll-smooth scrollbar-hide flex items-center relative arsiv-slider invert"
+          className="w-full h-32 overflow-x-scroll scroll-smooth scrollbar-hide flex items-center relative arsiv-slider invert"
         >
           {["türkçe", "matematik", "fizik", "kimya", "biyoloji"].map(
             (subject, index) => (
               <div
-                className="  relative  min-w-[964px] font-bold text-5xl uppercase flex  justify-end text-[#0D0D0D]"
+                className=" relative  min-w-[964px] font-bold text-4xl uppercase flex  justify-end text-[#0D0D0D]"
                 key={index}
               >
-                <span className=" relative profile-head pb-2 inverse-hover">
+                <span className=" relative profile-head inverse-hover">
                   {subject}
                 </span>
-
                 <div
-                  className={`absolute w-[5px] h-[5px] rounded-full right-[642px] -bottom-[2.5px] bg-[#F7F6F1] invert`}
+                  className={`absolute w-[5px] h-[5px] rounded-full right-[770px] -bottom-[4px] bg-[#F7F6F1] invert`}
                 />
               </div>
             )
           )}
         </div>
       </div>
-      <div className="w-full  relative flex justify-between flex-row">
+      <div className="w-full h-[1200px] relative flex justify-between flex-row">
         <div
           key={"left region"}
-          className="flex h-[2000px] relative justify-start w-1/6 bg-[#0D0D0D]"
+          className="flex h-[1200px] relative justify-start w-[10%] bg-[#0D0D0D]"
         ></div>
         <div
           key={"region seperator"}
-          className="-top-36 h-[2000px] relative w-0 border-r z-20 border-r-[#F7F6F1]"
+          className="-top-36 h-[1200px] relative w-0 border-r z-20 border-r-[#F7F6F1]"
         >
           {" "}
           <div className="w-[3px] h-[18px] relative z-20 rounded-lg rounded-bl-none rounded-br-2xl -top-7 right-[1px] bg-[#F7F6F1]" />
@@ -114,9 +113,9 @@ export default function page() {
 
         <div
           key={"right region"}
-          className="flex h-[9000px] justify-start w-5/6 relative flex-col items-start bg-[#0D0D0D]"
+          className="flex h-[1200px] justify-start w-[90%] relative flex-col items-start bg-[#0D0D0D]"
         >
-          {[...Array(2)].map((_, windex) => (
+          {[...Array(1)].map((_, windex) => (
             <div
               key={`${windex}.week holder`}
               className="relative flex flex-col justify-center h-[900px] w-full"
@@ -125,7 +124,7 @@ export default function page() {
                 key={" left side fast travel"}
                 className="flex w-auto justify-between mt-3 items-start flex-col absolute top-2 left-3 z-10"
               >
-                { [...Array(7)].map((_, qtindex) => (
+                {[...Array(7)].map((_, qtindex) => (
                   <div
                     key={`${qtindex}.question travel`}
                     className="group inverse-hover w-full h-3 flex justify-start items-center relative overflow-visible"
@@ -164,24 +163,6 @@ export default function page() {
                     />
                   </div>
                 ))}
-              </div>
-              <div
-                key={"week indicator"}
-                className={`relative w-[50%] h-[1px] rounded-full -left-[20%] bottom-[0px] bg-[#0D0D0D] flex items-center week-head invert`}
-              >
-                <div
-                  className={`absolute w-[5px] h-[5px] rounded-full left-[39.6%]  bg-[#0D0D0D] `}
-                />
-                <div
-                  className={`absolute w-[5px] h-[5px] rounded-full right-0  bg-[#0D0D0D] `}
-                />
-                <div className="absolute -top-7 -right-16 flex items-center flex-row">
-                  <span className="font-bold text-base flex ">13. HAFTA</span>
-                  <div className="flex justify-between space-x-2 ml-2 items-center flex-row pb-[2px]">
-                    <div className="h-[14px] w-[2px] rounded-full bg-[#0D0D0D]" />
-                    <div className="h-[14px] w-[2px] rounded-full bg-[#0D0D0D]" />
-                  </div>
-                </div>
               </div>
             </div>
           ))}
