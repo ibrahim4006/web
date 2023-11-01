@@ -30,7 +30,6 @@ export default function page() {
         setTimeout(() => {
           var slider = document.getElementById(`slider-${sliderIndex}`);
           setQuestionIndicator(Math.ceil(slider.scrollLeft / 964));
-          console.log(questionIndicator, "nigga");
         }, 200);
       } else {
         setSliderHover(false);

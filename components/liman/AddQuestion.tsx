@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import SetQuestionChoices from "./SetQuestionChoices";
 import { AddQuestionProps } from "@/types";
 import Image from "next/image";
-import SquareButton from "../SquareButton";
+import SquareButton from "../common/SquareButton";
+
 
 const AddQuestion = ({
   isAddQuestionPageShow,

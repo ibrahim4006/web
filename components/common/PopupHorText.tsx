@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import SquareButton from "./SquareButton";
+import CardOuterMinimal from "./CardOuterMinimal";
 
 type Props = {};
 
@@ -34,34 +35,7 @@ const PopupHorText = ({
       <div key={"outer design shapes"} className="w-full h-full">
         <div className="card-frame-top"></div>
         <div className="card-frame-bottom"></div>
-        <Image
-          src="/card/bottom-left.svg"
-          alt="bottom left"
-          width={47}
-          height={72}
-          className={"absolute -bottom-3 -left-3"}
-        />
-        <Image
-          src="/card/top-right.svg"
-          alt="top left"
-          width={77}
-          height={72}
-          className={"absolute -top-4 -left-2 -rotate-90"}
-        />
-        <Image
-          src="/card/bottom-left.svg"
-          alt="bottom right"
-          width={47}
-          height={72}
-          className={"absolute -bottom-6 -right-0 -rotate-90"}
-        />
-        <Image
-          src="/card/top-right.svg"
-          alt="top right"
-          width={77}
-          height={72}
-          className={"absolute -top-3 -right-3"}
-        />
+        <CardOuterMinimal/>
       </div>
       <div className="flip-hor-card flex center relative bg-[#0D0D0D] px-48 py-[70px]">
         <div className="flip-hor-card-inner">
@@ -109,12 +83,12 @@ const PopupHorText = ({
               >
                 <SquareButton
                   title={buttonLeft}
-                  containerStyles="card-btn inverse-hover "
+                  containerStyles="card-btn inverse-hover whitespace-nowrap"
                   handleClick={buttonLeftAction}
                 />
                 <SquareButton
                   title={buttonRight}
-                  containerStyles="card-btn inverse-hover "
+                  containerStyles="card-btn inverse-hover whitespace-nowrap "
                   handleClick={buttonRightAction}
                 />
               </div>

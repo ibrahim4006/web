@@ -37,11 +37,7 @@ const SoruAyrac = ({
     >
       {direction == "left" && (
         <div
-          className={
-            isaretle
-              ? "w-fit h-fit flex relative disabled:group flex-row items-center "
-              : "w-fit h-fit flex relative group flex-row items-center "
-          }
+          className="w-fit h-fit flex relative group flex-row items-center "
           onClick={() => {
             setOpenButtons(qnumber);
             setShowButtons(!showButtons);
@@ -67,8 +63,14 @@ const SoruAyrac = ({
               }
             />
           </div>
-          <div className="border-[1px] h-10 w-10 rounded-full flex center relative inverse-hover">
-            <div className=" h-6 w-6 bg-[#0D0D0D] rounded-full flex center group">
+          <div className="border-[1px] h-10 w-10 rounded-full flex center relative inverse-hover ">
+            <div
+              className={
+                isaretle
+                  ? " h-6 w-6 bg-[#0D0D0D] rounded-full flex center group group-hover:scale-[160%] duration-200"
+                  : " h-6 w-6 bg-[#0D0D0D] rounded-full flex center group "
+              }
+            >
               <span
                 className={
                   isaretle
@@ -149,11 +151,7 @@ const SoruAyrac = ({
       )}
       {direction == "right" && (
         <div
-          className={
-            isaretle
-              ? "w-fit h-fit flex relative disabled:group flex-row items-center "
-              : "w-fit h-fit flex relative group flex-row items-center "
-          }
+          className="w-fit h-fit flex relative group flex-row items-center "
           onClick={() => {
             setOpenButtons(qnumber);
             setShowButtons(!showButtons);
@@ -180,7 +178,13 @@ const SoruAyrac = ({
             />
           </div>
           <div className="border-[1px] h-10 w-10 rounded-full flex center relative inverse-hover">
-            <div className=" h-6 w-6 bg-[#0D0D0D] rounded-full flex center group">
+            <div
+              className={
+                isaretle
+                  ? " h-6 w-6 bg-[#0D0D0D] rounded-full flex center group group-hover:scale-[160%] duration-200"
+                  : " h-6 w-6 bg-[#0D0D0D] rounded-full flex center group "
+              }
+            >
               <span
                 className={
                   isaretle

@@ -24,6 +24,7 @@ import Card3 from "@/components/common/Card3";
 import Card4 from "@/components/common/Card4";
 import LevelupCard from "@/components/common/LevelupCard";
 import { useSubjectState } from "@/context/SubjectContext";
+import DrawingApp from "@/components/recording/DrawingApp";
 
 export default function page() {
   const [activeGame, setActiveGame] = useState<string>("");
@@ -50,7 +51,6 @@ export default function page() {
       setActiveSubject(subject);
     }
   }, [lesson, subject]);
-  console.log(chosenSubjects);
 
   const getSubjectData = (subject: string): string[] => {
     switch (subject) {
@@ -92,7 +92,7 @@ export default function page() {
     if (activeSubject.length > 0 && subjectRef.current) {
       setChosenSubjects([activeSubject]);
       window.scrollTo({
-        //top: 1900,
+        top: 1900,
         behavior: "smooth",
       });
     }

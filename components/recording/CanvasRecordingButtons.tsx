@@ -4,7 +4,7 @@ import SquareButton from "../common/SquareButton";
 
 type Props = {};
 
-const CanvasButtons = ({
+const CanvasRecordingButtons = ({
   clear,
   canvasShow,
   setCanvasShow,
@@ -12,6 +12,11 @@ const CanvasButtons = ({
   undo,
   erasing,
   setErasing,
+  startReplaying,
+  stopReplaying,
+  isReplaying,
+  contReplaying,
+  duration,
 }) => {
   const [hex, setHex] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -51,6 +56,8 @@ const CanvasButtons = ({
     setHex(hexColor);
     return hexColor;
   }
+
+  const [selectedTime, setSelectedTime] = useState(0);
 
   return (
     <div
@@ -106,11 +113,6 @@ const CanvasButtons = ({
             className="object-contain h-5 lg:h-6 group-hover:invert"
           />
         </button>
-        {/* <SquareButton
-          title="R"
-          containerStyles="ingame-btn inverse-hover"
-          handleClick={() => setColor(getRandomHexColor())}
-        /> */}
         <SquareButton
           title="TEMİZLE"
           containerStyles="ingame-btn inverse-hover active bg-[#F7F6F1]"
@@ -130,6 +132,38 @@ const CanvasButtons = ({
           }
           handleClick={() => setErasing(!erasing)}
         />
+
+        <SquareButton
+          title={isReplaying ? "Replaying..." : "Replay"}
+          containerStyles={
+            isReplaying
+              ? "ingame-btn inverse-hover bg-[#F7F6F1] active"
+              : "ingame-btn inverse-hover bg-[#F7F6F1]"
+          }
+          handleClick={() => startReplaying()}
+        />
+        <SquareButton
+          title="Stop Replay"
+          containerStyles="ingame-btn inverse-hover bg-[#F7F6F1]"
+          handleClick={() => stopReplaying()}
+        />
+        <SquareButton
+          title="cont Replay"
+          containerStyles="ingame-btn inverse-hover bg-[#F7F6F1]"
+          handleClick={() => contReplaying(500)}
+        />
+        <input
+          type="range"
+          min="0"
+          max={duration}
+          value={selectedTime}
+          onChange={(event) => {
+            contReplaying(500);
+            setSelectedTime(parseInt(event.target.value));
+            
+          }}
+          className="relative"
+        />
       </div>
 
       <div className="arrow arrow-left absolute -top-[3.5px] right-0"></div>
@@ -138,4 +172,4 @@ const CanvasButtons = ({
   );
 };
 
-export default CanvasButtons;
+export default CanvasRecordingButtons;

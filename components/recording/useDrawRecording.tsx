@@ -4,11 +4,12 @@ interface Point {
   x: number;
   y: number;
   color: string;
+  timestamp: number; // Add timestamp to the Point type
 }
 
-export const useDraw = (
+export const useDrawRecording = (
   onDraw: ({ ctx, currentPoint, prevPoint, color }: Draw) => void,
-  color: string // Accept color as a parameter
+  color: string
 ) => {
   const [mouseDown, setMouseDown] = useState(false);
   const [erasing, setErasing] = useState(false);
@@ -129,13 +130,16 @@ export const useDraw = (
       if (!canvas) return;
 
       const rect = canvas.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+      const x = (e.clientX - rect.left).toFixed(2);
+      const y = (e.clientY - rect.top).toFixed(2);
 
       // Record the color of the current line
       const lineColor = color;
 
-      return { x, y, color: lineColor };
+      // Record the timestamp
+      const timestamp = Date.now();
+
+      return { x, y, color: lineColor, timestamp };
     };
 
     const mouseUpHandler = () => {
@@ -149,6 +153,8 @@ export const useDraw = (
       // Clear the points array for the next line
       points.current = [];
       drawPaths();
+      //console.log(pathsry.current)
+
     };
 
     // Add event listeners
@@ -160,7 +166,7 @@ export const useDraw = (
       canvasRef.current?.removeEventListener("mousemove", handler);
       window.removeEventListener("mouseup", mouseUpHandler);
     };
-  }, [onDraw, color]);
+  }, [onDraw, color, erasing, mouseDown]);
 
-  return { canvasRef, onMouseDown, clear, undo, setErasing, erasing };
+  return { canvasRef, onMouseDown, clear, undo, setErasing, erasing, pathsry };
 };

@@ -13,14 +13,6 @@ const Denemedrop = ({ input, alignment, border, text, value, setDataindex }) => 
 
   const value_length = value ? value.length : 2
 
-  const onhover = () => {
-    console.log("nigga")
-  }
-
-  const changeActiveOption = (option) => {
-    setDataindex(option);
-  };
-
   return (
     <div
       style={{
@@ -33,7 +25,7 @@ const Denemedrop = ({ input, alignment, border, text, value, setDataindex }) => 
 
       }}
       className="group hover:bg-[#F7F6F1]"
-      onMouseEnter={() => setDataindex ? changeActiveOption(text) : ""}
+      onMouseEnter={() => setDataindex ? setDataindex(text) : ""}
       
     >
       <span
@@ -46,7 +38,7 @@ const Denemedrop = ({ input, alignment, border, text, value, setDataindex }) => 
           height: "20px",
           textAlign: "center",
           fontSize: "16px",
-          fontWeight: "500",
+          fontWeight: "700",
           fontFamily: "Montserrat",
         }}
         className=" group-hover:text-black items-center"

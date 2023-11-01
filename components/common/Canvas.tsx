@@ -1,9 +1,9 @@
 import { FC, useEffect, useState } from "react";
 import { useDraw } from "./useDraw";
-
+ 
 const Canvas: FC = () => {
   const [color, setColor] = useState<string>("#FF0000");
-  const { canvasRef, onMouseDown, clear, undo } = useDraw(drawLine, color);
+  const { canvasRef, onMouseDown, clear, undo,setErasing,erasing } = useDraw(drawLine, color);
   const [lineWidth, setLineWidth] = useState<number>(4);
   const [radius, setRadius] = useState<number>(1.5);
 
@@ -36,7 +36,7 @@ const Canvas: FC = () => {
     ctx.fill();
   }
 
-  return { canvasRef, onMouseDown, clear, setColor, undo };
+  return { canvasRef, onMouseDown, clear, setColor, undo , setErasing,erasing};
 };
 
 export default Canvas;

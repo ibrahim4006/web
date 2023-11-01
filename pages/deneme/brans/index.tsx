@@ -12,12 +12,27 @@ import ChoiceBox from "@/components/common/ChoiceBox";
 import RenderDivs from "@/components/deneme/RenderDivs";
 import BottomQButton from "@/components/deneme/BottomQButton";
 import DenemeSonu from "@/components/deneme/DenemeSonu";
+import CanvasRecording from "@/components/recording/CanvasRecording";
+import CanvasRecordingButtons from "@/components/recording/CanvasRecordingButtons";
 
 type Props = {};
 
 const page = (props: Props) => {
   const [questionexist, setQuestionExist] = useState(false);
-  const { canvasRef, onMouseDown, clear, setColor, undo } = Canvas();
+  const {
+    canvasRef,
+    onMouseDown,
+    clear,
+    setColor,
+    undo,
+    setErasing,
+    erasing,
+    startReplaying,
+    stopReplaying,
+    isReplaying,
+    contReplaying,
+    duration
+  } = CanvasRecording();
   const [canvasShow, setCanvasShow] = useState(false);
 
   const [openButtons, setOpenButtons] = useState<number>(0);
@@ -37,8 +52,6 @@ const page = (props: Props) => {
     const newMappedArray = clickedIndexes.map((index) => alphabetArray[index]);
     setMappedArray(newMappedArray);
   }, [clickedIndexes]);
-
-  console.log(mappedArray);
 
   const imageurls = [
     "/soru/soru_1.svg",
@@ -138,7 +151,7 @@ const page = (props: Props) => {
 
   return (
     <div>
-      <DenemeSonu />
+      {/* <DenemeSonu /> */}
       <PageTag tag="DENEME / BRANŞ" />
       <TopNameTag nametag="DENEME" game={true} />
       <div className={`w-full flex flex-col relative`}>
@@ -168,12 +181,19 @@ const page = (props: Props) => {
             key={"geçen süre"}
           />
         </div>
-        <CanvasButtons
+        <CanvasRecordingButtons
           canvasShow={canvasShow}
           setCanvasShow={setCanvasShow}
           clear={clear}
           setColor={setColor}
           undo={undo}
+          setErasing={setErasing}
+          erasing={erasing}
+          startReplaying={startReplaying}
+          stopReplaying={stopReplaying}
+          isReplaying={isReplaying}
+          contReplaying={contReplaying}
+          duration={duration}
         />
         <div className="w-full h-14 flex relative top-0 border-b-[1px] border-b-[#00D0D0D] items-end">
           <span className="profile-head left-[20%] relative text-2xl pb-2 font-bold inverse-hover text-[#0D0D0D]">

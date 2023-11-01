@@ -11,7 +11,7 @@ import {
 } from "@/constants";
 import { QuestionTypeProps } from "@/types";
 import Image from "next/image";
-import SquareButton from "../SquareButton";
+import SquareButton from "../common/SquareButton";
 
 type QuestionTypeObject = {
   [key: string]: {

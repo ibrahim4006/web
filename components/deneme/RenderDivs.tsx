@@ -11,7 +11,7 @@ const RenderDivs = ({
   leftheights,
   rightheights,
   setClickedIndexes,
-  clickedIndexes
+  clickedIndexes,
 }) => {
   const points = [
     { x: 0.76, y: 84.33 },
@@ -28,7 +28,6 @@ const RenderDivs = ({
 
   const [clickedDiv, setClickedDiv] = useState<number | null>(null);
   const [hoveredDiv, setHoveredDiv] = useState(null);
-  
 
   const handleMouseEnter = (i, qindex) => {
     setHoveredDiv({ index: i, qindex });
@@ -65,8 +64,6 @@ const RenderDivs = ({
     });
   };
 
-  if (dir == "left") {
-  }
   const ww =
     dir == "left"
       ? leftwidths[(qindex - 1) / 2]

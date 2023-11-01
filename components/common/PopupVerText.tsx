@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import Denemedrop from "../profile/denemedrop";
 import Hexagon from "../common/Hexagon";
+import CardOuter from "./CardOuter";
 
 type Props = {};
 
@@ -25,34 +26,7 @@ const PopupVerText = ({ topx, topy, width, height, children }) => {
         <div key={"black dot1"} className="black-dot-1"></div>
         <div key={"black dot2"} className="black-dot-2"></div>
         <div key={"black dot3"} className="black-dot-3"></div>
-        <Image
-          src="/card/bottom-left.svg"
-          alt="bottom left"
-          width={47}
-          height={72}
-          className={"absolute -bottom-3 -left-3"}
-        />
-        <Image
-          src="/card/top-left.svg"
-          alt="top left"
-          width={77}
-          height={72}
-          className={"absolute -top-11 -left-8"}
-        />
-        <Image
-          src="/card/bottom-right.svg"
-          alt="bottom right"
-          width={77}
-          height={77}
-          className={"absolute -bottom-11 -right-8"}
-        />
-        <Image
-          src="/card/top-right.svg"
-          alt="top right"
-          width={65}
-          height={72.33}
-          className={"absolute -top-3 -right-3"}
-        />
+        <CardOuter/>
       </div>
 
       <div
