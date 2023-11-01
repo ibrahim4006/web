@@ -220,7 +220,7 @@ const page = (props: Props) => {
               >
                 <span
                   id={`section-${2 * qindex + 1}`}
-                  className="font-bold text-4xl  mb-16 text-[#0D0D0D] indicator_left"
+                  className="font-bold text-4xl  mb-16 text-[#0D0D0D] indicator_left hover:scale-[115%] duration-200"
                   onClick={() => scrollToSection(21)}
                 >
                   {2 * qindex + 1}
@@ -336,7 +336,7 @@ const page = (props: Props) => {
               >
                 <span
                   id={`section-${2 * qindex + 2}`}
-                  className="font-bold text-4xl mb-16 text-[#0D0D0D] indicator_right"
+                  className="font-bold text-4xl mb-16 text-[#0D0D0D] indicator_right hover:scale-[115%] duration-200"
                   onClick={() => scrollToSection(21)}
                 >
                   {2 * qindex + 2}

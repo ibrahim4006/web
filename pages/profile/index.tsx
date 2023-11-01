@@ -30,6 +30,7 @@ import PageTag from "@/components/common/PageTag";
 import ChoiceCard from "@/components/common/ChoiceCard";
 import { TopNameTag } from "@/components/common/TopNameTag";
 import Completion from "@/components/common/Completion";
+import TopicbarRed from "@/components/profile/topicbarred";
 
 function App() {
   const sectionRefs = {
@@ -337,60 +338,41 @@ function App() {
         ref={sectionRefs.section1}
       >
         <Baslik text="İSTATİSTİKLER" yPos="80px" textColor="rgb(13,13,13)" />
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: "50px",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-            position: "absolute",
-            height: "850px",
-            width: "1350px",
-          }}
-        >
-          <Denemedrop
-            input={1}
-            alignment="left"
-            border={null}
-            text="toplam soru"
-            value=" 4298"
-          />
-          <Denemedrop
-            input={1}
-            alignment="right"
-            border={null}
-            text="sıralama"
-            value=" 7126"
-          />
+        <div className="h-[850px] items-center flex w-full absolute flex-col justify-between">
+          <div className="w-[70%] flex flex-row justify-between items-start gap-12">
+            <Denemedrop
+              input={1}
+              alignment="left"
+              border={null}
+              text="toplam soru"
+              value=" 4298"
+            />
+            <Denemedrop
+              input={1}
+              alignment="right"
+              border={null}
+              text="sıralama"
+              value=" 7126"
+            />
+          </div>
+          <div className="w-[70%] flex flex-row justify-between items-start gap-12">
+            <Denemedrop
+              input={-1}
+              alignment="left"
+              border={null}
+              text="toplam kupa"
+              value="   14"
+            />
+            <Denemedrop
+              input={-1}
+              alignment="right"
+              border={null}
+              text="puan"
+              value="82371"
+            />
+          </div>
         </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: "50px",
-            justifyContent: "space-between",
-            alignItems: "flex-end",
-            position: "absolute",
-            height: "850px",
-            width: "1350px",
-          }}
-        >
-          <Denemedrop
-            input={-1}
-            alignment="left"
-            border={null}
-            text="toplam kupa"
-            value="   14"
-          />
-          <Denemedrop
-            input={-1}
-            alignment="right"
-            border={null}
-            text="puan"
-            value="82371"
-          />
-        </div>
+
         <div
           style={{
             position: "absolute",
@@ -518,7 +500,12 @@ function App() {
           )}
         </div>
 
-        <Topicbar />
+        <div className="relative flex center w-full">
+          <div className="absolute mx-auto ">
+            <Topicbar />
+          </div>
+          <div className="absolute  mx-auto"></div>
+        </div>
       </div>
       <div
         style={{

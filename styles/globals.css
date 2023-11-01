@@ -64,6 +64,13 @@
   border-top-right-radius: 50px;
   background-color: #0d0d0d;
   transform: translateX(-100%); /* Move the element 100% to the left */
+  transition: transform .3s ease-in-out, width .3s ease-in-out;
+}
+
+.game-head:hover::after{
+  transform: translateX(-90%);
+  width: 120%;
+  
 }
 
 .profile-head::after {
@@ -77,6 +84,13 @@
   background-color: #0d0d0d;
   transform: translateX(-100%); /* Move the element 100% to the left */
   z-index: 10;
+  transition: transform .3s ease-in-out, width .3s ease-in-out;
+} 
+
+.profile-head:hover::after{
+  transform: translateX(-90%);
+  width: 120%;
+  
 }
 
 .header-btn {

@@ -85,7 +85,6 @@ const LineChart = ({ chartData, dataindex, index, setDataindex }) => {
               grid: {
                 display: false,
               },
-              min: 0.5,
             },
           },
           plugins: {

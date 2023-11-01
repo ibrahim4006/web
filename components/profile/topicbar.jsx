@@ -5,8 +5,13 @@ import { useRouter } from "next/router";
 
 const Topicbar = () => {
   const data = [
-    76, 22, 56, 11, 89, 67, 53, 31, 4, 94, 35, 27, 86, 41, 66, 78, 16, 58, 33,
-    20, 5, 99, 73,
+    76, 22, 56, 11, 89, 67, 53, 31, 94, 35, 27, 86, 41, 66, 78, 16, 58, 33, 20,
+    99, 73, 76, 22, 56, 11, 89, 67, 53, 31,
+  ];
+
+  const dataRed = [
+    16, 12, 16, 11, 29, 17, 23, 31, 44, 25, 27, 26, 41, 66, 78, 16, 58, 33, 20,
+    49, 33, 26, 22, 46, 11, 19, 67, 53, 31,
   ];
 
   const names = [
@@ -24,6 +29,15 @@ const Topicbar = () => {
     "SAYILAR VE CEBİR",
     "TRİGONOMETRİ",
     "ANALİTİK GEOMETRİ",
+    "FONKSİYONLARDA UYGULAMALAR",
+    "DENKLEM VE EŞİTSİZLİK SİSTEMLERİ",
+    "ÇEMBER VE DAİRE",
+    "UZAY GEOMETRİ",
+    "OLASILIK",
+    "ÜSTEL VE GEOMETRİK FONKSİYONLAR",
+    "DİZİLER",
+    "TÜREV",
+    "İNTEGRAL",
     "FONKSİYONLARDA UYGULAMALAR",
     "DENKLEM VE EŞİTSİZLİK SİSTEMLERİ",
     "ÇEMBER VE DAİRE",
@@ -109,142 +123,193 @@ const Topicbar = () => {
   }, [selectedSubject, selectedLesson, dispatch, action, router]);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "flex-end",
-        minWidth: `${data.length * 60}px`,
-        maxWidth: `${data.length * 80}px`,
-        height: "750px",
-      }}
-    >
-      {
-        <div
-          style={{
-            position: "absolute",
-            top: "0",
-            opacity: clickedColumn ? "" : "0",
-            zIndex: 30,
-          }}
+    <div className="relative flex center w-full">
+      <div
+        style={{
+          position: "absolute",
+          top: "0",
+          opacity: clickedColumn ? "" : "0",
+          zIndex: 30,
+          pointerEvents: clickedColumn ? "all" : "none"
+        }}
+      >
+        <PopupHorText
+          topx={500}
+          topy={0}
+          iconsrc={"/logo_oyun.svg"}
+          num={3}
+          den={4}
+          buttonLeft={"oyun"}
+          buttonRight={"vazgeç"}
+          buttonRightAction={() => handleColumnClick(null)}
+          buttonLeftAction={() => setAction("oyun")}
         >
-          <PopupHorText
-            topx={500}
-            topy={400}
-            iconsrc={"/logo_oyun.svg"}
-            num={3}
-            den={4}
-            buttonLeft={"oyun"}
-            buttonRight={"vazgeç"}
-            buttonRightAction={() => handleColumnClick(null)}
-            buttonLeftAction={() => setAction("oyun")}
-          >
-            <div className="text-center">
-              <span className="text-[#f7f6f1] items-center text-base font-extralight  whitespace-nowrap">
-                <span className="font-bold ">{names[clickedColumn]}</span>
-                <br />
-                KONUSUNA ÇALIŞMAK İSTER MİSİNİZ?
-              </span>
-            </div>
-          </PopupHorText>
-        </div>
-      }
-      {data.map((value, index) => {
-        const boxCount = Math.floor(value / 10);
-        const isHovered = index === hoveredColumn;
-        const opacity = isHovered ? 1 : 0.15;
+          <div className="text-center">
+            <span className="text-[#f7f6f1] items-center text-base font-extralight  whitespace-nowrap">
+              <span className="font-bold ">{names[clickedColumn]}</span>
+              <br />
+              KONUSUNA ÇALIŞMAK İSTER MİSİNİZ?
+            </span>
+          </div>
+        </PopupHorText>
+      </div>{" "}
+      <div className="flex space-x-3 items-end h-[600px]  absolute mx-auto">
+        {}
+        {data.map((value, index) => {
+          const boxCount = Math.floor(value / 10);
+          const isHovered = index === hoveredColumn;
+          const opacity = isHovered ? 1 : 0.15;
 
-        return (
-          <div
-            key={`${index} adad`}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-end",
-              opacity: opacity,
-              position: "relative",
-              transition: "opacity .3s",
-            }}
-            onMouseEnter={() => handleColumnHover(index)}
-            onMouseLeave={() => handleColumnHover(null)}
-            onMouseDown={() => {
-              handleColumnClick(index);
-              setSelectedSubject(names[index]);
-              setSelectedLesson("matematik");
-            }}
-          >
-            {[...Array(boxCount)].map((_, boxIndex) => (
-              <>
-                {boxIndex === 0 && (
+          return (
+            <div
+              key={`${index} adad`}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-end",
+                opacity: opacity,
+                position: "relative",
+                transition: "opacity .3s",
+              }}
+              onMouseEnter={() => handleColumnHover(index)}
+              onMouseLeave={() => handleColumnHover(null)}
+              onMouseDown={() => {
+                handleColumnClick(index);
+                setSelectedSubject(names[index]);
+                setSelectedLesson("matematik");
+              }}
+            >
+              {[...Array(boxCount)].map((_, boxIndex) => (
+                <>
+                  {boxIndex === 0 && (
+                    <div
+                      id={"box"}
+                      key={`${index}-${boxIndex} top`}
+                      style={{
+                        width: "40px",
+                        height: `${(value % 10) * 4}px`,
+                        backgroundColor: "black",
+                        marginBottom: "10px",
+                        borderRadius: "9px",
+                      }}
+                    />
+                  )}
                   <div
                     id={"box"}
-                    key={`${index}-${boxIndex} top`}
+                    key={`${index}-${boxIndex} second`}
                     style={{
-                      width: "50px",
-                      height: `${(value % 10) * 5}px`,
+                      width: "40px",
+                      height: "40px",
                       backgroundColor: "black",
                       marginBottom: "10px",
                       borderRadius: "9px",
                     }}
                   />
-                )}
+                </>
+              ))}
+              {isHovered && (
                 <div
-                  id={"box"}
-                  key={`${index}-${boxIndex} second`}
                   style={{
-                    width: "50px",
-                    height: "50px",
-                    backgroundColor: "black",
-                    marginBottom: "10px",
-                    borderRadius: "9px",
-                  }}
-                />
-              </>
-            ))}
-            {isHovered && (
-              <div
-                style={{
-                  position: "absolute",
-                  top: value < 25 ? `${-(25 - value) * 6}px` : "0px",
-                  left: index < data.length / 2 ? "60px" : null,
-                  right: index >= data.length / 2 ? "60px" : null,
-                  backgroundColor: "transparent",
-                  color: "black",
-                  padding: "5px",
-                  borderRadius: "5px",
-                  display: "flex",
-                  flexDirection: "column",
-                  fontFamily: "Montserrat",
-                  width: "auto",
-                  minWidth: "150px",
-                }}
-                key={names[index]}
-              >
-                <span
-                  style={{
-                    fontSize: "32px",
+                    position: "absolute",
+                    top: value < 25 ? `${-(25 - value) * 6}px` : "0px",
+                    left: index < data.length / 2 ? "60px" : null,
+                    right: index >= data.length / 2 ? "60px" : null,
+                    backgroundColor: "transparent",
+                    color: "black",
+                    padding: "5px",
+                    borderRadius: "5px",
                     display: "flex",
-                    whiteSpace: "nowrap",
-                    justifyContent: index < data.length / 2 ? "start" : "end",
+                    flexDirection: "column",
+                    fontFamily: "Montserrat",
+                    width: "auto",
+                    minWidth: "140px",
                   }}
+                  key={names[index]}
                 >
-                  {names[index]}
-                </span>
-                <span
-                  style={{
-                    fontSize: "64px",
-                    display: "flex",
-                    justifyContent: index > data.length / 2 ? "start" : "end",
-                    fontWeight: "700",
-                  }}
-                >
-                  {`%${data[index]}`}
-                </span>
-              </div>
-            )}
-          </div>
-        );
-      })}
+                  <span
+                    style={{
+                      fontSize: "32px",
+                      display: "flex",
+                      whiteSpace: "nowrap",
+                      justifyContent: index < data.length / 2 ? "start" : "end",
+                    }}
+                  >
+                    {names[index]}
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "64px",
+                      display: "flex",
+                      justifyContent: index > data.length / 2 ? "start" : "end",
+                      fontWeight: "700",
+                    }}
+                  >
+                    {`%${data[index]}`}
+                  </span>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>{" "}
+      <div className="flex space-x-3 items-end h-[600px] absolute mx-auto pointer-events-none">
+        {}
+        {dataRed.map((value, index) => {
+          const boxCount = Math.floor(value / 10);
+          const isHovered = index === hoveredColumn;
+          const opacity = isHovered ? 1 : 0.15;
+
+          return (
+            <div
+              key={`${index} adad`}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "flex-end",
+                opacity: opacity,
+                position: "relative",
+                transition: "opacity .3s",
+              }}
+              onMouseEnter={() => handleColumnHover(index)}
+              onMouseLeave={() => handleColumnHover(null)}
+              onMouseDown={() => {
+                handleColumnClick(index);
+                setSelectedSubject(names[index]);
+                setSelectedLesson("matematik");
+              }}
+            >
+              {[...Array(boxCount)].map((_, boxIndex) => (
+                <>
+                  {boxIndex === 0 && (
+                    <div
+                      id={"box"}
+                      key={`${index}-${boxIndex} top`}
+                      style={{
+                        width: "40px",
+                        height: `${(value % 10) * 4}px`,
+                        backgroundColor: "rgb(225,0,0)",
+                        marginBottom: "10px",
+                        borderRadius: "9px",
+                      }}
+                    />
+                  )}
+                  <div
+                    id={"box"}
+                    key={`${index}-${boxIndex} second`}
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      backgroundColor: "rgb(225,0,0)",
+                      marginBottom: "10px",
+                      borderRadius: "9px",
+                    }}
+                  />
+                </>
+              ))}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

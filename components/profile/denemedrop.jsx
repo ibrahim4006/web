@@ -1,6 +1,13 @@
 import React from "react";
 
-const Denemedrop = ({ input, alignment, border, text, value, setDataindex }) => {
+const Denemedrop = ({
+  input,
+  alignment,
+  border,
+  text,
+  value,
+  setDataindex,
+}) => {
   const getOrder = () => {
     if (input === -1) {
       return [3, 2, 1]; // Number, Text, Image
@@ -11,22 +18,20 @@ const Denemedrop = ({ input, alignment, border, text, value, setDataindex }) => 
 
   const [first, second, third] = getOrder();
 
-  const value_length = value ? value.length : 2
+  const value_length = value ? value.length : 2;
 
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
-        width: value_length > 2 ? `${value_length*50}px` : "150px",
+        width: value_length > 2 ? `${value_length * 50}px` : "150px",
         border: border,
         padding: "1rem 1.2rem",
         borderRadius: ".5rem",
-
       }}
       className="group hover:bg-[#F7F6F1]"
-      onMouseEnter={() => setDataindex ? setDataindex(text) : ""}
-      
+      onMouseEnter={() => (setDataindex ? setDataindex(text) : "")}
     >
       <span
         style={{
@@ -41,7 +46,7 @@ const Denemedrop = ({ input, alignment, border, text, value, setDataindex }) => 
           fontWeight: "700",
           fontFamily: "Montserrat",
         }}
-        className=" group-hover:text-black items-center"
+        className=" group-hover:text-black items-center group-hover:rotate-45 duration-300"
       >
         +
       </span>
@@ -54,9 +59,13 @@ const Denemedrop = ({ input, alignment, border, text, value, setDataindex }) => 
           textAlign: alignment === "right" ? "left" : "right",
           fontFamily: "Montserrat",
           fontWeight: "300",
-          whiteSpace:"nowrap",
+          whiteSpace: "nowrap",
         }}
-        className=" group-hover:text-black"
+        className={
+          alignment === "right"
+            ? " group-hover:text-black group-hover:translate-x-2 duration-300"
+            : " group-hover:text-black group-hover:-translate-x-2 duration-300"
+        }
       >
         {text}
       </span>
