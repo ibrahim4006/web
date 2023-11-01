@@ -478,7 +478,7 @@ function App() {
         </div>
       </div>
       <div
-        className="relative px-48 h-[1100px] pt-[200px] flex justify-center"
+        className="relative px-48 h-[1100px] flex flex-col justify-center"
         id="section3"
         ref={sectionRefs.section3}
       >
@@ -487,7 +487,7 @@ function App() {
           yPos="90px"
           textColor="rgb(13,13,13)"
         />
-        <div className="absolute mx-auto top-[130px] center w-[60%] sm:w-[50%] lg:w-[60%] ">
+        <div className=" mx-auto top-[130px] center w-[60%] sm:w-[50%] lg:w-[60%] ">
           {["türkçe", "matematik", "fizik", "kimya", "biyoloji"].map(
             (subject, index) => (
               <SquareButton
@@ -499,27 +499,23 @@ function App() {
             )
           )}
         </div>
+        <div className=" mx-auto top-[230px] center w-[60%] sm:w-[50%] lg:w-[60%] ">
+          {["tyt", "ayt"].map((subject, index) => (
+            <SquareButton
+              key={index}
+              title={subject}
+              containerStyles={`square-btn inverse-hover uppercase text-base font-light px-8 m-3`}
+              handleClick={() => console.log("locked")}
+            />
+          ))}
+        </div>
 
-        <div className="relative flex center w-full">
-          <div className="absolute mx-auto ">
-            <Topicbar />
-          </div>
-          <div className="absolute  mx-auto"></div>
+        <div className="relative flex center w-full h-[600px] mt-12">
+          <Topicbar />
         </div>
       </div>
       <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          width: "100%",
-          backgroundColor: "rgb(13,13,13)",
-          position: "relative",
-          height: "1100px",
-          zIndex: -1,
-          paddingLeft: "190px",
-          paddingRight: "190px",
-          paddingTop: "180px",
-        }}
+        className="flex justify-center w-full h-[1100px] bg-[#0d0d0d] -z-[1] relative px-48 pt-48"
         id="section4"
         ref={sectionRefs.section4}
       >

@@ -123,18 +123,16 @@ const Topicbar = () => {
   }, [selectedSubject, selectedLesson, dispatch, action, router]);
 
   return (
-    <div className="relative flex center w-full">
+    <div className="relative flex center w-full h-full">
       <div
+        className="absolute top-0 z-30"
         style={{
-          position: "absolute",
-          top: "0",
           opacity: clickedColumn ? "" : "0",
-          zIndex: 30,
-          pointerEvents: clickedColumn ? "all" : "none"
+          pointerEvents: clickedColumn ? "all" : "none",
         }}
       >
         <PopupHorText
-          topx={500}
+          topx={-190}
           topy={0}
           iconsrc={"/logo_oyun.svg"}
           num={3}
@@ -152,7 +150,7 @@ const Topicbar = () => {
             </span>
           </div>
         </PopupHorText>
-      </div>{" "}
+      </div>
       <div className="flex space-x-3 items-end h-[600px]  absolute mx-auto">
         {}
         {data.map((value, index) => {
@@ -163,13 +161,9 @@ const Topicbar = () => {
           return (
             <div
               key={`${index} adad`}
+              className="flex flex-col items-end relative transition-opacity duration-300"
               style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-end",
                 opacity: opacity,
-                position: "relative",
-                transition: "opacity .3s",
               }}
               onMouseEnter={() => handleColumnHover(index)}
               onMouseLeave={() => handleColumnHover(null)}
@@ -185,66 +179,52 @@ const Topicbar = () => {
                     <div
                       id={"box"}
                       key={`${index}-${boxIndex} top`}
+                      className="w-10 bg-[#0d0d0d] mb-3 rounded-lg "
                       style={{
-                        width: "40px",
                         height: `${(value % 10) * 4}px`,
-                        backgroundColor: "black",
-                        marginBottom: "10px",
-                        borderRadius: "9px",
                       }}
                     />
                   )}
                   <div
                     id={"box"}
                     key={`${index}-${boxIndex} second`}
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      backgroundColor: "black",
-                      marginBottom: "10px",
-                      borderRadius: "9px",
-                    }}
+                    className="w-10 h-10 bg-[#0d0d0d] mb-3 rounded-lg "
                   />
                 </>
               ))}
               {isHovered && (
                 <div
+                  className="absolute flex flex-col p-1 min-w-[140px] w-auto space-y-2"
                   style={{
-                    position: "absolute",
-                    top: value < 25 ? `${-(25 - value) * 6}px` : "0px",
+                    top: value < 35 ? `${-(35 - value) * 5}px` : "0px",
                     left: index < data.length / 2 ? "60px" : null,
                     right: index >= data.length / 2 ? "60px" : null,
-                    backgroundColor: "transparent",
-                    color: "black",
-                    padding: "5px",
-                    borderRadius: "5px",
-                    display: "flex",
-                    flexDirection: "column",
-                    fontFamily: "Montserrat",
-                    width: "auto",
-                    minWidth: "140px",
                   }}
                   key={names[index]}
                 >
                   <span
+                    className="text-3xl flex whitespace-nowrap"
                     style={{
-                      fontSize: "32px",
-                      display: "flex",
-                      whiteSpace: "nowrap",
                       justifyContent: index < data.length / 2 ? "start" : "end",
                     }}
                   >
                     {names[index]}
                   </span>
                   <span
+                    className="text-6xl flex font-bold"
                     style={{
-                      fontSize: "64px",
-                      display: "flex",
                       justifyContent: index > data.length / 2 ? "start" : "end",
-                      fontWeight: "700",
                     }}
                   >
                     {`%${data[index]}`}
+                  </span>
+                  <span
+                    className="text-6xl flex font-bold text-[rgb(225,0,0)]"
+                    style={{
+                      justifyContent: index > data.length / 2 ? "start" : "end",
+                    }}
+                  >
+                    {`%${dataRed[index]}`}
                   </span>
                 </div>
               )}
@@ -262,13 +242,9 @@ const Topicbar = () => {
           return (
             <div
               key={`${index} adad`}
+              className="flex flex-col items-end relative transition-opacity duration-300"
               style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "flex-end",
                 opacity: opacity,
-                position: "relative",
-                transition: "opacity .3s",
               }}
               onMouseEnter={() => handleColumnHover(index)}
               onMouseLeave={() => handleColumnHover(null)}
@@ -284,25 +260,16 @@ const Topicbar = () => {
                     <div
                       id={"box"}
                       key={`${index}-${boxIndex} top`}
+                      className="w-10 bg-[rgb(225,0,0)] mb-3 rounded-lg "
                       style={{
-                        width: "40px",
                         height: `${(value % 10) * 4}px`,
-                        backgroundColor: "rgb(225,0,0)",
-                        marginBottom: "10px",
-                        borderRadius: "9px",
                       }}
                     />
                   )}
                   <div
                     id={"box"}
                     key={`${index}-${boxIndex} second`}
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      backgroundColor: "rgb(225,0,0)",
-                      marginBottom: "10px",
-                      borderRadius: "9px",
-                    }}
+                    className="w-10 h-10 bg-[rgb(225,0,0)] mb-3 rounded-lg "
                   />
                 </>
               ))}
