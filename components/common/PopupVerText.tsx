@@ -9,7 +9,7 @@ type Props = {};
 const PopupVerText = ({ topx, topy, width, height, children }) => {
   return (
     <div
-      className=" absolute bg-[#0D0D0D] rounded-sm min-w-fit min-h-fit overflow-visible flex justify-center items-center flex-col animate_content_closing floating-horizontal z-50 px-20 py-16"
+      className=" absolute bg-[#0D0D0D] rounded-sm min-w-fit min-h-fit overflow-visible flex justify-center items-center flex-col animate_content_closing floating-horizontal px-20 py-16"
       style={{
         position: "absolute",
         animationDelay: `${0.5 * Math.random()}s`,
@@ -18,6 +18,7 @@ const PopupVerText = ({ topx, topy, width, height, children }) => {
         top: topy ? `${topy}px` : "",
         width: width ? `${width}px` : "",
         height: height ? `${height}px` : "",
+        zIndex: 60,
       }}
     >
       <div key={"outer design shapes"}>
@@ -26,7 +27,7 @@ const PopupVerText = ({ topx, topy, width, height, children }) => {
         <div key={"black dot1"} className="black-dot-1"></div>
         <div key={"black dot2"} className="black-dot-2"></div>
         <div key={"black dot3"} className="black-dot-3"></div>
-        <CardOuter/>
+        <CardOuter />
       </div>
 
       <div

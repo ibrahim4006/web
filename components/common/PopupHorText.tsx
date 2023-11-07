@@ -22,7 +22,7 @@ const PopupHorText = ({
   return (
     <div
       id={"PopupHorText"}
-      className=" absolute bg-[#0D0D0D] rounded-sm min-w-fit min-h-fit overflow-visible flex justify-center items-center flex-col animate_content_closing floating-horizontal z-50"
+      className=" absolute bg-[#0D0D0D] rounded-sm min-w-fit min-h-fit overflow-visible flex justify-center items-center flex-col animate_content_closing floating-horizontal"
       style={{
         position: "absolute",
         animationDelay: `${0.5 + Math.random() * 0.5}s`,
@@ -30,12 +30,16 @@ const PopupHorText = ({
         top: topy ? `${topy}px` : "",
         width: width ? `${width}px` : "",
         height: height ? `${height}px` : "",
+        zIndex: 60,
       }}
     >
       <div key={"outer design shapes"} className="w-full h-full">
-        <div className="card-frame-top"></div>
-        <div className="card-frame-bottom"></div>
-        <CardOuterMinimal/>
+        <div
+          className="card-frame-left-fixed"
+          style={{ animation: "none" }}
+        ></div>
+        <div className="card-frame-right-fixed"></div>
+        <CardOuterMinimal />
       </div>
       <div className="flip-hor-card flex center relative bg-[#0D0D0D] px-48 py-[70px]">
         <div className="flip-hor-card-inner">

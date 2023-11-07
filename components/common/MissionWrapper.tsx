@@ -61,14 +61,14 @@ const MissionWrapper = (props: Props) => {
   return (
     <div>
       <PopupHorText
-        topx={(500 * innerPageWidth) / 1920}
-        topy={830}
-        width={634}
+        topx={(600 * innerPageWidth) / 1920}
+        topy={700}
+        width={434}
         buttonLeft={"kabul et"}
         buttonRight={"reddet"}
       >
         <div className="text-center">
-          <span className="text-[#f7f6f1] items-center text-base font-extralight  whitespace-nowrap">
+          <span className="text-[#f7f6f1] items-center text-sm font-extralight  whitespace-nowrap">
             <span className="font-bold "> ALİ KAĞAN </span>
             <br />
             <span className="font-bold ">
@@ -84,32 +84,32 @@ const MissionWrapper = (props: Props) => {
         topx={(500 * innerPageWidth) / 1920}
         topy={90}
         width={634}
-        height={337}
+        height={270}
       >
         <div className="h-full w-full items-center flex flex-col">
           <div
             key={"title and clock wrapper"}
-            className="flex justify-between items-center w-[87%] h-[20%] mt-12"
+            className="flex justify-between items-center w-[87%] h-[20%] mt-10"
           >
             <span className="text-2xl font-bold flex text-left">
               GÜNLÜK <br /> GÖREVLER
             </span>
-            <span className="text-base font-extralight flex text-right leading-7">
+            <span className="text-sm font-extralight flex text-right leading-7">
               KALAN SÜRE <br /> {new Date(timeLeft).toTimeString().slice(0, 8)}
             </span>
           </div>
           <section
             key={"mission list wrapper"}
-            className="w-full flex flex-col items-center py-10 space-y-8"
+            className="w-full flex flex-col items-center py-5 space-y-5"
           >
             <div className="flex items-center justify-between w-[87%] h-11 flex-row inverse-hover">
               <div className="flex flex-col center space-y-3">
                 <div className="flex w-full justify-between">
-                  <span className="text-base text-[#f7f6f1] whitespace-nowrap  font-extralight">
+                  <span className="text-sm text-[#f7f6f1] whitespace-nowrap  font-extralight">
                     <span className="font-bold">Polinomlar </span> konusundan{" "}
                     <span className="font-bold">100</span> soru çöz.
                   </span>
-                  <span className="text-base text-[#f7f6f1] whitespace-nowrap">
+                  <span className="text-sm text-[#f7f6f1] whitespace-nowrap">
                     {`${4} / ${5}`}
                   </span>
                 </div>
@@ -127,11 +127,11 @@ const MissionWrapper = (props: Props) => {
             <div className="flex items-center justify-between w-[87%] h-11 flex-row inverse-hover">
               <div className="flex flex-col center space-y-3">
                 <div className="flex w-full justify-between">
-                  <span className="text-base text-[#f7f6f1] whitespace-nowrap font-extralight">
+                  <span className="text-sm text-[#f7f6f1] whitespace-nowrap font-extralight">
                     <span className="font-bold">Polinomlar </span> konusundan{" "}
                     <span className="font-bold">100</span> soru çöz.
                   </span>
-                  <span className="text-base text-[#f7f6f1] whitespace-nowrap">
+                  <span className="text-sm text-[#f7f6f1] whitespace-nowrap">
                     {`${4} / ${5}`}
                   </span>
                 </div>
@@ -151,35 +151,35 @@ const MissionWrapper = (props: Props) => {
       </MissionCard>
       <MissionCard
         topx={(500 * innerPageWidth) / 1920}
-        topy={460}
+        topy={395}
         width={634}
-        height={337}
+        height={270}
       >
         <div className="h-full w-full items-center flex flex-col">
           <div
             key={"title and clock wrapper"}
-            className="flex justify-between items-center w-[87%] h-[20%] mt-12"
+            className="flex justify-between items-center w-[87%] h-[20%] mt-10"
           >
             <span className="text-2xl font-bold flex text-left">
               HAFTALIK <br /> GÖREVLER
             </span>
-            <span className="text-base font-extralight flex text-right leading-7">
+            <span className="text-sm font-extralight flex text-right leading-7">
               KALAN SÜRE <br /> {daysLeft}:
               {new Date(timeLeft).toTimeString().slice(0, 8)}
             </span>
           </div>
           <section
             key={"mission list wrapper"}
-            className="w-full flex flex-col items-center py-10 space-y-8"
+            className="w-full flex flex-col items-center py-5 space-y-5"
           >
             <div className="flex items-center justify-between w-[87%] h-11 flex-row inverse-hover">
               <div className="flex flex-col center space-y-3">
                 <div className="flex w-full justify-between">
-                  <span className="text-base text-[#f7f6f1] whitespace-nowrap  font-extralight">
+                  <span className="text-sm text-[#f7f6f1] whitespace-nowrap  font-extralight">
                     <span className="font-bold">Polinomlar </span> konusundan{" "}
                     <span className="font-bold">100</span> soru çöz.
                   </span>
-                  <span className="text-base text-[#f7f6f1] whitespace-nowrap">
+                  <span className="text-sm text-[#f7f6f1] whitespace-nowrap">
                     {`${4} / ${5}`}
                   </span>
                 </div>
@@ -197,11 +197,11 @@ const MissionWrapper = (props: Props) => {
             <div className="flex items-center justify-between w-[87%] h-11 flex-row inverse-hover">
               <div className="flex flex-col center space-y-3">
                 <div className="flex w-full justify-between">
-                  <span className="text-base text-[#f7f6f1] whitespace-nowrap font-extralight">
+                  <span className="text-sm text-[#f7f6f1] whitespace-nowrap font-extralight">
                     <span className="font-bold">Polinomlar </span> konusundan{" "}
                     <span className="font-bold">100</span> soru çöz.
                   </span>
-                  <span className="text-base text-[#f7f6f1] whitespace-nowrap">
+                  <span className="text-sm text-[#f7f6f1] whitespace-nowrap">
                     {`${4} / ${5}`}
                   </span>
                 </div>

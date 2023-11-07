@@ -151,7 +151,7 @@ const page = (props: Props) => {
 
   return (
     <div>
-      {/* <DenemeSonu /> */}
+       <DenemeSonu />
       <PageTag tag="DENEME / BRANŞ" />
       <TopNameTag nametag="DENEME" game={true} />
       <div className={`w-full flex flex-col relative`}>
@@ -378,6 +378,7 @@ const page = (props: Props) => {
             {[...Array(10)].map((subject, frindex) => (
               <BottomQButton
                 key={frindex}
+                number={frindex + 1}
                 text={mappedArray[frindex + 1] ? mappedArray[frindex + 1] : ""}
                 onClick={() => scrollToSection(frindex + 1)}
               />
@@ -387,12 +388,13 @@ const page = (props: Props) => {
           <div className="flex flex-row w-full justify-between pt-6 z-1">
             {[...Array(10)].map((subject, srindex) => (
               <BottomQButton
-                key={srindex}
-                text={
-                  mappedArray[11 + srindex] ? mappedArray[11 + srindex] : ""
-                }
-                onClick={() => scrollToSection(11 + srindex)}
-              />
+              key={srindex}
+              number={11 + srindex}
+              text={
+                mappedArray[11 + srindex] ? mappedArray[11 + srindex] : ""
+              }
+              onClick={() => scrollToSection(11 + srindex)}
+            />
             ))}
           </div>
         </div>

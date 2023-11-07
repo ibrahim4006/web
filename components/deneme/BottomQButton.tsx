@@ -2,7 +2,7 @@ import React from "react";
 
 type Props = {};
 
-const BottomQButton = ({ key, text, onClick, height, width }) => {
+const BottomQButton = ({ key, number, text, onClick, height, width }) => {
   return (
     <div
       className="relative top-0 flex justify-between items-center bg-[#F7F6F1] w-24 h-16 rounded-md group inverse-hover"
@@ -21,10 +21,10 @@ const BottomQButton = ({ key, text, onClick, height, width }) => {
       </div>
       <div
         className="absolute w-[80%] h-[72%] right-0 left-0 mx-auto flex center rounded-sm"
-        style={{ backgroundColor: text == "" ? "#0D0D0D" : "#D9D9D9" }}
+        style={{ backgroundColor: text == "" ? "#0D0D0D" : "#D9D9D9", color:  text == "" ? "#f7f6f160" : "#0d0d0d" }}
       >
-        <span className="font-bold text-2xl flex center text-[#0D0D0D]">
-          {text}
+        <span className="font-bold text-2xl flex center">
+          {text == "" ? number : text}
         </span>
       </div>
       <div className="w-1/4 group-hover:w-1/2 h-full border-[1px] border-[#0D0D0D] border-l-0 rounded-md rounded-tl-none rounded-bl-none relative duration-500">

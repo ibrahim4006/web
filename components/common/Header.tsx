@@ -102,8 +102,8 @@ const Header = () => {
             width={240}
             height={100}
             className=" px-6 pb-1.5 h-[65px] min-w-[240px]  border-r-black center  inverse-hover  "
-            handleClick={() => {
-              handleFullScreenClick();
+            onClick={() => {
+              //handleFullScreenClick();
               setDropDown(false);
               setMission(false);
             }}
@@ -122,7 +122,7 @@ const Header = () => {
                 title="görev"
                 containerStyles={`header-btn inverse-hover`}
                 handleClick={() => {
-                  handleFullScreenClick();
+                  //handleFullScreenClick();
                   setMission(!mission);
                 }}
               />
@@ -132,7 +132,7 @@ const Header = () => {
                 title="kürsü"
                 containerStyles={`header-btn inverse-hover`}
                 handleClick={() => {
-                  handleFullScreenClick();
+                  //handleFullScreenClick();
                   setDropDown(false);
                   setMission(false);
                 }}
@@ -143,7 +143,7 @@ const Header = () => {
                 title="arşiv"
                 containerStyles={`header-btn inverse-hover`}
                 handleClick={() => {
-                  handleFullScreenClick();
+                  //handleFullScreenClick();
                   setDropDown(false);
                   setMission(false);
                 }}
@@ -162,18 +162,18 @@ const Header = () => {
                   title="profil"
                   containerStyles={`header-btn inverse-hover`}
                   handleClick={() => {
-                    handleFullScreenClick();
+                    //handleFullScreenClick();
                     setDropDown(false);
                     setMission(false);
                   }}
                 />
               </Link>
-              <Link href="/kürsü" className="cursor-none">
+              <Link href="/level" className="cursor-none">
                 <SquareButton
                   title="level"
                   containerStyles={`header-btn inverse-hover`}
                   handleClick={() => {
-                    handleFullScreenClick();
+                    //handleFullScreenClick();
                     setDropDown(false);
                     setMission(false);
                   }}
@@ -184,7 +184,7 @@ const Header = () => {
                   title="takvim"
                   containerStyles={`header-btn inverse-hover`}
                   handleClick={() => {
-                    handleFullScreenClick();
+                    //handleFullScreenClick();
                     setDropDown(false);
                     setMission(false);
                   }}
@@ -205,7 +205,7 @@ const Header = () => {
               alt="Polygon logo"
               width={30}
               height={30}
-              className="object-contain inverse-hover m-2 mb-4 md:mr-4 md:mb-2 cursor-none"
+              className="object-contain inverse-hover m-2 mb-4 md:mr-4 md:mb-2 cursor-none active:scale-110 duration-100 active:rotate-[30deg]"
             />
           </div>
         </div>
