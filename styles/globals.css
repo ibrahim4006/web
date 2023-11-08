@@ -472,7 +472,48 @@
 }
 
 .card-btn {
-  @apply bg-[#0D0D0D] hover:bg-[#F7F6F1] hover:text-[#0D0D0D] text-[#F7F6F1] font-light px-12 lg:px-8 xl:px-8 2xl:px-12 py-2.5 rounded-sm;
+  @apply bg-[#0D0D0D] hover:bg-[#F7F6F1] hover:text-[#0D0D0D] text-[#F7F6F1] font-light px-12 lg:px-8 xl:px-8 2xl:px-12 h-11 rounded-sm cursor-none;
+}
+.card-btn-white {
+  @apply bg-[#F7F6F1] hover:bg-[#0D0D0D] hover:text-[#F7F6F1] text-[#0D0D0D] hover:border hover:border-[#f7f6f1] font-light px-12 lg:px-8 xl:px-8 2xl:px-12 h-11 rounded-sm cursor-none;
+}
+
+.card-btn-white-login {
+  @apply bg-[#F7F6F1] hover:bg-[#0D0D0D] hover:text-[#F7F6F1] text-[#0D0D0D] px-4 h-11 rounded-sm cursor-none border border-[#0d0d0d] font-bold;
+}
+
+.uye-ol:hover::after {
+  content: "Üye Ol";
+  position: absolute;
+  top: 50px;
+  left: -2px;
+  height: auto;
+  background-color: #0d0d0d;
+  color: #f7f6f1;
+  font-weight: 700;
+  padding-inline: 16px;
+  padding-block: 8px;
+  border: 1px solid;
+  border-radius: 4px;
+  z-index: 60;
+  text-wrap: nowrap;
+}
+
+.unuttum:hover::after {
+  content: "Şifremi Unuttum";
+  position: absolute;
+  top: 50px;
+  left: -2px;
+  height: auto;
+  background-color: #0d0d0d;
+  color: #f7f6f1;
+  font-weight: 700;
+  padding-inline: 16px;
+  padding-block: 8px;
+  border: 1px solid;
+  border-radius: 4px;
+  z-index: 60;
+  text-wrap: nowrap;
 }
 
 .card-frame-right {

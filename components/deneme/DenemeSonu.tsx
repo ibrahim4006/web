@@ -7,8 +7,18 @@ import Hexagon from "../common/Hexagon";
 type Props = {};
 
 const DenemeSonu = (props: Props) => {
+  const items = [
+    { title: "Yüzde Kar Zarar Problemleri", numbers: "7 / 2 / 1" },
+    { title: "Yüzde Kar Zarar Problemleri", numbers: "7 / 2 / 1" },
+    { title: "Yüzde Kar Zarar Problemleri", numbers: "7 / 2 / 1" },
+    { title: "Yüzde Kar Zarar Problemleri", numbers: "7 / 2 / 1" },
+    { title: "Yüzde Kar Zarar Problemleri", numbers: "7 / 2 / 1" },
+    // Add more items as needed
+  ];
+
   return (
-    <div>
+    <div className="absolute w-full h-full">
+      <div className="relative h-full w-screen center z-10 flex items-center justify-center backdrop-blur-sm" />
       <PopupHorText
         topx={65}
         topy={300}
@@ -44,65 +54,46 @@ const DenemeSonu = (props: Props) => {
         </div>
       </PopupHorText>
       <PopupVerText topx={540} topy={255} width={844} height={600}>
-        <div className="h-full w-full items-center flex flex-col">
-          <div className="flex justify-center space-x-6 items-center h-fit">
-            <span className="text-3xl font-extralight text-[#f7f6f1]">13</span>
+        <div className="h-full w-full items-center flex flex-col -top-4 relative">
+          <div className="flex justify-center items-center h-fit ">
             <span className="text-6xl font-black text-[#f7f6f1]">
-              KAZANDINIZ!
+              DENEME BİTTİ!
             </span>
-            <span className="text-3xl font-extralight text-[#f7f6f1]">16</span>
           </div>
           <span className="text-base font-light text-[#f7f6f1] py-3">
             12:26
           </span>
 
           <div
-            key={"users info"}
-            className="w-full h-48 flex justify-between my-16"
+            key={"subject info"}
+            className="w-full h-48 flex flex-col justify-between"
           >
-            <span className="text-4xl font-bold opacity-30 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/4">
-              VS
-            </span>
-            <div
-              key={"left user"}
-              className="w-1/2 flex flex-row justify-between"
-            >
-              <div className="w-1/2 flex center">
-                <span className="text-center whitespace-pre-wrap flex flex-col items-center justify-center w-1 font-extralight text-[#f7f6f1]">
-                  MUHAMMET ALPEREN EFİLOĞLU
+            {items.map((item, index) => (
+              <div
+                key={index}
+                className="flex w-full h-fit px-2 py-2 justify-between items-end hover:border hover:border-[#f7f6f130] rounded"
+              >
+                <div className="relative flex items-end">
+                  <span className="absolute top-0 left-0 font-bold text-sm">
+                    +
+                  </span>
+                  <span className="relative font-extralight text-base text-left opacity-60 pl-4 pt-4">
+                    {item.title}
+                  </span>
+                </div>
+                <span className="font-bold text-2xl text-end">
+                  {item.numbers}
                 </span>
               </div>
-              <div
-                key={"hexagon holder"}
-                className=" h-full w-full scale-75 invert mr-4"
-              >
-                <Hexagon x={0} y={0} key={`level`} text={18} textsize={48} />
-              </div>
-            </div>
-            <div
-              key={"right user"}
-              className="w-1/2 flex flex-row justify-between"
-            >
-              <div
-                key={"hexagon holder"}
-                className=" h-full w-full scale-75 invert  ml-4"
-              >
-                <Hexagon x={0} y={0} key={`level`} text={18} textsize={48} />
-              </div>
-              <div className="w-1/2 flex center">
-                <span className="text-center whitespace-pre-wrap flex flex-col items-center justify-center w-1 font-extralight text-[#f7f6f1] uppercase ">
-                  ibrahim ergen
-                </span>
-              </div>
-            </div>
+            ))}
           </div>
           <div
             key={"card button holder"}
-            className="relative flex justify-center items-center p-6 w-full"
+            className="absolute -bottom-6 flex justify-center items-center p-6 w-full space-x-2"
           >
             <SquareButton
               title="yeniden meydan oku"
-              containerStyles="card-btn inverse-hover "
+              containerStyles="card-btn-white inverse-hover "
               handleClick={() => takeQueadadastion("fetch")}
             />
             <SquareButton

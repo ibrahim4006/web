@@ -6,9 +6,10 @@ import Hexagon from "../common/Hexagon";
 
 type Props = {};
 
-const OyunSonu = (props: Props) => {
+const YarısmaSonu = (props: Props) => {
   return (
-    <div>
+    <div className="absolute w-full h-full">
+      <div className="relative h-full w-screen center z-10 flex items-center justify-center backdrop-blur-sm"/>
       <PopupHorText
         topx={65}
         topy={300}
@@ -46,9 +47,11 @@ const OyunSonu = (props: Props) => {
       <PopupVerText topx={540} topy={255} width={844} height={600}>
         <div className="h-full w-full items-center flex flex-col">
           <div className="flex justify-center space-x-6 items-center h-fit">
+            <span className="text-3xl font-extralight text-[#f7f6f1]">13</span>
             <span className="text-6xl font-black text-[#f7f6f1]">
-              OYUN BİTTİ!
+              KAZANDINIZ!
             </span>
+            <span className="text-3xl font-extralight text-[#f7f6f1]">16</span>
           </div>
           <span className="text-base font-light text-[#f7f6f1] py-3">
             12:26
@@ -56,41 +59,42 @@ const OyunSonu = (props: Props) => {
 
           <div
             key={"users info"}
-            className="w-full h-48 flex flex-col justify-between items-center my-8"
+            className="w-full h-48 flex justify-between my-16"
           >
-            <div className="flex flex-row items-center w-full relative whitespace-nowrap py-4 px-4">
-              <span className="text-base font-bold w-[30%] relative">
-                EN YÜKSEK SKOR
-              </span>
-              <span className="text-base font-extralight w-[50%] relative overflow-visible">
-                İbrahim Ergen
-              </span>
-              <span className="text-3xl font-bold  w-[20%] relative flex text-end justify-end">
-                98
-              </span>
+            <span className="text-4xl font-bold opacity-30 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/4">
+              VS
+            </span>
+            <div
+              key={"left user"}
+              className="w-1/2 flex flex-row justify-between"
+            >
+              <div className="w-1/2 flex center">
+                <span className="text-center whitespace-pre-wrap flex flex-col items-center justify-center w-1 font-extralight text-[#f7f6f1]">
+                  MUHAMMET ALPEREN EFİLOĞLU
+                </span>
+              </div>
+              <div
+                key={"hexagon holder"}
+                className=" h-full w-full scale-75 invert mr-4"
+              >
+                <Hexagon x={0} y={0} key={`level`} text={18} textsize={48} />
+              </div>
             </div>
-
-            <div className="flex flex-row items-center w-full relative whitespace-nowrap py-4  px-4">
-              <span className="text-base font-bold w-[30%] relative">
-                YÜKSEK SKORUN
-              </span>
-              <span className="text-base font-extralight w-[50%] relative overflow-visible">
-                MUHAMMET ALPEREN EFİLOĞLU
-              </span>
-              <span className="text-3xl font-bold  w-[20%] relative flex text-end justify-end">
-                15
-              </span>
-            </div>
-            <div className="flex flex-row items-center w-full relative whitespace-nowrap py-4  px-4 border border-white border-opacity-30 rounded-md">
-              <span className="text-base font-bold w-[30%] relative">
-                ŞUANKİ SKORUN
-              </span>
-              <span className="text-base font-extralight w-[50%] relative overflow-visible">
-              MUHAMMET ALPEREN EFİLOĞLU
-              </span>
-              <span className="text-3xl font-bold  w-[20%] relative flex text-end justify-end">
-                13
-              </span>
+            <div
+              key={"right user"}
+              className="w-1/2 flex flex-row justify-between"
+            >
+              <div
+                key={"hexagon holder"}
+                className=" h-full w-full scale-75 invert  ml-4"
+              >
+                <Hexagon x={0} y={0} key={`level`} text={18} textsize={48} />
+              </div>
+              <div className="w-1/2 flex center">
+                <span className="text-center whitespace-pre-wrap flex flex-col items-center justify-center w-1 font-extralight text-[#f7f6f1] uppercase ">
+                  ibrahim ergen
+                </span>
+              </div>
             </div>
           </div>
           <div
@@ -98,7 +102,7 @@ const OyunSonu = (props: Props) => {
             className="relative flex justify-center items-center p-6 w-full"
           >
             <SquareButton
-              title="tekrar oyna"
+              title="yeniden meydan oku"
               containerStyles="card-btn inverse-hover "
               handleClick={() => takeQueadadastion("fetch")}
             />
@@ -147,4 +151,4 @@ const OyunSonu = (props: Props) => {
   );
 };
 
-export default OyunSonu;
+export default YarısmaSonu;
