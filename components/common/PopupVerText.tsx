@@ -12,7 +12,7 @@ const PopupVerText = ({ topx, topy, width, height, children }) => {
       className=" absolute bg-[#0D0D0D] rounded-sm min-w-fit min-h-fit overflow-visible flex justify-center items-center flex-col animate_content_closing floating-horizontal px-20 py-16"
       style={{
         position: "absolute",
-        animationDelay: `${0.5 * Math.random()}s`,
+        //animationDelay: `${0.5 * Math.random()}s`,
         animationIterationCount: 1,
         left: topx ? `${topx}px` : "",
         top: topy ? `${topy}px` : "",

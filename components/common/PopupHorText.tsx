@@ -25,7 +25,7 @@ const PopupHorText = ({
       className=" absolute bg-[#0D0D0D] rounded-sm min-w-fit min-h-fit overflow-visible flex justify-center items-center flex-col animate_content_closing floating-horizontal"
       style={{
         position: "absolute",
-        animationDelay: `${0.5 + Math.random() * 0.5}s`,
+        //animationDelay: `${0.5 + Math.random() * 0.5}s`,
         left: topx ? `${topx}px` : "",
         top: topy ? `${topy}px` : "",
         width: width ? `${width}px` : "",

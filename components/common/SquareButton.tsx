@@ -2,20 +2,22 @@
 
 import { SquareButtonProps } from "@/types";
 
+
 const SquareButton = ({
   title,
   containerStyles,
   handleClick,
-  btnType, color
+  btnType,
+  disabled,
+  color
 }: SquareButtonProps) => {
-
   return (
     <button
-      disabled={false}
+      disabled={disabled}
       type={btnType || "button"}
       className={containerStyles}
       onClick={handleClick}
-      style={{backgroundColor: color}}
+      style={{ backgroundColor: color }}
     >
       <span >{title}</span>
     </button>

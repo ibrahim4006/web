@@ -9,50 +9,6 @@ type Inputs = {
   email: string;
   password: string | undefined;
 };
-
-function generatePoints(totalPoints) {
-  const points = [];
-  for (let index = 0; index < totalPoints; index++) {
-    points.push(
-      <Image
-        src="/altıgen.svg"
-        width={182}
-        height={182} 
-        alt={`${index + 1}.altıgen`}
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: `translate(-50%, -50%) rotate(${
-            30 + index * 60
-          }deg) translate(291px)`,
-          zIndex: 9999,
-        }}
-        
-      />
-    );
-  }
-  points.push(
-    <div className="hover:scale-125"><Image
-      src="/arka_altıgen.svg"
-      width={510}
-      height={510}
-      alt={`arka altıgen`}
-      style={{
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: `translate(-50%, -50%)`,
-        zIndex: 9999,
-      }}
-      
-    /></div>
-    
-  );
-  console.log(points);
-  return points;
-}
-
 export default function page() {
   const router = useRouter();
   const [open_animation, setOpenAnimation] = useState(false);
