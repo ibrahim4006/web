@@ -139,7 +139,7 @@ const Header = () => {
                   }}
                 />
               </div>
-              <Link href="/kürsü" className="cursor-none">
+              <Link href="/kursu" className="cursor-none">
                 <SquareButton
                   title="kürsü"
                   containerStyles={`header-btn inverse-hover`}

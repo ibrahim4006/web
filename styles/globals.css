@@ -2253,13 +2253,65 @@ body {
   }
 }
 
+.kursu-outer-lines:hover .kursu-outer-box-0 {
+  animation: animate_kursu_top_box_0 1s ease-in-out forwards !important;
+  animation-delay: 2s;
+}
+
+@keyframes animate_kursu_top_box_0 {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+  }
+}
+
+.kursu-outer-lines:hover .kursu-outer-box-1 {
+  animation: animate_kursu_top_box_1 1s ease-in-out forwards !important;
+  animation-delay: 2s;
+}
+
+@keyframes animate_kursu_top_box_1 {
+  0% {
+    transform: translateX(0) translateY(0) scaleY(-100%);
+  }
+  100% {
+  }
+}
+
+.kursu-outer-lines:hover .kursu-outer-box-2 {
+  animation: animate_kursu_top_box_2 1s ease-in-out forwards !important;
+  animation-delay: 2s;
+}
+
+@keyframes animate_kursu_top_box_2 {
+  0% {
+    transform: translateX(0) translateY(0) scaleX(-100%);
+  }
+  100% {
+  }
+}
+
+.kursu-outer-lines:hover .kursu-outer-box-3 {
+  animation: animate_kursu_top_box_3 1s ease-in-out forwards !important;
+  animation-delay: 2s;
+}
+
+@keyframes animate_kursu_top_box_3 {
+  0% {
+    transform: translateX(0) translateY(0) scaleX(-100%) scaleY(-100%);
+  }
+  100% {
+  }
+}
+
 .kursu-outer-box path {
   stroke-dasharray: 550;
   stroke-dashoffset: 550;
 }
 
 .kursu-outer-box:hover path {
-  animation:  animate_kursu_top_left_again .5s linear forwards !important;
+  animation: animate_kursu_top_left_again 0.5s linear forwards !important;
 }
 
 @keyframes animate_kursu_top_left_again {
@@ -2270,7 +2322,6 @@ body {
     stroke-dashoffset: 0;
   }
 }
-
 
 .kursu-outer-lines:hover .kursu-outer-box path {
   animation: animate_kursu_top_left 1s linear forwards;
@@ -2324,7 +2375,7 @@ body {
   height: 3px;
   bottom: 90px;
   right: 2px;
-  background-color: #0d0d0d;
+  background-color: #f7f6f1;
   z-index: 99;
   transition: bottom 0.3s ease-in-out, right 0.3s ease-in-out,
     width 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -2346,7 +2397,7 @@ body {
   height: 3px;
   bottom: 90px;
   left: 32px;
-  background-color: #0d0d0d;
+  background-color: #f7f6f1;
   z-index: 99;
   transition: bottom 0.3s ease-in-out, left 0.3s ease-in-out,
     width 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -2368,7 +2419,7 @@ body {
   height: 3px;
   bottom: 90px;
   right: 2px;
-  background-color: #0d0d0d;
+  background-color: #f7f6f1;
   z-index: 99;
   transition: bottom 0.3s ease-in-out, right 0.3s ease-in-out,
     width 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -2390,7 +2441,7 @@ body {
   height: 3px;
   bottom: 90px;
   left: 32px;
-  background-color: #0d0d0d;
+  background-color: #f7f6f1;
   z-index: 99;
   transition: bottom 0.3s ease-in-out, left 0.3s ease-in-out,
     width 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -2439,7 +2490,7 @@ body {
   height: 4px;
   bottom: -2px;
   left: -4px;
-  background-color: #0d0d0d60;
+  background-color: #f7f6f160;
   border-radius: 2px;
 }
 
@@ -2450,12 +2501,12 @@ body {
   height: 4px;
   bottom: -2px;
   right: -4px;
-  background-color: #0d0d0d60;
+  background-color: #f7f6f160;
   border-radius: 2px;
 }
 
 .kursu-underline::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   transform: scaleX(0);
@@ -2463,9 +2514,9 @@ body {
   height: 0.05em;
   bottom: 0;
   left: 0;
-  background: #0d0d0d;
+  background: #f7f6f1;
   transform-origin: bottom right;
-  transition: transform .75s ease-out;
+  transition: transform 0.75s ease-out;
 }
 .kursu-underline:hover::after {
   transform: scaleX(1);
@@ -2477,19 +2528,13 @@ body {
 }
 
 .kursu-outer-lines:hover .kursu-ranking-box {
-  animation: animate_kursu_ranking_box 2s ease-in-out;
+  animation: animate_kursu_ranking_box 1.5s ease-in-out;
   opacity: 1;
 }
 
 @keyframes animate_kursu_ranking_box {
   0% {
     opacity: 0;
-  }
-  50% {
-    opacity: 0;
-  }
-  70% {
-    opacity: 1;
   }
   75% {
     opacity: 0;
@@ -2501,6 +2546,29 @@ body {
     opacity: 0;
   }
   100% {
-    opacity: 1; /* Negative half of the stroke-dasharray */
+    opacity: 1;
   }
+}
+
+
+.kursu-list-tag:hover::before {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  left: 12px;
+  border-radius: 1.5px;
+  transform: translateY(8px) rotate(45deg) ;
+  background-color: #f7f6f1;
+}
+
+.kursu-list-tag:hover::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  right: 12px;
+  border-radius: 1.5px;
+  transform: translateY(8px) rotate(45deg) ;
+  background-color: #f7f6f1;
 }

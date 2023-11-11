@@ -26,7 +26,7 @@ const KursuCenter = ({ number }) => {
         <path
           opacity="0.3"
           d="M286.522 15.2355L194.81 86.3019C191.464 88.8947 187.072 90.3046 182.339 90.3046L0.5 90.3047"
-          stroke="#0D0D0D"
+          stroke="#f7f6f1"
         />
         <rect
           className="marker-center"
@@ -34,7 +34,7 @@ const KursuCenter = ({ number }) => {
           height="5.5"
           y="-2.75"
           rx="2.5"
-          fill="#0d0d0d60"
+          fill="#f7f6f160"
         />
       </svg>
     </div>
